@@ -1,0 +1,6 @@
+D:\Projects\DailyCode\DailyCardGames\DailyCardGames\bin\DailyCardGames.dll.config
+D:\Projects\DailyCode\DailyCardGames\DailyCardGames\bin\DailyCardGames.dll
+D:\Projects\DailyCode\DailyCardGames\DailyCardGames\bin\DailyCardGames.pdb
+D:\Projects\DailyCode\DailyCardGames\DailyCardGames\obj\Debug\DailyCardGames.csprojResolveAssemblyReference.cache
+D:\Projects\DailyCode\DailyCardGames\DailyCardGames\obj\Debug\DailyCardGames.dll
+D:\Projects\DailyCode\DailyCardGames\DailyCardGames\obj\Debug\DailyCardGames.pdb
