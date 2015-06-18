@@ -19,42 +19,49 @@
         <script src="Scripts/skel.min.js"></script>
         <script src="Scripts/util.js"></script>
         <script src="Scripts/main.js"></script>
+
+        <!-- Angular-->
+        <script src="scripts/angular.js"></script>
+        <script src="scripts/angular-ui-router.min.js"></script>
+        <script src="app.js"></script>
+
+        <!--home-->
+        <script src="Home/homeController.js"></script>
+
 	</head>
-	<body id="top">
+<body id="top"  ng-app="routerApp">
 
 		<!-- Header -->
 			<header id="header">
-				<h1><strong>Daily Cards Game</strong> can help you play card games,<br />
+				<h1><strong> <a ui-sref="home"> Daily cards game </a></strong> can help you play card games,<br />
 				but I will not play the game for you!<br />
+                Choose a game below
 				</h1>
+
+                <h2 ui-sref-active="active"><a ui-sref="kinger" >Kingen</a> </h2>
+                <h2 ui-sref-active="active"><a ui-sref="wiezer" >Wiezen</a></h2>
+
 			</header>
 
 		<!-- Main -->
 			<div id="main">
+                <!-- MAIN CONTENT -->
+                <div class="container">
 
-				<!-- One -->
-					<section id="one">
-						
-					</section>
-
-				<!-- Two -->
-					<section id="two">
-						
-					</section>
+                    <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+                    <div ui-view></div>
+                </div>
 
 			</div>
 
 		<!-- Footer -->
 			<footer id="footer">
 				<ul class="icons">
-					<li><a href="mark.deraeve@gmail.com" class="glyphicon-envelope"><span class="label">Email</span></a></li>
+					<li><a href="http://www.dailycode.info" target="_blank" class="glyphicon-link"><span class="label">Maker</span></a></li>
 				</ul>
 				<ul class="copyright">
 					<li>&copy; DailyCode.info 2015</li>
 				</ul>
 			</footer>
-
-		
-
 	</body>
 </html>

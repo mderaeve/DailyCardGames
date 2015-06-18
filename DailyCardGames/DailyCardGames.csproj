@@ -67,6 +67,10 @@
     <Content Include="Content\images\overlay.png" />
     <Content Include="Content\main.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Games\Wiezer\wiezerView.html" />
+    <Content Include="Games\Kinger\kingerView.html" />
+    <Content Include="Home\homeView.html" />
+    <Content Include="Home\homeController.js" />
     <Content Include="Icon.png" />
     <Content Include="index.html" />
     <Content Include="Scripts\angular-animate.js" />
@@ -92,6 +96,8 @@
     <Content Include="Scripts\angular-scenario.js" />
     <Content Include="Scripts\angular-touch.js" />
     <Content Include="Scripts\angular-touch.min.js" />
+    <Content Include="Scripts\angular-ui-router.js" />
+    <Content Include="Scripts\angular-ui-router.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -885,6 +891,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
