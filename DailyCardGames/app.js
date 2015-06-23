@@ -1,8 +1,9 @@
 ﻿
 // declare modules
 angular.module('Home', []);
+angular.module('Games', []);
 
-var app = angular.module('dailycardApp', ['ui.router', 'Home']);
+var app = angular.module('dailycardApp', ['ui.router', 'Home','Games']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
 
@@ -18,12 +19,14 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
     .state('wiezer', {
         url: '/wiezer',
-        templateUrl: '/Games/Wiezer/wiezerView.html'
+        templateUrl: '/Games/Wiezer/wiezerView.html',
+        controller: 'wiezerController'
     })
 
     .state('kinger', {
         url: '/kinger',
-        templateUrl: '/Games/Kinger/kingerView.html'
+        templateUrl: '/Games/Kinger/kingerView.html',
+        controller: 'kingerController'
     })
 
 });

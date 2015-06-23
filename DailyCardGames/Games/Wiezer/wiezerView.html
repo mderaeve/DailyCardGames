@@ -1,1 +1,8 @@
-﻿<div>Wiezer</div>
+﻿<div class="h2">Wiezer</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Players</div>
+    <div class="panel-body" data-ng-repeat="player in players" >
+        <div class="row" ng-click="selectPlayer(player)" ng-class="{'selectedpanelbody' : isSelectedPlayer(player)}"> <div class="col-lg-11"> {{player.text}}</div></div>
+    </div>
+</div>
