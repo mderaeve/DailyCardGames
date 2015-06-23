@@ -2,9 +2,9 @@
 // declare modules
 angular.module('Home', []);
 
-var routerApp = angular.module('routerApp', ['ui.router', 'Home']);
+var app = angular.module('dailycardApp', ['ui.router', 'Home']);
 
-routerApp.config(function ($stateProvider, $urlRouterProvider) {
+app.config(function ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/home');
 
@@ -27,3 +27,4 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
     })
 
 });
+
