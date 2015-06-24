@@ -1,8 +1,15 @@
-﻿<div class="h2">Wiezer</div>
+﻿<div class="h1">Wiezer</div>
 
 <div class="panel panel-default">
     <div class="panel-heading">Players</div>
     <div class="panel-body" data-ng-repeat="player in players" >
-        <div class="row" ng-click="selectPlayer(player)" ng-class="{'selectedpanelbody' : isSelectedPlayer(player)}"> <div class="col-lg-11"> {{player.text}}</div></div>
+        <div class="row" >  <div class="col-lg-11" ng-click="selectPlayer(player)"> {{player.text}}</div> <span class="glyphicon glyphicon-check col-lg-1" ng-show="isSelectedPlayer(player)"></span> </div>
+    </div>
+</div>
+
+<div class="panel panel-default" ng-show="fourPlayersSelected">
+    <div class="panel-heading">Game</div>
+    <div class="panel-body">
+        <input class="btn btn-default" type="submit" value="Start">
     </div>
 </div>

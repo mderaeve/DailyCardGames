@@ -5,7 +5,7 @@ angular.module('Games')
 .controller('wiezerController',
     ['$scope', '$rootScope', '$state', '$window', 'indexedDBDataSvc',
     function ($scope, $rootScope,$state,  $window, indexedDBDataSvc) {
-
+        $scope.fourPlayersSelected = false;
         $scope.players = [];
         $scope.selectedPlayers = [];
         console.log('wiezer');
@@ -28,18 +28,41 @@ angular.module('Games')
 
         $scope.selectPlayer = function (player) {
             console.log('push player: ' + player);
-            $scope.selectedPlayers.push(player);
+            
+            //Check if the player is in the list
+            if ($scope.selectedPlayers != null)
+            {
+                var index = 0;
+                var removed = false;
+                var p;
+                for (p in $scope.selectedPlayers) {
+                    if ($scope.selectedPlayers[p].id == player.id) {
+                        $scope.selectedPlayers.splice(index, 1);
+                        removed = true;
+                        console.log('Player removed');
+                    }
+                    index++;
+                }
+            }
+            if (index == 3)
+            {
+                $scope.fourPlayersSelected = true;
+            }
+            if (removed == false) {
+                $scope.selectedPlayers.push(player);
+                console.log('Player added');
+            }
             
         };
 
         $scope.isSelectedPlayer = function (player) {
             if ($scope.selectedPlayers != null)
             {
-                console.log('players ' + $scope.selectedPlayers);
+                console.log('players array ' + $scope.selectedPlayers);
                 var p;
                 for (p in $scope.selectedPlayers)
                 {
-                    console.log('Check ' + $scope.selectedPlayers[p].id + ' With ' + player.id);
+                    //console.log('Check ' + $scope.selectedPlayers[p].id + ' With ' + player.id);
                     
                     if ($scope.selectedPlayers[p].id == player.id)
                     {
@@ -47,7 +70,7 @@ angular.module('Games')
                         console.log('Found ' +p.id);
                     }
                 }
-                console.log('Not found ' + player.id);
+                //console.log('Not found ' + player.id);
                 return false;
             }
             else {
