@@ -40,22 +40,26 @@ angular.module('Games')
                         $scope.selectedPlayers.splice(index, 1);
                         removed = true;
                         console.log('Player removed');
+                        //$scope.selectionclass
                     }
                     index++;
                 }
             }
-            if (index == 3)
-            {
-                $scope.fourPlayersSelected = true;
-            }
+            
             if (removed == false) {
                 $scope.selectedPlayers.push(player);
                 console.log('Player added');
             }
-            
+            console.log('Length ' + $scope.selectedPlayers.length);
+            if ($scope.selectedPlayers.length == 4) {
+                $scope.fourPlayersSelected = true;
+            }
+            else {
+                $scope.fourPlayersSelected = false;
+            }
         };
 
-        $scope.isSelectedPlayer = function (player) {
+        /*$scope.isSelectedPlayer = function (player) {
             if ($scope.selectedPlayers != null)
             {
                 console.log('players array ' + $scope.selectedPlayers);
@@ -76,8 +80,13 @@ angular.module('Games')
             else {
                 return false;
             }
-        }
+        }*/
 
         init();
+
+        $scope.startGame = function ()
+        {
+            console.log('Start wiezer');
+        }
 
     }]);

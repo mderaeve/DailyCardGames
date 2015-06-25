@@ -3,13 +3,14 @@
 <div class="panel panel-default">
     <div class="panel-heading">Players</div>
     <div class="panel-body" data-ng-repeat="player in players" >
-        <div class="row" >  <div class="col-lg-11" ng-click="selectPlayer(player)"> {{player.text}}</div> <span class="glyphicon glyphicon-check col-lg-1" ng-show="isSelectedPlayer(player)"></span> </div>
+        <input type="button" toggle-class="btn btn-primary input-block-level form-control" class="btn btn-default input-block-level form-control" ng-click="selectPlayer(player)" value="{{player.text}}">
     </div>
 </div>
 
 <div class="panel panel-default" ng-show="fourPlayersSelected">
     <div class="panel-heading">Game</div>
     <div class="panel-body">
-        <input class="btn btn-default" type="submit" value="Start">
+        <input class="btn btn-success input-block-level form-control" type="submit" value="Start" ng-click="startGame">
     </div>
 </div>
+

@@ -65,9 +65,12 @@
     <Content Include="Content\DailyCodeCSS.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="DB\dailyGamesDB.js" />
+    <Content Include="Directives\gameDirectives.js" />
     <Content Include="favicon.ico" />
     <Content Include="Games\Kinger\kingerController.js" />
     <Content Include="Games\Wiezer\wiezerController.js" />
+    <Content Include="Games\Wiezer\wiezerGameController.js" />
+    <Content Include="Games\Wiezer\wiezerGameView.html" />
     <Content Include="images\bg.jpg" />
     <Content Include="images\overlay.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
