@@ -1,0 +1,18 @@
+﻿.selectedpanelbody
+{
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+  height:100%;
+  display:block;
+}
+.selectedpanelbody:hover,
+.selectedpanelbody:focus,
+.selectedpanelbody.focus
+{
+  color: #fff;
+  background-color: #31b0d5;
+  border-color: #269abc;
+  height:100%;
+  display:block;
+}

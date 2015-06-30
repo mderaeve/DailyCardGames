@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<!--
+    Strata by HTML5 UP
+    html5up.net | @n33co
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>Daily Card Games Helper</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="Content/DailyCodeCSS.css" />
+
+
+    <!-- Scripts -->
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/jquery.poptrox.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    
+
+    <!-- Angular-->
+    <script src="scripts/angular.js"></script>
+    <script src="scripts/angular-ui-router.min.js"></script>
+    <script src="app.js"></script>
+
+    <!-- Smart Table -->
+    <script src="Scripts/smart-table.min.js"></script>
+
+    <!-- DB -->
+    <script src="DB/dailyGamesDB.js"></script>
+
+    <!-- Directives -->
+   <!-- <script src="Directives/gameDirectives.js"></script>-->
+
+    <!--home-->
+    <script src="Home/homeController.js"></script>
+
+    <!-- Games -->
+    <script src="Games/Kinger/kingerHomeController.js"></script>
+    <script src="Games/Wiezer/wiezerHomeController.js"></script>
+    <script src="Games/Wiezer/wiezerGameController.js"></script>
+
+</head>
+<body id="top" ng-app="dailycardApp">
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav"></ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- NAVIGATION -->
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <a class="navbar-brand" ui-sref="home">Games homes</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li ui-sref-active="active"><a ui-sref="kinger">Kingen</a> </li>
+                <li ui-sref-active="active"><a ui-sref="wiezer">Wiezen</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main -->
+    <div id="main">
+        <!-- MAIN CONTENT -->
+        <div class="container">
+
+            <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+            <div ui-view></div>
+        </div>
+
+    </div>
+
+
+    <!-- Footer -->
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li><a href="http://www.dailycode.info" target="_blank"><span class="label label-default"><span class="glyphicon-copyright-mark"></span> DailyCode.info 2015</span></a></li>
+            </ul>
+        </div>
+    </nav>
+</body>
+</html>
