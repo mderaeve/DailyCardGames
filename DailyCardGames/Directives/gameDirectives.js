@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 angular.module('Home')
-
+    /*
 .directive('toggleClass', function() {
     return {
         restrict: 'A',
@@ -18,4 +18,4 @@ angular.module('Home')
             });
         }
     };
-});
+});*/

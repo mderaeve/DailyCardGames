@@ -2,13 +2,22 @@
 
 angular.module('Games')
 
-.controller('wiezerController',
+.controller('wiezerHomeController',
     ['$scope', '$rootScope', '$state', '$window', 'indexedDBDataSvc',
-    function ($scope, $rootScope,$state,  $window, indexedDBDataSvc) {
+    function ($scope, $rootScope, $state,  $window, indexedDBDataSvc) {
+
+        
         $scope.fourPlayersSelected = false;
         $scope.players = [];
         $scope.selectedPlayers = [];
         console.log('wiezer');
+
+        if ($rootScope.currentPlayers != null) {
+            $scope.fourPlayersSelected = true;
+            $scope.selectedPlayers = $rootScope.currentPlayers;
+
+        }
+
         $scope.refreshList = function () {
             indexedDBDataSvc.getPlayers().then(function (data) {
                 $scope.players = data;
@@ -18,6 +27,18 @@ angular.module('Games')
                 $window.alert(err);
             });
         };
+
+        $scope.isSelected = function (player)
+        {
+            var p;
+            for (p in $scope.selectedPlayers) {
+                if ($scope.selectedPlayers[p].id == player.id) {
+                    console.log('selected');
+                    return true
+                }
+            }
+            return false;
+        }
 
         function init() {
             indexedDBDataSvc.open().then(function () {
@@ -59,34 +80,13 @@ angular.module('Games')
             }
         };
 
-        /*$scope.isSelectedPlayer = function (player) {
-            if ($scope.selectedPlayers != null)
-            {
-                console.log('players array ' + $scope.selectedPlayers);
-                var p;
-                for (p in $scope.selectedPlayers)
-                {
-                    //console.log('Check ' + $scope.selectedPlayers[p].id + ' With ' + player.id);
-                    
-                    if ($scope.selectedPlayers[p].id == player.id)
-                    {
-                        return true;
-                        console.log('Found ' +p.id);
-                    }
-                }
-                //console.log('Not found ' + player.id);
-                return false;
-            }
-            else {
-                return false;
-            }
-        }*/
-
         init();
 
         $scope.startGame = function ()
         {
             console.log('Start wiezer');
+            $rootScope.currentPlayers = $scope.selectedPlayers;
+            $state.go('wiezergame');
         }
 
     }]);

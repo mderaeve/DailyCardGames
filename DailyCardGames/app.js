@@ -19,15 +19,50 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
     .state('wiezer', {
         url: '/wiezer',
-        templateUrl: '/Games/Wiezer/wiezerView.html',
-        controller: 'wiezerController'
+        templateUrl: '/Games/Wiezer/wiezerHomeView.html',
+        controller: 'wiezerHomeController'
+    })
+
+    .state('wiezergame', {
+        url: '/wiezer/game',
+        templateUrl: '/Games/Wiezer/wiezerGameView.html',
+        controller: 'wiezerGameController'
     })
 
     .state('kinger', {
         url: '/kinger',
-        templateUrl: '/Games/Kinger/kingerView.html',
-        controller: 'kingerController'
+        templateUrl: '/Games/Kinger/kingerHomeView.html',
+        controller: 'kingerHomeController'
     })
 
 });
 
+app.run(['$rootScope', '$location', '$http', '$state',
+    function ($rootScope, $location, $http, $state) {
+
+        //// keep user logged in after page refresh
+        //$rootScope.globals = $cookieStore.get('globals') || {};
+        //if ($rootScope.globals.currentUser) {
+        //    $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
+
+        //}
+        //else {
+        //    // redirect to login page if not logged in
+        //    if ($location.path() !== 'login' && !$rootScope.globals.currentUser) {
+        //        $location.path('login');
+        //    }
+        //}
+
+
+        //$rootScope.$on('$locationChangeStart', function (event, next, current) {
+        //    // redirect to login page if not logged in
+        //    if ($location.path() !== 'login' && !$rootScope.globals.currentUser) {
+        //        $state.go('login');
+        //    }
+        //});
+
+        //Keep the previous state.
+        $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState) {
+            $state.previous = fromState;
+        });
+    }]);

@@ -2,7 +2,7 @@
 
 angular.module('Games')
 
-.controller('kingerController',
+.controller('kingerHomeController',
     ['$scope', '$rootScope', '$window', 'indexedDBDataSvc',
     function ($scope, $rootScope, $window, indexedDBDataSvc) {
 

@@ -5,7 +5,8 @@ angular.module('Home')
 .factory('indexedDBDataSvc', function ($window, $q) {
     var indexedDB = $window.indexedDB;
     var db = null;
-    var lastIndex = 0;
+    var lastPlayerIndex = 0;
+    var lastScoreIndex = 0;
 
     var open = function () {
         var deferred = $q.defer();
@@ -22,6 +23,14 @@ angular.module('Home')
             }
 
             var store = db.createObjectStore("players", {
+                keyPath: "id"
+            });
+
+            if (db.objectStoreNames.contains("scores")) {
+                db.deleteObjectStore("scores");
+            }
+
+            var store = db.createObjectStore("scores", {
                 keyPath: "id"
             });
         };
@@ -58,8 +67,8 @@ angular.module('Home')
                     deferred.resolve(players);
                 } else {
                     players.push(result.value);
-                    if (result.value.id > lastIndex) {
-                        lastIndex = result.value.id;
+                    if (result.value.id > lastPlayerIndex) {
+                        lastPlayerIndex = result.value.id;
                     }
                     result.continue();
                 }
@@ -106,9 +115,9 @@ angular.module('Home')
         } else {
             var trans = db.transaction(["players"], "readwrite");
             var store = trans.objectStore("players");
-            lastIndex++;
+            lastPlayerIndex++;
             var request = store.put({
-                "id": lastIndex,
+                "id": lastPlayerIndex,
                 "text": playerText
             });
 
@@ -124,11 +133,75 @@ angular.module('Home')
         return deferred.promise;
     };
 
+    var getScores = function () {
+        var deferred = $q.defer();
+
+        if (db === null) {
+            deferred.reject("IndexDB is not opened yet!");
+        } else {
+            var trans = db.transaction(["scores"], "readwrite");
+            var store = trans.objectStore("scores");
+            var scores = [];
+
+            // Get everything in the store;
+            var keyRange = IDBKeyRange.lowerBound(0);
+            var cursorRequest = store.openCursor(keyRange);
+
+            cursorRequest.onsuccess = function (e) {
+                var result = e.target.result;
+                if (result === null || result === undefined) {
+                    deferred.resolve(scores);
+                } else {
+                    scores.push(result.value);
+                    if (result.value.id > lastScoreIndex) {
+                        lastScoreIndex = result.value.id;
+                    }
+                    result.continue();
+                }
+            };
+
+            cursorRequest.onerror = function (e) {
+                console.log(e.value);
+                deferred.reject("Something went wrong!!!");
+            };
+        }
+
+        return deferred.promise;
+    };
+
+    var addScore = function (score) {
+        var deferred = $q.defer();
+
+        if (db === null) {
+            deferred.reject("IndexDB is not opened yet!");
+        } else {
+            var trans = db.transaction(["scores"], "readwrite");
+            var store = trans.objectStore("scores");
+            lastScoreIndex++;
+            var request = store.put({
+                "id": lastScoreIndex,
+                "score": score
+            });
+
+            request.onsuccess = function (e) {
+                deferred.resolve();
+            };
+
+            request.onerror = function (e) {
+                console.log(e.value);
+                deferred.reject("score item couldn't be added!");
+            };
+        }
+        return deferred.promise;
+    };
+
     return {
         open: open,
         getPlayers: getPlayers,
         addPlayer: addPlayer,
-        deletePlayer: deletePlayer
+        deletePlayer: deletePlayer,
+        getScores: getScores,
+        addScore: addScore
     };
 
 });
