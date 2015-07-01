@@ -12,6 +12,22 @@ angular.module('Games')
         $scope.selectedPlayers = [];
         console.log('wiezer');
 
+        indexedDBDataSvc.getActiveGame().then(function (data) {
+            if (data != null)
+            {
+                //if there is an active game, redirect to the game
+                $rootScope.game = data;
+                console.log('Game' + $rootScope.game.Id);
+                $rootScope.currentPlayers = $rootScope.game.players;
+                $state.go('wiezergame');
+            }
+            
+
+        }, function (err) {
+            $window.alert(err);
+        });
+        
+
         if ($rootScope.currentPlayers != null) {
             $scope.fourPlayersSelected = true;
             $scope.selectedPlayers = $rootScope.currentPlayers;
@@ -86,7 +102,13 @@ angular.module('Games')
         {
             console.log('Start wiezer');
             $rootScope.currentPlayers = $scope.selectedPlayers;
-            $state.go('wiezergame');
+            indexedDBDataSvc.addGame($scope.selectedPlayers).then(function () {
+                console.log('Game added');
+               $state.go('wiezergame');
+            }, function (err) {
+                $window.alert(err);
+            });
+            
         }
 
     }]);

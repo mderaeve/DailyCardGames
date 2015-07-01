@@ -7,6 +7,7 @@ angular.module('Games')
     function ($scope, $rootScope, $state, $window, indexedDBDataSvc)
     {
         console.log('test');
+
         
         $scope.newScore1 = 0;
         $scope.newScore2 = 0;
@@ -30,7 +31,7 @@ angular.module('Games')
             console.log('insert score');
             var score = [$scope.newScore1, $scope.newScore2, $scope.newScore3, $scope.newScore4];
             //insert the score in the indexedDB
-            indexedDBDataSvc.addScore(score).then(function () {
+            indexedDBDataSvc.addScore(score,$rootScope.game.Id).then(function () {
                 refreshScores();
                 $scope.newScore1 = 0;
                 $scope.newScore2 = 0;

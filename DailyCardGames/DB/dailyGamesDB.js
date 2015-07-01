@@ -7,6 +7,7 @@ angular.module('Home')
     var db = null;
     var lastPlayerIndex = 0;
     var lastScoreIndex = 0;
+    var lastGameIndex = 0;
 
     var open = function () {
         var deferred = $q.defer();
@@ -23,6 +24,14 @@ angular.module('Home')
             }
 
             var store = db.createObjectStore("players", {
+                keyPath: "id"
+            });
+
+            if (db.objectStoreNames.contains("games")) {
+                db.deleteObjectStore("games");
+            }
+
+            var store = db.createObjectStore("games", {
                 keyPath: "id"
             });
 
@@ -169,7 +178,7 @@ angular.module('Home')
         return deferred.promise;
     };
 
-    var addScore = function (score) {
+    var addScore = function (score, game) {
         var deferred = $q.defer();
 
         if (db === null) {
@@ -180,6 +189,7 @@ angular.module('Home')
             lastScoreIndex++;
             var request = store.put({
                 "id": lastScoreIndex,
+                "game" : game,
                 "score": score
             });
 
@@ -195,13 +205,105 @@ angular.module('Home')
         return deferred.promise;
     };
 
+    var getActiveGame = function () {
+        var deferred = $q.defer();
+
+        if (db === null) {
+            deferred.reject("IndexDB is not opened yet!");
+        } else {
+            var trans = db.transaction(["games"], "readwrite");
+            var store = trans.objectStore("games");
+
+            // Get everything in the store;
+            var keyRange = IDBKeyRange.lowerBound(0);
+            var cursorRequest = store.openCursor(keyRange);
+
+            cursorRequest.onsuccess = function (e) {
+                var result = e.target.result;
+                if (result === null || result === undefined) {
+                    deferred.resolve(null);
+                } else {
+                    //Return active game
+                    if (result.value.active == 1) {
+                        //scores.push(result.value);
+                        deferred.resolve(result.value);
+                    }
+                    if (result.value.id > lastGameIndex) {
+                        lastGameIndex = result.value.id;
+                    }
+                    result.continue();
+                }
+            };
+
+            cursorRequest.onerror = function (e) {
+                console.log(e.value);
+                deferred.reject("Something went wrong!!!");
+            };
+        }
+
+        return deferred.promise;
+    };
+
+    var addGame = function (players) {
+        var deferred = $q.defer();
+
+        if (db === null) {
+            deferred.reject("IndexDB is not opened yet!");
+        } else {
+            var trans = db.transaction(["games"], "readwrite");
+            var store = trans.objectStore("games");
+            lastGameIndex++;
+            var request = store.put({
+                "id": lastGameIndex,
+                "active": 1,
+                "players": players
+            });
+
+            request.onsuccess = function (e) {
+                deferred.resolve();
+            };
+
+            request.onerror = function (e) {
+                console.log(e.value);
+                deferred.reject("Game item couldn't be added!");
+            };
+        }
+        return deferred.promise;
+    };
+
+    var updateGame = function (game) {
+        var deferred = $q.defer();
+
+        if (db === null) {
+            deferred.reject("IndexDB is not opened yet!");
+        } else {
+            var trans = db.transaction(["games"], "readwrite");
+            var store = trans.objectStore("games");
+            lastGameIndex++;
+            var request = store.put(game);
+
+            request.onsuccess = function (e) {
+                deferred.resolve();
+            };
+
+            request.onerror = function (e) {
+                console.log(e.value);
+                deferred.reject("Game item couldn't be updated!");
+            };
+        }
+        return deferred.promise;
+    };
+
     return {
         open: open,
         getPlayers: getPlayers,
         addPlayer: addPlayer,
         deletePlayer: deletePlayer,
         getScores: getScores,
-        addScore: addScore
+        addScore: addScore,
+        getActiveGame: getActiveGame,
+        addGame: addGame,
+        updateGame: updateGame
     };
 
 });
