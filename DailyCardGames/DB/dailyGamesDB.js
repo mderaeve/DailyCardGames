@@ -142,7 +142,7 @@ angular.module('Home')
         return deferred.promise;
     };
 
-    var getScores = function () {
+    var getScores = function (gameid) {
         var deferred = $q.defer();
 
         if (db === null) {
@@ -161,7 +161,9 @@ angular.module('Home')
                 if (result === null || result === undefined) {
                     deferred.resolve(scores);
                 } else {
-                    scores.push(result.value);
+                    if (result.value.game == gameid) {
+                        scores.push(result.value);
+                    }
                     if (result.value.id > lastScoreIndex) {
                         lastScoreIndex = result.value.id;
                     }

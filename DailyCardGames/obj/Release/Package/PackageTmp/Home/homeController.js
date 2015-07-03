@@ -11,13 +11,13 @@ angular.module('Home')
         $scope.refreshList = function () {
             indexedDBDataSvc.getPlayers().then(function (data) {
                 $scope.players = data;
-                console.log('getPlayers');
 ;            }, function (err) {
                 $window.alert(err);
             });
         };
 
-        $scope.addPlayer = function () {
+        $scope.addPlayer = function ()
+        {
             indexedDBDataSvc.addPlayer($scope.playerText).then(function () {
                 $scope.refreshList();
                 $scope.playerText = "";

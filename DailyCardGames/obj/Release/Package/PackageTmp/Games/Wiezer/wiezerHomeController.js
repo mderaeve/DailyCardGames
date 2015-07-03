@@ -12,6 +12,9 @@ angular.module('Games')
         $scope.selectedPlayers = [];
         console.log('wiezer');
 
+        checkActiveGame();
+        
+
         if ($rootScope.currentPlayers != null) {
             $scope.fourPlayersSelected = true;
             $scope.selectedPlayers = $rootScope.currentPlayers;
@@ -28,8 +31,7 @@ angular.module('Games')
             });
         };
 
-        $scope.isSelected = function (player)
-        {
+        $scope.isSelected = function (player) {
             var p;
             for (p in $scope.selectedPlayers) {
                 if ($scope.selectedPlayers[p].id == player.id) {
@@ -38,12 +40,29 @@ angular.module('Games')
                 }
             }
             return false;
-        }
+        };
 
         function init() {
             indexedDBDataSvc.open().then(function () {
                 $scope.refreshList();
                 console.log('init');
+            });
+        };
+
+        function checkActiveGame()
+        {
+            indexedDBDataSvc.getActiveGame().then(function (data) {
+                if (data != null) {
+                    //if there is an active game, redirect to the game
+                    $rootScope.game = data;
+                    console.log('Game id' + $rootScope.game.id);
+                    $rootScope.currentPlayers = $rootScope.game.players;
+                    $state.go('wiezergame');
+                }
+
+
+            }, function (err) {
+                $window.alert(err);
             });
         }
 
@@ -51,8 +70,7 @@ angular.module('Games')
             console.log('push player: ' + player);
             
             //Check if the player is in the list
-            if ($scope.selectedPlayers != null)
-            {
+            if ($scope.selectedPlayers != null) {
                 var index = 0;
                 var removed = false;
                 var p;
@@ -60,18 +78,17 @@ angular.module('Games')
                     if ($scope.selectedPlayers[p].id == player.id) {
                         $scope.selectedPlayers.splice(index, 1);
                         removed = true;
-                        console.log('Player removed');
-                        //$scope.selectionclass
                     }
                     index++;
                 }
-            }
+            };
             
             if (removed == false) {
                 $scope.selectedPlayers.push(player);
-                console.log('Player added');
             }
+
             console.log('Length ' + $scope.selectedPlayers.length);
+
             if ($scope.selectedPlayers.length == 4) {
                 $scope.fourPlayersSelected = true;
             }
@@ -80,13 +97,16 @@ angular.module('Games')
             }
         };
 
-        init();
-
-        $scope.startGame = function ()
-        {
+        $scope.startGame = function () {
             console.log('Start wiezer');
             $rootScope.currentPlayers = $scope.selectedPlayers;
-            $state.go('wiezergame');
-        }
+            indexedDBDataSvc.addGame($scope.selectedPlayers).then(function () {
+                checkActiveGame();
+            }, function (err) {
+                $window.alert(err);
+            });
+        };
+
+        init();
 
     }]);
