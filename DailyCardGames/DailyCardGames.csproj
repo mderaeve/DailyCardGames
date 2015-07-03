@@ -71,7 +71,7 @@
     <Content Include="Games\Wiezer\wiezerHomeController.js" />
     <Content Include="Games\Wiezer\wiezerGameController.js" />
     <Content Include="Games\Wiezer\wiezerGameView.html" />
-    <Content Include="Games\Wiezer\wiezerRules.html" />
+    <Content Include="Games\Wiezer\wiezerRulesView.html" />
     <Content Include="images\bg.jpg" />
     <Content Include="images\overlay.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

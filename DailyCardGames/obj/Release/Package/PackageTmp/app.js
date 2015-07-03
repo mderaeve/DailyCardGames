@@ -29,6 +29,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         controller: 'wiezerGameController'
     })
 
+    .state('wiezerrules', {
+        url: '/wiezer/rules',
+        templateUrl: '/Games/Wiezer/wiezerRulesView.html',
+    })
+
     .state('kinger', {
         url: '/kinger',
         templateUrl: '/Games/Kinger/kingerHomeView.html',

@@ -19,20 +19,34 @@ angular.module('Home')
         }
     };
 });*/
+    .constant('keyCodes', {
+        esc: 27,
+        //space: 32,
+        enter: 13,
+        //tab: 9,
+        //backspace: 8,
+        //shift: 16,
+        //ctrl: 17,
+        //alt: 18,
+        //capslock: 20,
+        //numlock: 144
+    })
 
-.constant('keyCodes', {
-    esc: 27,
-    //space: 32,
-    enter: 13,
-    //tab: 9,
-    //backspace: 8,
-    //shift: 16,
-    //ctrl: 17,
-    //alt: 18,
-    //capslock: 20,
-    //numlock: 144
-})
-    .directive('keyBind', ['keyCodes', function (keyCodes) {
+    .directive('selectOnClick', ['$window', function ($window) {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                element.on('click', function () {
+                    if (!$window.getSelection().toString()) {
+                        // Required for mobile Safari
+                        this.setSelectionRange(0, this.value.length)
+                    }
+                });
+            }
+        };
+    }])
+
+   .directive('keyBind', ['keyCodes', function (keyCodes) {
         function map(obj) {
             var mapped = {};
             for (var key in obj) {
