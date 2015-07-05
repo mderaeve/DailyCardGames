@@ -67,7 +67,10 @@
     <Content Include="DB\dailyGamesDB.js" />
     <Content Include="Directives\gameDirectives.js" />
     <Content Include="favicon.ico" />
+    <Content Include="Games\Kinger\kingerGameController.js" />
+    <Content Include="Games\Kinger\kingerGameView.html" />
     <Content Include="Games\Kinger\kingerHomeController.js" />
+    <Content Include="Games\Kinger\kingerRulesView.html" />
     <Content Include="Games\Wiezer\wiezerHomeController.js" />
     <Content Include="Games\Wiezer\wiezerGameController.js" />
     <Content Include="Games\Wiezer\wiezerGameView.html" />
