@@ -27,15 +27,23 @@ angular.module('Games')
         $scope.scoreCollection = [];
 
         $scope.checkCanInsertScore = function () {
+            console.log(parseInt($scope.newScore1, 10));
+            console.log(parseInt($scope.newScore2, 10));
+            console.log(parseInt($scope.newScore3, 10));
+            console.log(parseInt($scope.newScore4, 10));
 
-            var check = parseInt($scope.newScore1) + parseInt($scope.newScore2) + parseInt($scope.newScore3) + parseInt($scope.newScore4);
+            var check = parseInt($scope.newScore1, 10) + parseInt($scope.newScore2, 10) + parseInt($scope.newScore3, 10) + parseInt($scope.newScore4, 10);
+            console.log(check);
             if (check == 0) {
                 $scope.canInsertScore = true;
             }
             else {
                 $scope.canInsertScore = false;
+                $scope.newScore4 = 0 - parseInt($scope.newScore1) - parseInt($scope.newScore2) - parseInt($scope.newScore3);
+                $scope.canInsertScore = true;
             }
             console.log(check);
+            
         };
 
         $scope.insertScore = function () {

@@ -1,5 +1,5 @@
 ﻿<div class="panel panel-default">
-    <div class="panel-heading">Game</div>
+    <div class="panel-heading">Spel</div>
     <div class="panel-body">
         <row>
             <div class="col-lg-6">
@@ -49,16 +49,16 @@
     <tbody>
         <tr class="row">
             <td class="col-md-2">
-                <input type="text" class="form-control" placeholder={{player1.text}} ng-model="newScore1" ng-change="checkCanInsertScore()" select-on-click />
+                <input type="text" class="form-control" ng-model="newScore1" ng-change="checkCanInsertScore()" select-on-click />
             </td>
             <td class="col-md-2">
-                <input type="text" class="form-control" placeholder={{player2.text}} ng-model="newScore2" ng-change="checkCanInsertScore()" select-on-click />
+                <input type="text" class="form-control" ng-model="newScore2" ng-change="checkCanInsertScore()" select-on-click />
             </td>
             <td class="col-md-2">
-                <input type="text" class="form-control" placeholder={{player3.text}} ng-model="newScore3" ng-change="checkCanInsertScore()" select-on-click />
+                <input type="text" class="form-control" ng-model="newScore3" ng-change="checkCanInsertScore()" select-on-click />
             </td>
             <td class="col-md-2">
-                <input type="text" class="form-control" placeholder={{player4.text}} ng-model="newScore4" ng-change="checkCanInsertScore()" select-on-click />
+                <input type="text" class="form-control" ng-model="newScore4" ng-change="checkCanInsertScore()" select-on-click />
             </td>
             <td class="col-md-1">
                 <button type="button" ng-click="insertScore()" class="btn btn-sm btn-success" ng-show="canInsertScore">
