@@ -40,6 +40,17 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         controller: 'kingerHomeController'
     })
 
+     .state('kingergame', {
+         url: '/kinger/game',
+         templateUrl: '/Games/Kinger/kingerGameView.html',
+         controller: 'kingerGameController'
+     })
+
+    .state('kingerrules', {
+        url: '/kinger/rules',
+        templateUrl: '/Games/Kinger/kingerRulesView.html',
+    })
+
 });
 
 app.run(['$rootScope', '$location', '$http', '$state',

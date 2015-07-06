@@ -13,6 +13,7 @@ angular.module('Games')
         $scope.newScore2 = 0;
         $scope.newScore3 = 0;
         $scope.newScore4 = 0;
+        
         console.log($rootScope.currentPlayers);
         $scope.player1 = $rootScope.currentPlayers[0];
         $scope.player1.total = 0;
@@ -22,7 +23,10 @@ angular.module('Games')
         $scope.player3.total = 0;
         $scope.player4 = $rootScope.currentPlayers[3];
         $scope.player4.total = 0;
-
+        $scope.player1.turn = "underline";
+        $scope.player2.turn = "none";
+        $scope.player3.turn = "none";
+        $scope.player4.turn = "none";
         $scope.scores = [];
         $scope.scoreCollection = [];
 
@@ -46,10 +50,14 @@ angular.module('Games')
             
         };
 
-        $scope.insertScore = function () {
-            console.log('insert score');
-            //Check if the score is correct.
+        $scope.changeTurn = function () {
+            changeTurn();
+        };
 
+        $scope.insertScore = function ()
+        {
+            
+            changeTurn();
 
             var score = [$scope.newScore1, $scope.newScore2, $scope.newScore3, $scope.newScore4];
             //insert the score in the indexedDB
@@ -84,6 +92,30 @@ angular.module('Games')
             }, function (err) {
                 $window.alert(err);
             });
+        };
+
+        function changeTurn() {
+            if ($scope.player1.turn == "underline") {
+                $scope.player1.turn = "none";
+                $scope.player2.turn = "underline";
+                $scope.player3.turn = "none";
+                $scope.player4.turn = "none";
+            } else if ($scope.player2.turn == "underline") {
+                $scope.player1.turn = "none";
+                $scope.player2.turn = "none";
+                $scope.player3.turn = "underline";
+                $scope.player4.turn = "none";
+            } else if ($scope.player3.turn == "underline") {
+                $scope.player1.turn = "none";
+                $scope.player2.turn = "none";
+                $scope.player3.turn = "none";
+                $scope.player4.turn = "underline";
+            } else {
+                $scope.player1.turn = "underline";
+                $scope.player2.turn = "none";
+                $scope.player3.turn = "none";
+                $scope.player4.turn = "none";
+            }
         };
 
         function refreshScores() {

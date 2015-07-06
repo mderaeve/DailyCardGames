@@ -10,16 +10,21 @@
             </div>
         </row>
         <row>
-            <div class="col-md-3"><row><h2>{{player1.text}}</h2></row>
-                <row><h3 ng-style="{color: player1Total}">{{player1.total}}</h3></row>
+            <div class="col-md-3">
+                <row ng-style="{'text-decoration': player1.turn}" ng-click="changeTurn()"><h2>{{player1.text}}</h2></row>
+                <row><h3 ng-style="{color: player1Total}">{{player1.total}}</h3>
+                </row>
             </div>
-            <div class="col-md-3"><row><h2>{{player2.text}}</h2></row>
-                <row><h3 ng-style="{color: player2Total}">{{player2.total}}</h3></row>
+                <div class="col-md-3">
+                    <row><h2 ng-style="{'text-decoration': player2.turn}" ng-click="changeTurn()">{{player2.text}}</h2></row>
+                    <row><h3 ng-style="{color: player2Total}">{{player2.total}}</h3></row>
             </div>
-            <div class="col-md-3"><row><h2>{{player3.text}}</h2></row>
+            <div class="col-md-3">
+                <row><h2 ng-style="{'text-decoration': player3.turn}" ng-click="changeTurn()">{{player3.text}}</h2></row>
                 <row><h3 ng-style="{color: player3Total}">{{player3.total}}</h3></row>
             </div>
-            <div class="col-md-3"><row><h2>{{player4.text}}</h2></row>
+            <div class="col-md-3">
+                <row><h2 ng-style="{'text-decoration': player4.turn}" ng-click="changeTurn()">{{player4.text}}</h2></row>
                 <row><h3 ng-style="{color: player4Total}">{{player4.total}}</h3></row>
             </div>
         </row>

@@ -51,7 +51,7 @@ angular.module('Games')
 
         function checkActiveGame()
         {
-            indexedDBDataSvc.getActiveGame().then(function (data) {
+            indexedDBDataSvc.getActiveGame("wiezen").then(function (data) {
                 if (data != null) {
                     //if there is an active game, redirect to the game
                     $rootScope.game = data;
@@ -100,7 +100,7 @@ angular.module('Games')
         $scope.startGame = function () {
             console.log('Start wiezer');
             $rootScope.currentPlayers = $scope.selectedPlayers;
-            indexedDBDataSvc.addGame($scope.selectedPlayers).then(function () {
+            indexedDBDataSvc.addGame($scope.selectedPlayers, "wiezen").then(function () {
                 checkActiveGame();
             }, function (err) {
                 $window.alert(err);

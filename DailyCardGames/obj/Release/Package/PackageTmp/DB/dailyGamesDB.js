@@ -207,7 +207,7 @@ angular.module('Home')
         return deferred.promise;
     };
 
-    var getActiveGame = function () {
+    var getActiveGame = function (gameType) {
         var deferred = $q.defer();
 
         if (db === null) {
@@ -226,7 +226,7 @@ angular.module('Home')
                     deferred.resolve(null);
                 } else {
                     //Return active game
-                    if (result.value.active == 1) {
+                    if (result.value.active == 1 && result.value.gameType == gameType) {
                         //scores.push(result.value);
                         deferred.resolve(result.value);
                     }
@@ -246,7 +246,7 @@ angular.module('Home')
         return deferred.promise;
     };
 
-    var addGame = function (players) {
+    var addGame = function (players, gameType) {
         var deferred = $q.defer();
 
         if (db === null) {
@@ -258,7 +258,8 @@ angular.module('Home')
             var request = store.put({
                 "id": lastGameIndex,
                 "active": 1,
-                "players": players
+                "players": players,
+                "gameType": gameType
             });
 
             request.onsuccess = function (e) {
