@@ -10,6 +10,11 @@
 <div class="panel panel-default" ng-show="fourPlayersSelected">
     <div class="panel-heading">Spel</div>
     <div class="panel-body">
-        <input class="btn btn-success input-block-level form-control" type="submit" value="Start" ng-click="startGame()">
+        <row>
+            <div class="col-lg-2">Dubbele king?</div><div class="col-lg-10"><input type="checkbox" class="checkbox" ng-model="kingerFull" /></div>
+        </row>
+        <row>
+            <input class="btn btn-success input-block-level form-control" type="submit" value="Start" ng-click="startGame()">
+        </row>
     </div>
 </div>

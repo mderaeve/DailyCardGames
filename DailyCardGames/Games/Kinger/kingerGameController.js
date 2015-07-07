@@ -22,6 +22,7 @@ angular.module('Games')
         $scope.player4 = $rootScope.currentPlayers[3];
         $scope.player4.total = 0;
 
+        
         $scope.scores = [];
         $scope.scoreCollection = [];
 
@@ -73,13 +74,11 @@ angular.module('Games')
         };
 
         $scope.stopGame = function () {
-            console.log('stop');
             $rootScope.currentPlayers = null;
             $rootScope.game.active = 0;
             indexedDBDataSvc.updateGame($rootScope.game).then(function (data) {
                 $rootScope.game = null;
-                console.log('go back');
-                $state.go('wiezer');
+                $state.go('kinger');
             }, function (err) {
                 $window.alert(err);
             });

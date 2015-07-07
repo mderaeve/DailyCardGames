@@ -246,7 +246,7 @@ angular.module('Home')
         return deferred.promise;
     };
 
-    var addGame = function (players, gameType) {
+    var addGame = function (players, gameType, subType) {
         var deferred = $q.defer();
 
         if (db === null) {
@@ -259,7 +259,8 @@ angular.module('Home')
                 "id": lastGameIndex,
                 "active": 1,
                 "players": players,
-                "gameType": gameType
+                "gameType": gameType,
+                "subType": subType
             });
 
             request.onsuccess = function (e) {

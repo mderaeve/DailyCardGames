@@ -10,7 +10,7 @@ angular.module('Games')
         $scope.fourPlayersSelected = false;
         $scope.players = [];
         $scope.selectedPlayers = [];
-        console.log('wiezer');
+        //console.log('wiezer');
 
         checkActiveGame();
         
@@ -100,7 +100,7 @@ angular.module('Games')
         $scope.startGame = function () {
             console.log('Start wiezer');
             $rootScope.currentPlayers = $scope.selectedPlayers;
-            indexedDBDataSvc.addGame($scope.selectedPlayers, "wiezen").then(function () {
+            indexedDBDataSvc.addGame($scope.selectedPlayers, "wiezen",false).then(function () {
                 checkActiveGame();
             }, function (err) {
                 $window.alert(err);

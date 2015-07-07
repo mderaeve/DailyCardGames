@@ -54,23 +54,17 @@ angular.module('Games')
             changeTurn();
         };
 
+        $scope.pass = function () {
+            $scope.newScore1 = 0;
+            $scope.newScore2 = 0;
+            $scope.newScore3 = 0;
+            $scope.newScore4 = 0;
+            insertScoreInDB();
+        };
+
         $scope.insertScore = function ()
         {
-            if ($scope.newScore1 > 0 || $scope.newScore2 > 0 || $scope.newScore3 > 0 || $scope.newScore4 > 0) {
-                changeTurn();
-            }
-
-            var score = [$scope.newScore1, $scope.newScore2, $scope.newScore3, $scope.newScore4];
-            //insert the score in the indexedDB
-            indexedDBDataSvc.addScore(score, $rootScope.game.id).then(function () {
-                refreshScores();
-                $scope.newScore1 = 0;
-                $scope.newScore2 = 0;
-                $scope.newScore3 = 0;
-                $scope.newScore4 = 0;
-            }, function (err) {
-                $window.alert(err);
-            });
+            insertScoreInDB();
         };
 
         $scope.getScores = function () {
@@ -90,6 +84,25 @@ angular.module('Games')
                 $rootScope.game = null;
                 console.log('go back');
                 $state.go('wiezer');
+            }, function (err) {
+                $window.alert(err);
+            });
+        };
+
+        function insertScoreInDB()
+        {
+            if ($scope.newScore1 > 0 || $scope.newScore2 > 0 || $scope.newScore3 > 0 || $scope.newScore4 > 0) {
+                changeTurn();
+            }
+
+            var score = [$scope.newScore1, $scope.newScore2, $scope.newScore3, $scope.newScore4];
+            //insert the score in the indexedDB
+            indexedDBDataSvc.addScore(score, $rootScope.game.id).then(function () {
+                refreshScores();
+                $scope.newScore1 = 0;
+                $scope.newScore2 = 0;
+                $scope.newScore3 = 0;
+                $scope.newScore4 = 0;
             }, function (err) {
                 $window.alert(err);
             });
@@ -154,6 +167,8 @@ angular.module('Games')
                 $window.alert(err);
             });
         };
+
+
 
         //This will sort your array
         function SortById(a, b) {
