@@ -16,3 +16,7 @@
   height:100%;
   display:block;
 }
+
+.scorefontHeader {  font-size: 20px;}
+.scorefontBody {  font-size: 18px;}
+.scorefontBodyId {  font-size: 18px; color:gray;}

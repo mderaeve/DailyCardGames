@@ -2,91 +2,105 @@
     <div class="panel-heading">Spel</div>
     <div class="panel-body">
         <row>
-            <div class="col-lg-6">
+            <div class="col-lg-4">
                 <input class="btn btn-primary input-block-level form-control" type="submit" value="Regels" ng-click="rules()">
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-4">
+                <input class="btn btn-default input-block-level form-control" type="submit" value="Wissel deler" ng-click="changeTurn()">
+            </div>
+            <div class="col-lg-4">
                 <input class="btn btn-danger input-block-level form-control" type="submit" value="Stop" ng-click="stopGame()">
             </div>
         </row>
         <row>
             <div class="col-md-3">
-                <row ng-style="{'text-decoration': player1.turn}" ng-click="changeTurn()"><h2>{{player1.text}}</h2></row>
-                <row><h3 ng-style="{color: player1Total}">{{player1.total}}</h3>
+                <row ng-style="{'text-decoration': player1.turn}" ><h2>{{player1.text}}</h2></row>
+                <row>
+                    <h3 ng-style="{color: player1Total}">{{player1.total}}</h3>
                 </row>
             </div>
-                <div class="col-md-3">
-                    <row><h2 ng-style="{'text-decoration': player2.turn}" ng-click="changeTurn()">{{player2.text}}</h2></row>
-                    <row><h3 ng-style="{color: player2Total}">{{player2.total}}</h3></row>
+            <div class="col-md-3">
+                <row><h2 ng-style="{'text-decoration': player2.turn}" >{{player2.text}}</h2></row>
+                <row><h3 ng-style="{color: player2Total}">{{player2.total}}</h3></row>
             </div>
             <div class="col-md-3">
-                <row><h2 ng-style="{'text-decoration': player3.turn}" ng-click="changeTurn()">{{player3.text}}</h2></row>
+                <row><h2 ng-style="{'text-decoration': player3.turn}" >{{player3.text}}</h2></row>
                 <row><h3 ng-style="{color: player3Total}">{{player3.total}}</h3></row>
             </div>
             <div class="col-md-3">
-                <row><h2 ng-style="{'text-decoration': player4.turn}" ng-click="changeTurn()">{{player4.text}}</h2></row>
+                <row><h2 ng-style="{'text-decoration': player4.turn}" >{{player4.text}}</h2></row>
                 <row><h3 ng-style="{color: player4Total}">{{player4.total}}</h3></row>
             </div>
         </row>
     </div>
+
+
+    <table class="table table-striped" st-safe-src="scores">
+        <thead class="scorefontHeader">
+            <tr class="row">
+                <th class="col-md-1">
+                    Ronde
+                </th>
+                <th class="col-md-2">
+                    {{player1.text}}
+                </th>
+                <th class="col-md-2">
+                    {{player2.text}}
+                </th>
+                <th class="col-md-2">
+                    {{player3.text}}
+                </th>
+                <th class="col-md-2">
+                    {{player4.text}}
+                </th>
+                <th class="col-md-1">
+
+                </th>
+            </tr>
+        </thead>
+        <tbody class="scorefont">
+            <tr class="row">
+                <td class="col-md-1">
+                    
+                </td>
+                <td class="col-md-2">
+                    <input type="text" class="form-control input-lg" ng-model="newScore1" ng-change="checkCanInsertScore()" select-on-click />
+                </td>
+                <td class="col-md-2">
+                    <input type="text" class="form-control input-lg" ng-model="newScore2" ng-change="checkCanInsertScore()" select-on-click />
+                </td>
+                <td class="col-md-2">
+                    <input type="text" class="form-control input-lg" ng-model="newScore3" ng-change="checkCanInsertScore()" select-on-click />
+                </td>
+                <td class="col-md-2">
+                    <input type="text" class="form-control input-lg" ng-model="newScore4" ng-change="checkCanInsertScore()" select-on-click />
+                </td>
+                <td class="col-md-1">
+                    <button type="button" ng-click="insertScore()" class="btn btn-sm btn-success" ng-show="canInsertScore">
+                        <i class="glyphicon glyphicon-ok-circle">
+                        </i>
+                    </button>
+                </td>
+            </tr>
+            <tr ng-repeat="score in scoresCollection" class="row">
+                <td class="col-md-1">
+                    <div class="scorefontBodyId">{{score.counter}}</div>
+                </td>
+                <td class="col-md-2">
+                    <div class="scorefontBody">{{score.score[0]}}</div>
+                </td>
+                <td class="col-md-2">
+                    <label class="scorefontBody">{{score.score[1]}}</label>
+                </td>
+                <td class="col-md-2">
+                    <label class="scorefontBody">{{score.score[2]}}</label>
+                </td>
+                <td class="col-md-2">
+                    <label class="scorefontBody">{{score.score[3]}}</label>
+                </td>
+                <td class="col-md-1"></td>
+            </tr>
+        </tbody>
+    </table>
+
 </div>
-
-<table class="table table-striped" st-safe-src="scores">
-    <thead>
-        <tr class="row">
-            <th class="col-md-2">
-                {{player1.text}}
-            </th>
-            <th class="col-md-2">
-                {{player2.text}}
-            </th>
-            <th class="col-md-2">
-                {{player3.text}}
-            </th>
-            <th class="col-md-2">
-                {{player4.text}}
-            </th>
-            <th class="col-md-1">
-
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="row">
-            <td class="col-md-2">
-                <input type="text" class="form-control" ng-model="newScore1" ng-change="checkCanInsertScore()" select-on-click />
-            </td>
-            <td class="col-md-2">
-                <input type="text" class="form-control" ng-model="newScore2" ng-change="checkCanInsertScore()" select-on-click />
-            </td>
-            <td class="col-md-2">
-                <input type="text" class="form-control" ng-model="newScore3" ng-change="checkCanInsertScore()" select-on-click />
-            </td>
-            <td class="col-md-2">
-                <input type="text" class="form-control" ng-model="newScore4" ng-change="checkCanInsertScore()" select-on-click />
-            </td>
-            <td class="col-md-1">
-                <button type="button" ng-click="insertScore()" class="btn btn-sm btn-success" ng-show="canInsertScore">
-                    <i class="glyphicon glyphicon-ok-circle">
-                    </i>
-                </button>
-            </td>
-        </tr>
-        <tr ng-repeat="score in scoresCollection" class="row">
-            <td class="col-md-2">
-                <label>{{score.score[0]}}</label>
-            </td>
-            <td class="col-md-2">
-                <label>{{score.score[1]}}</label>
-            </td>
-            <td class="col-md-2">
-                <label>{{score.score[2]}}</label>
-            </td>
-            <td class="col-md-2">
-                <label>{{score.score[3]}}</label>
-            </td>
-            <td class="col-md-1"></td>
-        </tr>
-    </tbody>
-</table>
-

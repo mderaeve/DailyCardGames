@@ -56,8 +56,9 @@ angular.module('Games')
 
         $scope.insertScore = function ()
         {
-            
-            changeTurn();
+            if ($scope.newScore1 > 0 || $scope.newScore2 > 0 || $scope.newScore3 > 0 || $scope.newScore4 > 0) {
+                changeTurn();
+            }
 
             var score = [$scope.newScore1, $scope.newScore2, $scope.newScore3, $scope.newScore4];
             //insert the score in the indexedDB
@@ -94,7 +95,8 @@ angular.module('Games')
             });
         };
 
-        function changeTurn() {
+        function changeTurn()
+        {
             if ($scope.player1.turn == "underline") {
                 $scope.player1.turn = "none";
                 $scope.player2.turn = "underline";
@@ -120,20 +122,28 @@ angular.module('Games')
 
         function refreshScores() {
             indexedDBDataSvc.getScores($rootScope.game.id).then(function (data) {
-                $scope.scores = data;
-                $scope.scoresCollection = [].concat($scope.scores);
+                
                 //calculate totals
                 $scope.player1.total = 0;
                 $scope.player2.total = 0;
                 $scope.player3.total = 0;
                 $scope.player4.total = 0;
+                var i = 1;
                 data.forEach(function (score) {
+                    score.counter = i;
                     $scope.player1.total += parseInt(score.score[0]);
                     $scope.player2.total += parseInt(score.score[1]);
                     $scope.player3.total += parseInt(score.score[2]);
                     $scope.player4.total += parseInt(score.score[3]);
+                    i++;
                 });
                 
+                if (data != null) {
+                    data = data.sort(SortById);
+                }
+                $scope.scores = data;
+                $scope.scoresCollection = [].concat($scope.scores);
+
                 checkColor($scope.player1.total,1);
                 checkColor($scope.player2.total, 2);
                 checkColor($scope.player3.total, 3);
@@ -143,6 +153,13 @@ angular.module('Games')
             }, function (err) {
                 $window.alert(err);
             });
+        };
+
+        //This will sort your array
+        function SortById(a, b) {
+            var scoreA = a.id;
+            var scoreB = b.id;
+            return ((scoreA > scoreB) ? -1 : ((scoreA < scoreB) ? 1 : 0));
         };
 
         function checkColor(total, player)
