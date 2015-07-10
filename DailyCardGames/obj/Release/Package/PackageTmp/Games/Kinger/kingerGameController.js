@@ -8,29 +8,18 @@ angular.module('Games')
         console.log('test');
 
         $scope.canInsertScore = true;
-        $scope.newScore1 = 0;
-        $scope.newScore2 = 0;
-        $scope.newScore3 = 0;
-        $scope.newScore4 = 0;
-        console.log($rootScope.currentPlayers);
+        
         $scope.player1 = $rootScope.currentPlayers[0];
-        $scope.player1.total = 0;
         $scope.player2 = $rootScope.currentPlayers[1];
-        $scope.player2.total = 0;
         $scope.player3 = $rootScope.currentPlayers[2];
-        $scope.player3.total = 0;
         $scope.player4 = $rootScope.currentPlayers[3];
-        $scope.player4.total = 0;
+
+        initScores();
 
         
-        $scope.scores = [];
-        $scope.scoreCollection = [];
 
-        $scope.checkCanInsertScore = function () {
-            console.log(parseInt($scope.newScore1, 10));
-            console.log(parseInt($scope.newScore2, 10));
-            console.log(parseInt($scope.newScore3, 10));
-            console.log(parseInt($scope.newScore4, 10));
+       /* $scope.checkCanInsertScore = function () {
+          
 
             var check = parseInt($scope.newScore1, 10) + parseInt($scope.newScore2, 10) + parseInt($scope.newScore3, 10) + parseInt($scope.newScore4, 10);
             console.log(check);
@@ -44,7 +33,7 @@ angular.module('Games')
             }
             console.log(check);
 
-        };
+        };*/
 
         $scope.insertScore = function () {
             console.log('insert score');
@@ -84,7 +73,103 @@ angular.module('Games')
             });
         };
 
-        function refreshScores() {
+        $scope.leaveTop = function (playerColumn)
+        {
+            var p;
+            switch (playerColumn)
+            {
+                case 1: p = $scope.player1; break;
+                case 2: p = $scope.player2; break;
+                case 3: p = $scope.player3; break;
+                case 4: p = $scope.player4; break;
+            }
+            p.totalTop = 0;
+            if (!isNaN(parseInt(p.mhscore1))) p.totalTop += parseInt(p.mhscore1);
+            if (!isNaN(parseInt(p.mhscore2))) p.totalTop += parseInt(p.mhscore2);
+            if (!isNaN(parseInt(p.msscore1))) p.totalTop += parseInt(p.msscore1);
+            if (!isNaN(parseInt(p.msscore2))) p.totalTop += parseInt(p.msscore2);
+            if (!isNaN(parseInt(p.ghbscore1))) p.totalTop += parseInt(p.ghbscore1);
+            if (!isNaN(parseInt(p.ghbscore2))) p.totalTop += parseInt(p.ghbscore2);
+            if (!isNaN(parseInt(p.mdscore1))) p.totalTop += parseInt(p.mdscore1);
+            if (!isNaN(parseInt(p.mdscore2))) p.totalTop += parseInt(p.mdscore2);
+            if (!isNaN(parseInt(p.zlscore1))) p.totalTop += parseInt(p.zlscore1);
+            if (!isNaN(parseInt(p.zlscore2))) p.totalTop += parseInt(p.zlscore2);
+            if (!isNaN(parseInt(p.hhscore1))) p.totalTop += parseInt(p.hhscore1);
+            if (!isNaN(parseInt(p.hhscore2))) p.totalTop += parseInt(p.hhscore2);
+        };
+
+        function initScores() {
+
+            $scope.player1.mhscore1 = 0;
+            $scope.player1.mhscore2 = 0;
+            $scope.player1.msscore1 = 0;
+            $scope.player1.msscore2 = 0;
+            $scope.player1.ghbscore1 = 0;
+            $scope.player1.ghbscore2 = 0;
+            $scope.player1.mdscore1 = 0;
+            $scope.player1.mdscore2 = 0;
+            $scope.player1.zlscore1 = 0;
+            $scope.player1.zlscore2 = 0;
+            $scope.player1.hhscore1 = 0;
+            $scope.player1.hhscore2 = 0;
+
+            $scope.player2.mhscore1 = 0;
+            $scope.player2.mhscore2 = 0;
+            $scope.player2.msscore1 = 0;
+            $scope.player2.msscore2 = 0;
+            $scope.player2.ghbscore1 = 0;
+            $scope.player2.ghbscore2 = 0;
+            $scope.player2.mdscore1 = 0;
+            $scope.player2.mdscore2 = 0;
+            $scope.player2.zlscore1 = 0;
+            $scope.player2.zlscore2 = 0;
+            $scope.player2.hhscore1 = 0;
+            $scope.player2.hhscore2 = 0;
+
+            $scope.player3.mhscore1 = 0;
+            $scope.player3.mhscore2 = 0;
+            $scope.player3.msscore1 = 0;
+            $scope.player3.msscore2 = 0;
+            $scope.player3.ghbscore1 = 0;
+            $scope.player3.ghbscore2 = 0;
+            $scope.player3.mdscore1 = 0;
+            $scope.player3.mdscore2 = 0;
+            $scope.player3.zlscore1 = 0;
+            $scope.player3.zlscore2 = 0;
+            $scope.player3.hhscore1 = 0;
+            $scope.player3.hhscore2 = 0;
+
+            $scope.player4.mhscore1 = 0;
+            $scope.player4.mhscore2 = 0;
+            $scope.player4.msscore1 = 0;
+            $scope.player4.msscore2 = 0;
+            $scope.player4.ghbscore1 = 0;
+            $scope.player4.ghbscore2 = 0;
+            $scope.player4.mdscore1 = 0;
+            $scope.player4.mdscore2 = 0;
+            $scope.player4.zlscore1 = 0;
+            $scope.player4.zlscore2 = 0;
+            $scope.player4.hhscore1 = 0;
+            $scope.player4.hhscore2 = 0;
+
+            $scope.player1.total = 0;
+            $scope.player2.total = 0;
+            $scope.player3.total = 0;
+            $scope.player4.total = 0;
+
+            $scope.player1.totalTop = 0;
+            $scope.player2.totalTop = 0;
+            $scope.player3.totalTop = 0;
+            $scope.player4.totalTop = 0;
+            $scope.player1.totalBottom = 0;
+            $scope.player2.totalBottom = 0;
+            $scope.player3.totalBottom = 0;
+            $scope.player4.totalBottom = 0;
+
+            $scope.scores = [];
+        };
+
+        /*function refreshScores() {
             indexedDBDataSvc.getScores($rootScope.game.id).then(function (data) {
                 $scope.scores = data;
                 $scope.scoresCollection = [].concat($scope.scores);
@@ -109,8 +194,8 @@ angular.module('Games')
             }, function (err) {
                 $window.alert(err);
             });
-        };
-
+        };*/
+        /*
         function checkColor(total, player) {
             var color;
             if (parseInt(total) > 0) {
@@ -132,6 +217,6 @@ angular.module('Games')
             console.log(total);
         }
 
-        refreshScores();
+        //refreshScores();*/
 
     }]);

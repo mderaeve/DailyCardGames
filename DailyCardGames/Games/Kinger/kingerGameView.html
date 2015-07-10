@@ -15,9 +15,7 @@
         <row>
             <div class="col-md-3">
                 <row ng-style="{'text-decoration': player1.turn}"><h2>{{player1.text}}</h2></row>
-                <row>
-                    <h3 ng-style="{color: player1Total}">{{player1.total}}</h3>
-                </row>
+                <row><h3 ng-style="{color: player1Total}">{{player1.total}}</h3></row>
             </div>
             <div class="col-md-3">
                 <row><h2 ng-style="{'text-decoration': player2.turn}">{{player2.text}}</h2></row>
@@ -42,16 +40,16 @@
                     Ronde
                 </th>
                 <th class="col-md-2">
-                    {{player1.text}}
+                    <center>{{player1.text}}</center>
                 </th>
                 <th class="col-md-2">
-                    {{player2.text}}
+                    <center>{{player2.text}}</center>
                 </th>
                 <th class="col-md-2">
-                    {{player3.text}}
+                    <center>{{player3.text}}</center>
                 </th>
                 <th class="col-md-2">
-                    {{player4.text}}
+                    <center>{{player4.text}}</center>
                 </th>
                 <th class="col-md-1">
 
@@ -61,70 +59,118 @@
         <tbody class="scorefontBody">
             <tr class="row">
                 <td class="col-md-2">Minste harten</td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player1.mhscore1" select-on-click ng-change="leaveTop(1)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player2.mhscore1" select-on-click ng-change="leaveTop(2)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player3.mhscore1" select-on-click ng-change="leaveTop(3)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player4.mhscore1" select-on-click ng-change="leaveTop(4)" /></td>
                 <td class="col-md-1"></td>
             </tr>
             <tr class="row" ng-show="game.subType">
                 <td class="col-md-2">Minste harten</td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player1.mhscore2" select-on-click ng-change="leaveTop(1)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player2.mhscore2" select-on-click ng-change="leaveTop(2)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player3.mhscore2" select-on-click ng-change="leaveTop(3)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player4.mhscore2" select-on-click ng-change="leaveTop(4)" /></td>
                 <td class="col-md-1"></td>
             </tr>
             <tr class="row">
                 <td class="col-md-2">Minste slagen</td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player1.msscore1" select-on-click ng-change="leaveTop(1)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player2.msscore1" select-on-click ng-change="leaveTop(2)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player3.msscore1" select-on-click ng-change="leaveTop(3)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player4.msscore1" select-on-click ng-change="leaveTop(4)" /></td>
                 <td class="col-md-1"></td>
             </tr>
             <tr class="row" ng-show="game.subType">
                 <td class="col-md-2">Minste slagen</td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player1.msscore2" select-on-click ng-change="leaveTop(1)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player2.msscore2" select-on-click ng-change="leaveTop(2)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player3.msscore2" select-on-click ng-change="leaveTop(3)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player4.msscore2" select-on-click ng-change="leaveTop(4)" /></td>
                 <td class="col-md-1"></td>
             </tr>
             <tr class="row">
                 <td class="col-md-2">Geen heren en boeren</td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player1.ghbscore1" select-on-click ng-change="leaveTop(1)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player2.ghbscore1" select-on-click ng-change="leaveTop(2)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player3.ghbscore1" select-on-click ng-change="leaveTop(3)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player4.ghbscore1" select-on-click ng-change="leaveTop(4)" /></td>
                 <td class="col-md-1"></td>
             </tr>
             <tr class="row" ng-show="game.subType">
                 <td class="col-md-2">Geen heren en boeren</td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player1.ghbscore2" select-on-click ng-change="leaveTop(1)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player2.ghbscore2" select-on-click ng-change="leaveTop(2)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player3.ghbscore2" select-on-click ng-change="leaveTop(3)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player4.ghbscore2" select-on-click ng-change="leaveTop(4)" /></td>
                 <td class="col-md-1"></td>
             </tr>
             <tr class="row">
                 <td class="col-md-2">Minste dames</td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player1.mdscore1" select-on-click ng-change="leaveTop(1)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player2.mdscore1" select-on-click ng-change="leaveTop(2)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player3.mdscore1" select-on-click ng-change="leaveTop(3)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player4.mdscore1" select-on-click ng-change="leaveTop(4)" /></td>
                 <td class="col-md-1"></td>
             </tr>
             <tr class="row" ng-show="game.subType">
                 <td class="col-md-2">Minste dames</td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player1.mdscore2" select-on-click ng-change="leaveTop(1)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player2.mdscore2" select-on-click ng-change="leaveTop(2)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player3.mdscore2" select-on-click ng-change="leaveTop(3)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player4.mdscore2" select-on-click ng-change="leaveTop(4)" /></td>
                 <td class="col-md-1"></td>
             </tr>
             <tr class="row">
                 <td class="col-md-2">7de en laatste slag</td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player1.zlscore1" select-on-click ng-change="leaveTop(1)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player2.zlscore1" select-on-click ng-change="leaveTop(2)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player3.zlscore1" select-on-click ng-change="leaveTop(3)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player4.zlscore1" select-on-click ng-change="leaveTop(4)" /></td>
+                <td class="col-md-1"></td>
+            </tr>
+            <tr class="row" ng-show="game.subType">
+                <td class="col-md-2">7de en laatste slag</td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player1.zlscore2" select-on-click ng-change="leaveTop(1)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player2.zlscore2" select-on-click ng-change="leaveTop(2)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player3.zlscore2" select-on-click ng-change="leaveTop(3)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player4.zlscore2" select-on-click ng-change="leaveTop(4)" /></td>
+                <td class="col-md-1"></td>
+            </tr>
+            <tr class="row">
+                <td class="col-md-2">Geen hartenheer</td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player1.hhscore1" select-on-click ng-change="leaveTop(1)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player2.hhscore1" select-on-click ng-change="leaveTop(2)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player3.hhscore1" select-on-click ng-change="leaveTop(3)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player4.hhscore1" select-on-click ng-change="leaveTop(4)" /></td>
+                <td class="col-md-1"></td>
+            </tr>
+            <tr class="row" ng-show="game.subType">
+                <td class="col-md-2">Geen hartenheer</td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player1.hhscore2" select-on-click ng-change="leaveTop(1)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player2.hhscore2" select-on-click ng-change="leaveTop(2)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player3.hhscore2" select-on-click ng-change="leaveTop(3)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player4.hhscore2" select-on-click ng-change="leaveTop(4)" /></td>
+                <td class="col-md-1"></td>
+            </tr>
+            <tr class="row">
+                <td class="col-md-2">Sub Totaal</td>
+                <td class="col-md-2">
+                    {{player1.totalTop}}
+                </td>
+                <td class="col-md-2">
+                    {{player2.totalTop}}
+                </td>
+                <td class="col-md-2">
+                    {{player3.totalTop}}
+                </td>
+                <td class="col-md-2">
+                    {{player4.totalTop}}
+                </td>
+                <td class="col-md-1"></td>
+            </tr>
+            <tr class="row">
+                <td class="col-md-2">Troeven {{player1.text}}</td>
                 <td class="col-md-2"></td>
                 <td class="col-md-2"></td>
                 <td class="col-md-2"></td>
@@ -132,7 +178,7 @@
                 <td class="col-md-1"></td>
             </tr>
             <tr class="row" ng-show="game.subType">
-                <td class="col-md-2">7de en laatste slag</td>
+                <td class="col-md-2">Troeven {{player1.text}}</td>
                 <td class="col-md-2"></td>
                 <td class="col-md-2"></td>
                 <td class="col-md-2"></td>
@@ -140,7 +186,7 @@
                 <td class="col-md-1"></td>
             </tr>
             <tr class="row">
-                <td class="col-md-2">Geen hartenheer</td>
+                <td class="col-md-2">Troeven {{player2.text}}</td>
                 <td class="col-md-2"></td>
                 <td class="col-md-2"></td>
                 <td class="col-md-2"></td>
@@ -148,21 +194,78 @@
                 <td class="col-md-1"></td>
             </tr>
             <tr class="row" ng-show="game.subType">
-                <td class="col-md-2">Geen hartenheer</td>
+                <td class="col-md-2">Troeven {{player2.text}}</td>
                 <td class="col-md-2"></td>
                 <td class="col-md-2"></td>
                 <td class="col-md-2"></td>
                 <td class="col-md-2"></td>
+                <td class="col-md-1"></td>
+            </tr>
+            <tr class="row">
+                <td class="col-md-2">Troeven {{player3.text}}</td>
+                <td class="col-md-2"></td>
+                <td class="col-md-2"></td>
+                <td class="col-md-2"></td>
+                <td class="col-md-2"></td>
+                <td class="col-md-1"></td>
+            </tr>
+            <tr class="row" ng-show="game.subType">
+                <td class="col-md-2">Troeven {{player3.text}}</td>
+                <td class="col-md-2"></td>
+                <td class="col-md-2"></td>
+                <td class="col-md-2"></td>
+                <td class="col-md-2"></td>
+                <td class="col-md-1"></td>
+            </tr>
+            <tr class="row">
+                <td class="col-md-2">Troeven {{player4.text}}</td>
+                <td class="col-md-2"></td>
+                <td class="col-md-2"></td>
+                <td class="col-md-2"></td>
+                <td class="col-md-2"></td>
+                <td class="col-md-1"></td>
+            </tr>
+            <tr class="row" ng-show="game.subType">
+                <td class="col-md-2">Troeven {{player4.text}}</td>
+                <td class="col-md-2"></td>
+                <td class="col-md-2"></td>
+                <td class="col-md-2"></td>
+                <td class="col-md-2"></td>
+                <td class="col-md-1"></td>
+            </tr>
+            <tr class="row">
+                <td class="col-md-2">Sub Totaal</td>
+                <td class="col-md-2">
+                    {{player1.totalBottom}}
+                </td>
+                <td class="col-md-2">
+                    {{player2.totalBottom}}
+                </td>
+                <td class="col-md-2">
+                    {{player3.totalBottom}}
+                </td>
+                <td class="col-md-2">
+                    {{player4.totalBottom}}
+                </td>
                 <td class="col-md-1"></td>
             </tr>
             <tr class="row">
                 <td class="col-md-2">Totaal</td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
-                <td class="col-md-2"></td>
+                <td class="col-md-2">
+                    {{player1.total}}
+                </td>
+                <td class="col-md-2">
+                    {{player2.total}}
+                </td>
+                <td class="col-md-2">
+                    {{player3.total}}
+                </td>
+                <td class="col-md-2">
+                    {{player4.total}}
+                </td>
                 <td class="col-md-1"></td>
             </tr>
+
         </tbody>
     </table>
 
