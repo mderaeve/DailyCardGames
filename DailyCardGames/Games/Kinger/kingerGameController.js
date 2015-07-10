@@ -16,24 +16,6 @@ angular.module('Games')
 
         initScores();
 
-        
-
-       /* $scope.checkCanInsertScore = function () {
-          
-
-            var check = parseInt($scope.newScore1, 10) + parseInt($scope.newScore2, 10) + parseInt($scope.newScore3, 10) + parseInt($scope.newScore4, 10);
-            console.log(check);
-            if (check == 0) {
-                $scope.canInsertScore = true;
-            }
-            else {
-                $scope.canInsertScore = false;
-                $scope.newScore4 = 0 - parseInt($scope.newScore1) - parseInt($scope.newScore2) - parseInt($scope.newScore3);
-                $scope.canInsertScore = true;
-            }
-            console.log(check);
-
-        };*/
 
         $scope.insertScore = function () {
             console.log('insert score');
@@ -96,79 +78,75 @@ angular.module('Games')
             if (!isNaN(parseInt(p.zlscore2))) p.totalTop += parseInt(p.zlscore2);
             if (!isNaN(parseInt(p.hhscore1))) p.totalTop += parseInt(p.hhscore1);
             if (!isNaN(parseInt(p.hhscore2))) p.totalTop += parseInt(p.hhscore2);
+            calculateGrandTotal();
+        };
+
+        $scope.leaveBottom = function (playerColumn) {
+            var p;
+            switch (playerColumn) {
+                case 1: p = $scope.player1; break;
+                case 2: p = $scope.player2; break;
+                case 3: p = $scope.player3; break;
+                case 4: p = $scope.player4; break;
+            }
+            p.totalBottom = 0;
+            if (!isNaN(parseInt(p.troev1))) p.totalBottom += parseInt(p.troev1);
+            if (!isNaN(parseInt(p.troev2))) p.totalBottom += parseInt(p.troev2);
+            if (!isNaN(parseInt(p.troev3))) p.totalBottom += parseInt(p.troev3);
+            if (!isNaN(parseInt(p.troev4))) p.totalBottom += parseInt(p.troev4);
+            if (!isNaN(parseInt(p.troev5))) p.totalBottom += parseInt(p.troev5);
+            if (!isNaN(parseInt(p.troev6))) p.totalBottom += parseInt(p.troev6);
+            if (!isNaN(parseInt(p.troev7))) p.totalBottom += parseInt(p.troev7);
+            if (!isNaN(parseInt(p.troev8))) p.totalBottom += parseInt(p.troev8);
+            calculateGrandTotal();
+        };
+
+        function calculateGrandTotal()
+        {
+            $scope.player1.total = $scope.player1.totalBottom - $scope.player1.totalTop;
+            $scope.player2.total = $scope.player2.totalBottom - $scope.player2.totalTop;
+            $scope.player3.total = $scope.player3.totalBottom - $scope.player3.totalTop;
+            $scope.player4.total = $scope.player4.totalBottom - $scope.player4.totalTop;
         };
 
         function initScores() {
-
-            $scope.player1.mhscore1 = 0;
-            $scope.player1.mhscore2 = 0;
-            $scope.player1.msscore1 = 0;
-            $scope.player1.msscore2 = 0;
-            $scope.player1.ghbscore1 = 0;
-            $scope.player1.ghbscore2 = 0;
-            $scope.player1.mdscore1 = 0;
-            $scope.player1.mdscore2 = 0;
-            $scope.player1.zlscore1 = 0;
-            $scope.player1.zlscore2 = 0;
-            $scope.player1.hhscore1 = 0;
-            $scope.player1.hhscore2 = 0;
-
-            $scope.player2.mhscore1 = 0;
-            $scope.player2.mhscore2 = 0;
-            $scope.player2.msscore1 = 0;
-            $scope.player2.msscore2 = 0;
-            $scope.player2.ghbscore1 = 0;
-            $scope.player2.ghbscore2 = 0;
-            $scope.player2.mdscore1 = 0;
-            $scope.player2.mdscore2 = 0;
-            $scope.player2.zlscore1 = 0;
-            $scope.player2.zlscore2 = 0;
-            $scope.player2.hhscore1 = 0;
-            $scope.player2.hhscore2 = 0;
-
-            $scope.player3.mhscore1 = 0;
-            $scope.player3.mhscore2 = 0;
-            $scope.player3.msscore1 = 0;
-            $scope.player3.msscore2 = 0;
-            $scope.player3.ghbscore1 = 0;
-            $scope.player3.ghbscore2 = 0;
-            $scope.player3.mdscore1 = 0;
-            $scope.player3.mdscore2 = 0;
-            $scope.player3.zlscore1 = 0;
-            $scope.player3.zlscore2 = 0;
-            $scope.player3.hhscore1 = 0;
-            $scope.player3.hhscore2 = 0;
-
-            $scope.player4.mhscore1 = 0;
-            $scope.player4.mhscore2 = 0;
-            $scope.player4.msscore1 = 0;
-            $scope.player4.msscore2 = 0;
-            $scope.player4.ghbscore1 = 0;
-            $scope.player4.ghbscore2 = 0;
-            $scope.player4.mdscore1 = 0;
-            $scope.player4.mdscore2 = 0;
-            $scope.player4.zlscore1 = 0;
-            $scope.player4.zlscore2 = 0;
-            $scope.player4.hhscore1 = 0;
-            $scope.player4.hhscore2 = 0;
-
-            $scope.player1.total = 0;
-            $scope.player2.total = 0;
-            $scope.player3.total = 0;
-            $scope.player4.total = 0;
-
-            $scope.player1.totalTop = 0;
-            $scope.player2.totalTop = 0;
-            $scope.player3.totalTop = 0;
-            $scope.player4.totalTop = 0;
-            $scope.player1.totalBottom = 0;
-            $scope.player2.totalBottom = 0;
-            $scope.player3.totalBottom = 0;
-            $scope.player4.totalBottom = 0;
+ 
+            initScoreForPlayer($scope.player1);
+            initScoreForPlayer($scope.player2);
+            initScoreForPlayer($scope.player3);
+            initScoreForPlayer($scope.player4);
 
             $scope.scores = [];
         };
 
+        function initScoreForPlayer(player) {
+            player.mhscore1 = 0;
+            player.mhscore2 = 0;
+            player.msscore1 = 0;
+            player.msscore2 = 0;
+            player.ghbscore1 = 0;
+            player.ghbscore2 = 0;
+            player.mdscore1 = 0;
+            player.mdscore2 = 0;
+            player.zlscore1 = 0;
+            player.zlscore2 = 0;
+            player.hhscore1 = 0;
+            player.hhscore2 = 0;
+
+            player.troev1 = 0;
+            player.troev2 = 0;
+            player.troev3 = 0;
+            player.troev4 = 0;
+            player.troev5 = 0;
+            player.troev6 = 0;
+            player.troev7 = 0;
+            player.troev8 = 0;
+
+            player.total = 0;
+            player.totalTop = 0;
+            player.totalBottom = 0;
+           
+        };
         /*function refreshScores() {
             indexedDBDataSvc.getScores($rootScope.game.id).then(function (data) {
                 $scope.scores = data;
