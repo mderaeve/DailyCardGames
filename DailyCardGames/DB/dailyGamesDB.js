@@ -35,13 +35,6 @@ angular.module('Home')
                 keyPath: "id"
             });
 
-            if (db.objectStoreNames.contains("scores")) {
-                db.deleteObjectStore("scores");
-            }
-
-            var store = db.createObjectStore("scores", {
-                keyPath: "id"
-            });
         };
 
         request.onsuccess = function (e) {
@@ -142,71 +135,6 @@ angular.module('Home')
         return deferred.promise;
     };
 
-    var getScores = function (gameid) {
-        var deferred = $q.defer();
-
-        if (db === null) {
-            deferred.reject("IndexDB is not opened yet!");
-        } else {
-            var trans = db.transaction(["scores"], "readwrite");
-            var store = trans.objectStore("scores");
-            var scores = [];
-
-            // Get everything in the store;
-            var keyRange = IDBKeyRange.lowerBound(0);
-            var cursorRequest = store.openCursor(keyRange);
-
-            cursorRequest.onsuccess = function (e) {
-                var result = e.target.result;
-                if (result === null || result === undefined) {
-                    deferred.resolve(scores);
-                } else {
-                    if (result.value.game == gameid) {
-                        scores.push(result.value);
-                    }
-                    if (result.value.id > lastScoreIndex) {
-                        lastScoreIndex = result.value.id;
-                    }
-                    result.continue();
-                }
-            };
-
-            cursorRequest.onerror = function (e) {
-                console.log(e.value);
-                deferred.reject("Something went wrong!!!");
-            };
-        }
-
-        return deferred.promise;
-    };
-
-    var addScore = function (score, game) {
-        var deferred = $q.defer();
-
-        if (db === null) {
-            deferred.reject("IndexDB is not opened yet!");
-        } else {
-            var trans = db.transaction(["scores"], "readwrite");
-            var store = trans.objectStore("scores");
-            lastScoreIndex++;
-            var request = store.put({
-                "id": lastScoreIndex,
-                "game" : game,
-                "score": score
-            });
-
-            request.onsuccess = function (e) {
-                deferred.resolve();
-            };
-
-            request.onerror = function (e) {
-                console.log(e.value);
-                deferred.reject("score item couldn't be added!");
-            };
-        }
-        return deferred.promise;
-    };
-
     var getActiveGame = function (gameType) {
         var deferred = $q.defer();
 
@@ -227,7 +155,7 @@ angular.module('Home')
                 } else {
                     //Return active game
                     if (result.value.active == 1 && result.value.gameType == gameType) {
-                        //scores.push(result.value);
+
                         deferred.resolve(result.value);
                     }
                     if (result.value.id > lastGameIndex) {
@@ -303,8 +231,6 @@ angular.module('Home')
         getPlayers: getPlayers,
         addPlayer: addPlayer,
         deletePlayer: deletePlayer,
-        getScores: getScores,
-        addScore: addScore,
         getActiveGame: getActiveGame,
         addGame: addGame,
         updateGame: updateGame

@@ -38,7 +38,7 @@
     </div>
 
 
-    <table class="table table-striped" st-safe-src="scores">
+    <table class="table table-striped">
         <thead class="scorefontHeader">
             <tr class="row">
                 <th class="col-md-1">
@@ -85,21 +85,21 @@
                     </button>
                 </td>
             </tr>
-            <tr ng-repeat="score in scoresCollection" class="row">
+            <tr ng-repeat="score in scores" class="row">
                 <td class="col-md-1">
                     <div class="scorefontBodyId">{{score.counter}}</div>
                 </td>
                 <td class="col-md-2">
-                    <div class="scorefontBody">{{score.score[0]}}</div>
+                    <div class="scorefontBody">{{score[0]}}</div>
                 </td>
                 <td class="col-md-2">
-                    <label class="scorefontBody">{{score.score[1]}}</label>
+                    <label class="scorefontBody">{{score[1]}}</label>
                 </td>
                 <td class="col-md-2">
-                    <label class="scorefontBody">{{score.score[2]}}</label>
+                    <label class="scorefontBody">{{score[2]}}</label>
                 </td>
                 <td class="col-md-2">
-                    <label class="scorefontBody">{{score.score[3]}}</label>
+                    <label class="scorefontBody">{{score[3]}}</label>
                 </td>
                 <td class="col-md-1"></td>
             </tr>

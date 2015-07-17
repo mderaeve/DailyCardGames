@@ -12,7 +12,7 @@ angular.module('Home')
             indexedDBDataSvc.getPlayers().then(function (data) {
                 $scope.players = data;
 ;            }, function (err) {
-                $window.alert(err);
+    console.log(err);// $window.alert(err);
             });
         };
 
@@ -22,7 +22,7 @@ angular.module('Home')
                 $scope.refreshList();
                 $scope.playerText = "";
             }, function (err) {
-                $window.alert(err);
+                console.log(err);// $window.alert(err);
             });
         };
 
@@ -30,7 +30,7 @@ angular.module('Home')
             indexedDBDataSvc.deletePlayer(id).then(function () {
                 $scope.refreshList();
             }, function (err) {
-                $window.alert(err);
+                console.log(err); //$window.alert(err);
             });
         };
 

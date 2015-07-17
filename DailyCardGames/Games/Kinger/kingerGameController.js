@@ -5,53 +5,36 @@ angular.module('Games')
 .controller('kingerGameController',
     ['$scope', '$rootScope', '$state', '$window', 'indexedDBDataSvc',
     function ($scope, $rootScope, $state, $window, indexedDBDataSvc) {
-        console.log('test');
 
         $scope.canInsertScore = true;
-        
-        $scope.player1 = $rootScope.currentPlayers[0];
-        $scope.player2 = $rootScope.currentPlayers[1];
-        $scope.player3 = $rootScope.currentPlayers[2];
-        $scope.player4 = $rootScope.currentPlayers[3];
-
-        initScores();
-
-
-        $scope.insertScore = function () {
-            console.log('insert score');
-            //Check if the score is correct.
-
-
-            var score = [$scope.newScore1, $scope.newScore2, $scope.newScore3, $scope.newScore4];
-            //insert the score in the indexedDB
-            indexedDBDataSvc.addScore(score, $rootScope.game.id).then(function () {
-                refreshScores();
-                $scope.newScore1 = 0;
-                $scope.newScore2 = 0;
-                $scope.newScore3 = 0;
-                $scope.newScore4 = 0;
-            }, function (err) {
-                $window.alert(err);
-            });
-        };
-
-        $scope.getScores = function () {
-            getScores();
-        };
 
         $scope.rules = function () {
             console.log('go to rules');
             $state.go('kingerrules');
         };
+        if ($rootScope.game == null)
+        {
+            console.log('go to kinger home');
+            $state.go('kinger');
+        }
+        $scope.player1 = $rootScope.game.players[0];
+        $scope.player2 = $rootScope.game.players[1];
+        $scope.player3 = $rootScope.game.players[2];
+        $scope.player4 = $rootScope.game.players[3];
+       
+        checkColor($scope.player1.total, 1);
+        checkColor($scope.player2.total, 2);
+        checkColor($scope.player3.total, 3);
+        checkColor($scope.player4.total, 4);
 
         $scope.stopGame = function () {
-            $rootScope.currentPlayers = null;
             $rootScope.game.active = 0;
             indexedDBDataSvc.updateGame($rootScope.game).then(function (data) {
                 $rootScope.game = null;
+                console.log('Stop');
                 $state.go('kinger');
             }, function (err) {
-                $window.alert(err);
+                console.log(err); //$window.alert(err);
             });
         };
 
@@ -107,73 +90,64 @@ angular.module('Games')
             $scope.player2.total = $scope.player2.totalBottom - $scope.player2.totalTop;
             $scope.player3.total = $scope.player3.totalBottom - $scope.player3.totalTop;
             $scope.player4.total = $scope.player4.totalBottom - $scope.player4.totalTop;
-        };
 
-        function initScores() {
- 
-            initScoreForPlayer($scope.player1);
-            initScoreForPlayer($scope.player2);
-            initScoreForPlayer($scope.player3);
-            initScoreForPlayer($scope.player4);
+            //Update the game with the new score
+            $rootScope.game.players[0] = $scope.player1;
+            $rootScope.game.players[1] = $scope.player2;
+            $rootScope.game.players[2] = $scope.player3;
+            $rootScope.game.players[3] = $scope.player4;
 
-            $scope.scores = [];
-        };
+            checkColor($scope.player1.total, 1);
+            checkColor($scope.player2.total, 2);
+            checkColor($scope.player3.total, 3);
+            checkColor($scope.player4.total, 4);
 
-        function initScoreForPlayer(player) {
-            player.mhscore1 = 0;
-            player.mhscore2 = 0;
-            player.msscore1 = 0;
-            player.msscore2 = 0;
-            player.ghbscore1 = 0;
-            player.ghbscore2 = 0;
-            player.mdscore1 = 0;
-            player.mdscore2 = 0;
-            player.zlscore1 = 0;
-            player.zlscore2 = 0;
-            player.hhscore1 = 0;
-            player.hhscore2 = 0;
-
-            player.troev1 = 0;
-            player.troev2 = 0;
-            player.troev3 = 0;
-            player.troev4 = 0;
-            player.troev5 = 0;
-            player.troev6 = 0;
-            player.troev7 = 0;
-            player.troev8 = 0;
-
-            player.total = 0;
-            player.totalTop = 0;
-            player.totalBottom = 0;
-           
-        };
-        /*function refreshScores() {
-            indexedDBDataSvc.getScores($rootScope.game.id).then(function (data) {
-                $scope.scores = data;
-                $scope.scoresCollection = [].concat($scope.scores);
-                //calculate totals
-                $scope.player1.total = 0;
-                $scope.player2.total = 0;
-                $scope.player3.total = 0;
-                $scope.player4.total = 0;
-                data.forEach(function (score) {
-                    $scope.player1.total += parseInt(score.score[0]);
-                    $scope.player2.total += parseInt(score.score[1]);
-                    $scope.player3.total += parseInt(score.score[2]);
-                    $scope.player4.total += parseInt(score.score[3]);
-                });
-
-                checkColor($scope.player1.total, 1);
-                checkColor($scope.player2.total, 2);
-                checkColor($scope.player3.total, 3);
-                checkColor($scope.player4.total, 4);
-
-
+            indexedDBDataSvc.updateGame($rootScope.game).then(function (data) {
             }, function (err) {
-                $window.alert(err);
+                console.log(err); //$window.alert(err);
             });
-        };*/
-        /*
+        };
+
+        $scope.changeTurn = function () {
+            changeTurn();
+            //Save the active player in de DB
+            $rootScope.game.players[0] = $scope.player1;
+            $rootScope.game.players[1] = $scope.player2;
+            $rootScope.game.players[2] = $scope.player3;
+            $rootScope.game.players[3] = $scope.player4;
+
+            indexedDBDataSvc.updateGame($rootScope.game).then(function () {
+            }, function (err) {
+                console.log(err); //$window.alert(err);
+            });
+        };
+
+        function changeTurn() {
+            if ($scope.player1.turn == "underline") {
+                $scope.player1.turn = "none";
+                $scope.player2.turn = "underline";
+                $scope.player3.turn = "none";
+                $scope.player4.turn = "none";
+            } else if ($scope.player2.turn == "underline") {
+                $scope.player1.turn = "none";
+                $scope.player2.turn = "none";
+                $scope.player3.turn = "underline";
+                $scope.player4.turn = "none";
+            } else if ($scope.player3.turn == "underline") {
+                $scope.player1.turn = "none";
+                $scope.player2.turn = "none";
+                $scope.player3.turn = "none";
+                $scope.player4.turn = "underline";
+            } else {
+                $scope.player1.turn = "underline";
+                $scope.player2.turn = "none";
+                $scope.player3.turn = "none";
+                $scope.player4.turn = "none";
+            }
+        };
+
+       
+        
         function checkColor(total, player) {
             var color;
             if (parseInt(total) > 0) {
@@ -191,10 +165,6 @@ angular.module('Games')
                 case 3: $scope.player3Total = color;
                 case 4: $scope.player4Total = color;
             }
-            console.log(color);
-            console.log(total);
-        }
-
-        //refreshScores();*/
+        };
 
     }]);

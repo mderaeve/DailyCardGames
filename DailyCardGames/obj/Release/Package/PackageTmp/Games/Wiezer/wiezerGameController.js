@@ -6,7 +6,6 @@ angular.module('Games')
     ['$scope', '$rootScope', '$state', '$window', 'indexedDBDataSvc',
     function ($scope, $rootScope, $state, $window, indexedDBDataSvc)
     {
-        console.log('test');
 
         $scope.canInsertScore = true;
         $scope.newScore1 = 0;
@@ -14,21 +13,12 @@ angular.module('Games')
         $scope.newScore3 = 0;
         $scope.newScore4 = 0;
         
-        console.log($rootScope.currentPlayers);
-        $scope.player1 = $rootScope.currentPlayers[0];
-        $scope.player1.total = 0;
-        $scope.player2 = $rootScope.currentPlayers[1];
-        $scope.player2.total = 0;
-        $scope.player3 = $rootScope.currentPlayers[2];
-        $scope.player3.total = 0;
-        $scope.player4 = $rootScope.currentPlayers[3];
-        $scope.player4.total = 0;
-        $scope.player1.turn = "underline";
-        $scope.player2.turn = "none";
-        $scope.player3.turn = "none";
-        $scope.player4.turn = "none";
-        $scope.scores = [];
-        $scope.scoreCollection = [];
+        $scope.player1 = $rootScope.game.players[0];
+        $scope.player2 = $rootScope.game.players[1];
+        $scope.player3 = $rootScope.game.players[2];
+        $scope.player4 = $rootScope.game.players[3];
+
+        $scope.scores = $rootScope.game.scores;
 
         $scope.checkCanInsertScore = function () {
             console.log(parseInt($scope.newScore1, 10));
@@ -52,6 +42,16 @@ angular.module('Games')
 
         $scope.changeTurn = function () {
             changeTurn();
+            //Save the active player in de DB
+            $rootScope.game.players[0] = $scope.player1;
+            $rootScope.game.players[1] = $scope.player2;
+            $rootScope.game.players[2] = $scope.player3;
+            $rootScope.game.players[3] = $scope.player4;
+
+            indexedDBDataSvc.updateGame($rootScope.game).then(function () {
+            }, function (err) {
+                console.log(err); //$window.alert(err);
+            });
         };
 
         $scope.pass = function () {
@@ -67,25 +67,17 @@ angular.module('Games')
             insertScoreInDB();
         };
 
-        $scope.getScores = function () {
-            getScores();
-        };
-
         $scope.rules = function () {
-            console.log('go to rules');
             $state.go('wiezerrules');
         };
 
         $scope.stopGame = function () {
-            console.log('stop');
-            $rootScope.currentPlayers = null;
             $rootScope.game.active = 0;
             indexedDBDataSvc.updateGame($rootScope.game).then(function (data) {
                 $rootScope.game = null;
-                console.log('go back');
                 $state.go('wiezer');
             }, function (err) {
-                $window.alert(err);
+                console.log(err); //$window.alert(err);
             });
         };
 
@@ -96,15 +88,24 @@ angular.module('Games')
             }
 
             var score = [$scope.newScore1, $scope.newScore2, $scope.newScore3, $scope.newScore4];
-            //insert the score in the indexedDB
-            indexedDBDataSvc.addScore(score, $rootScope.game.id).then(function () {
+
+            $scope.scores.push(score);
+
+            $rootScope.game.players[0] = $scope.player1;
+            $rootScope.game.players[1] = $scope.player2;
+            $rootScope.game.players[2] = $scope.player3;
+            $rootScope.game.players[3] = $scope.player4;
+
+            $rootScope.game.scores = $scope.scores;
+            indexedDBDataSvc.updateGame($rootScope.game).then(function ()
+            {
                 refreshScores();
                 $scope.newScore1 = 0;
                 $scope.newScore2 = 0;
                 $scope.newScore3 = 0;
                 $scope.newScore4 = 0;
             }, function (err) {
-                $window.alert(err);
+                console.log(err); //$window.alert(err);
             });
         };
 
@@ -133,8 +134,8 @@ angular.module('Games')
             }
         };
 
-        function refreshScores() {
-            indexedDBDataSvc.getScores($rootScope.game.id).then(function (data) {
+        function refreshScores()
+        {
                 
                 //calculate totals
                 $scope.player1.total = 0;
@@ -142,38 +143,45 @@ angular.module('Games')
                 $scope.player3.total = 0;
                 $scope.player4.total = 0;
                 var i = 1;
-                data.forEach(function (score) {
-                    score.counter = i;
-                    $scope.player1.total += parseInt(score.score[0]);
-                    $scope.player2.total += parseInt(score.score[1]);
-                    $scope.player3.total += parseInt(score.score[2]);
-                    $scope.player4.total += parseInt(score.score[3]);
-                    i++;
-                });
                 
-                if (data != null) {
-                    data = data.sort(SortById);
+                
+
+                $scope.scores.forEach(function (score) {
+                    console.log(score);
+                    if (score.counter ==  null || score.counter == 0)
+                    {
+                        score.counter = i;
+                        i++;
+                    }
+                    else
+                    {
+                        if (i <= score.counter) i = score.counter +1;
+                    }
+                   
+                    $scope.player1.total += parseInt(score[0]);
+                    $scope.player2.total += parseInt(score[1]);
+                    $scope.player3.total += parseInt(score[2]);
+                    $scope.player4.total += parseInt(score[3]);
+                });
+
+                if ($scope.scores != null) {
+                    $scope.scores = $scope.scores.sort(SortById);
                 }
-                $scope.scores = data;
-                $scope.scoresCollection = [].concat($scope.scores);
+                
 
                 checkColor($scope.player1.total,1);
                 checkColor($scope.player2.total, 2);
                 checkColor($scope.player3.total, 3);
                 checkColor($scope.player4.total, 4);
-                
 
-            }, function (err) {
-                $window.alert(err);
-            });
         };
 
 
 
         //This will sort your array
         function SortById(a, b) {
-            var scoreA = a.id;
-            var scoreB = b.id;
+            var scoreA = a.counter;
+            var scoreB = b.counter;
             return ((scoreA > scoreB) ? -1 : ((scoreA < scoreB) ? 1 : 0));
         };
 
