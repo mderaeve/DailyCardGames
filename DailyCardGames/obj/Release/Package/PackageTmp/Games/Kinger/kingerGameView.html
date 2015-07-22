@@ -54,19 +54,19 @@
             </tr>
         </thead>
         <tbody class="scorefontBody">
-            <tr class="row">
+            <tr class="row" ng-model="mhTotal1" max-row-value="13">
                 <td class="col-md-2">Minste harten</td>
-                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player1.mhscore1" select-on-click ng-change="leaveTop(1)" /></td>
-                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player2.mhscore1" select-on-click ng-change="leaveTop(2)" /></td>
-                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player3.mhscore1" select-on-click ng-change="leaveTop(3)" /></td>
-                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player4.mhscore1" select-on-click ng-change="leaveTop(4)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player1.mhscore1" select-on-click ng-change="leaveTop(1);mhTotal1Check()" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player2.mhscore1" select-on-click ng-change="leaveTop(2);mhTotal1Check()" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player3.mhscore1" select-on-click ng-change="leaveTop(3);mhTotal1Check()" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player4.mhscore1" select-on-click ng-change="leaveTop(4);mhTotal1Check()" /></td>
             </tr>
-            <tr class="row" ng-show="game.subType">
+            <tr class="row" ng-model="mhTotal2" max-row-value="13" ng-if="game.subType">
                 <td class="col-md-2">Minste harten</td>
-                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player1.mhscore2" select-on-click ng-change="leaveTop(1)" /></td>
-                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player2.mhscore2" select-on-click ng-change="leaveTop(2)" /></td>
-                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player3.mhscore2" select-on-click ng-change="leaveTop(3)" /></td>
-                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player4.mhscore2" select-on-click ng-change="leaveTop(4)" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player1.mhscore2" select-on-click ng-change="leaveTop(1);mhTotal2Check()" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player2.mhscore2" select-on-click ng-change="leaveTop(2);mhTotal2Check()" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player3.mhscore2" select-on-click ng-change="leaveTop(3);mhTotal2Check()" /></td>
+                <td class="col-md-2"><input type="text" class="form-control input-lg" ng-model="player4.mhscore2" select-on-click ng-change="leaveTop(4);mhTotal2Check()" /></td>
             </tr>
             <tr class="row">
                 <td class="col-md-2">Minste slagen</td>

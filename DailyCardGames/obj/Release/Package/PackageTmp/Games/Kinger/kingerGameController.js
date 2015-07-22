@@ -5,7 +5,7 @@ angular.module('Games')
 .controller('kingerGameController',
     ['$scope', '$rootScope', '$state', '$window', 'indexedDBDataSvc',
     function ($scope, $rootScope, $state, $window, indexedDBDataSvc) {
-
+       
         $scope.canInsertScore = true;
 
         $scope.rules = function () {
@@ -17,6 +17,7 @@ angular.module('Games')
             console.log('go to kinger home');
             $state.go('kinger');
         }
+
         $scope.player1 = $rootScope.game.players[0];
         $scope.player2 = $rootScope.game.players[1];
         $scope.player3 = $rootScope.game.players[2];
@@ -48,6 +49,7 @@ angular.module('Games')
                 case 3: p = $scope.player3; break;
                 case 4: p = $scope.player4; break;
             }
+
             p.totalTop = 0;
             if (!isNaN(parseInt(p.mhscore1))) p.totalTop += parseInt(p.mhscore1);
             if (!isNaN(parseInt(p.mhscore2))) p.totalTop += parseInt(p.mhscore2);
@@ -122,6 +124,14 @@ angular.module('Games')
             });
         };
 
+        $scope.mhTotal1Check = function () {
+            $scope.mhTotal1 = parseInt($scope.player1.mhscore1) + parseInt($scope.player2.mhscore1) + parseInt($scope.player3.mhscore1) + parseInt($scope.player4.mhscore1);
+        };
+
+        $scope.mhTotal2Check = function () {
+            $scope.mhTotal2 = parseInt($scope.player1.mhscore2) + parseInt($scope.player2.mhscore2) + parseInt($scope.player3.mhscore2) + parseInt($scope.player4.mhscore2);
+        };
+
         function changeTurn() {
             if ($scope.player1.turn == "underline") {
                 $scope.player1.turn = "none";
@@ -166,5 +176,12 @@ angular.module('Games')
                 case 4: $scope.player4Total = color;
             }
         };
+
+        function init() {
+            $scope.mhTotal1Check();
+            $scope.mhTotal2Check();
+        };
+
+        init();
 
     }]);

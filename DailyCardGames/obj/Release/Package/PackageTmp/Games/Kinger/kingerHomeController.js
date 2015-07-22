@@ -16,8 +16,6 @@ angular.module('Games')
         $scope.refreshList = function () {
             indexedDBDataSvc.getPlayers().then(function (data) {
                 $scope.players = data;
-                console.log('getPlayers');
-                ;
             }, function (err) {
                 console.log(err);
                 //$window.alert(err);
@@ -28,7 +26,6 @@ angular.module('Games')
             var p;
             for (p in $scope.selectedPlayers) {
                 if ($scope.selectedPlayers[p].id == player.id) {
-                    console.log('selected');
                     return true
                 }
             }
@@ -88,7 +85,6 @@ angular.module('Games')
                 if (data != null) {
                     //if there is an active game, redirect to the game
                     $rootScope.game = data;
-                    console.log('Game id' + $rootScope.game.id);
                     $scope.selectedPlayers = $rootScope.game.players;
                     $state.go('kingergame');
                 }
@@ -142,7 +138,6 @@ angular.module('Games')
             player.totalBottom = 0;
 
         };
-
 
 
         init();
