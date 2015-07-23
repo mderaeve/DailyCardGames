@@ -188,7 +188,8 @@ angular.module('Home')
                 "active": 1,
                 "players": players,
                 "gameType": gameType,
-                "subType": subType
+                "subType": subType,
+                "scores": []
             });
 
             request.onsuccess = function (e) {

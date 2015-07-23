@@ -66,129 +66,45 @@ angular.module('Home')
                 restrict: 'A',
                 require: 'ngModel',
                 link: function (scope, element, attrs, ngModel) {
-
+                    //scope.isVisible = true;
                     scope.$watch(function () {
                         return ngModel.$modelValue;
                     }, function (newValue) {
-                        console.log(newValue);
-                        if (isNaN(newValue))
-                        {
-                            console.log('Nan value inserted');
-                            element.css('background', 'red');
-                        }
-                        else if (newValue > attrs.maxRowValue) {
-                            console.log('too much data');
-                            element.css('background', 'red');
-                        }
-                        else {
-                                console.log('OK');
-                                element.css('background', 'white');
-                            }
+                        //console.log(newValue);
+                        //console.log(attrs.rowValue);
+                        //console.log('value in $root', scope.$root.game.scores[attrs.rowNumber][0]);
 
+                        var totalRow = 0;
+                        var goOn = true;
+                        for (var i = 0 ; i < 4; i++) {
+                            if (!isNaN(parseInt(scope.$root.game.scores[attrs.rowNumber][i]))) {
+                                totalRow += parseInt(scope.$root.game.scores[attrs.rowNumber][i]);
+                            }
+                            else {
+                                console.log('Nan value inserted');
+                                goOn = false;
+                                break;
+                            }
+                        }
+
+                        if (goOn == true && totalRow < attrs.rowValue)
+                        {
+                            console.log('OK');
+                            element.css('background', 'white');
+                        }
+                        else if (goOn == true && totalRow == attrs.rowValue)
+                        {
+                            console.log('Complete');
+                            element.css('background', 'green');
+                        }
+                        else
+                        {
+                            console.log('Row values not correct');
+                            element.css('background', 'red');
+                        }
                     });
                 }
             }
-            //    link: linker
-            //}
-
-            //function linker(scope, element, attrs) {
-            //    console.log(attrs.ngModel);
-            //    //scope.select = select;
-            //    scope.scope = scope;
-            //    //scope.selectedValue = "ACT";
-        
-            //    scope.$watch("model", function () {
-            //        console.log("Changed", scope.ngModel);
-            //        if (scope.ngModel > attrs.maxRowValue) {
-            //                console.log('too much data');
-            //                element.css('background', 'red');
-            //            }
-            //        else {
-            //                 console.log('OK');
-            //                element.css('background', 'white');
-            //            }
-            //    });
-            //};
-
-            //console.log('row max = ', attrs.maxRowValue);
-                //link: function (scope, element, attrs, ngModel) {
-                //    console.log('row max = ', attrs.maxRowValue);
-
-                //    scope.$watch(function () { 'model' },
-                //        function (newValue, oldValue) {
-                //            console.log('Calculated in : ',oldValue,newValue);
-                //            if (newValue !== oldValue) {
-                //                //calculate();
-                //                console.log('Calculated');
-                //                if (newValue > attrs.ngModel) {
-                //                    console.log('too much data');
-                //                    element.css('background', 'red');
-                //                }
-                //                else {
-                //                    element.css('background', 'white');
-                //                }
-                //            }
-                //        }
-                //     ,true);
-
-
-                    //var unregister = scope.$watch(function () {
-                    //    console.log(ngModel.$modelValue);
-                    //    var totalSiblings=0;
-                    //    //Check the input values inside
-                    //    element.find('input').each(function () {
-                    //        //your code here
-                    //        //console.log(this.value);
-                    //        totalSiblings = totalSiblings + parseInt(this.value);
-                    //    });
-                    //    console.log('totalsiblings ', totalSiblings);
-                    //    if (totalSiblings > ngModel.$modelValue)
-                    //    {
-                    //        console.log('too much data');
-                    //        element.css('background', 'red');
-                    //    }
-                    //    else {
-                    //        element.css('background', 'white');
-                    //    }
-                    //    return ngModel.$modelValue;
-                    //}, initialize);
-
-                    //function initialize(value) {
-                    //    ngModel.$setViewValue(value);
-                    //    unregister();
-                    //}
-                    //function calculate()
-                    //{
-                    //    console.log(ngModel.$modelValue);
-                    //        var totalSiblings=0;
-                    //        //Check the input values inside
-                    //        element.find('input').each(function () {
-                    //            //your code here
-                    //            //console.log(this.value);
-                    //            totalSiblings = totalSiblings + parseInt(this.value);
-                    //        });
-                    //        console.log('totalsiblings ', totalSiblings);
-                    //        if (totalSiblings > ngModel.$modelValue)
-                    //        {
-                    //            console.log('too much data');
-                    //            element.css('background', 'red');
-                    //        }
-                    //        else {
-                    //            element.css('background', 'white');
-                    //        }
-                    //};
-
-                    //scope.$watch(function () { ngModel },
-                    //    function (newValue, oldValue) {
-                    //        console.log('Calculated in : ',oldValue,newValue);
-                    //        if (newValue !== oldValue) {
-                    //            calculate();
-                    //            console.log('Calculated');
-                    //        }
-                    //    }
-                    // ,true);
-               
-            
         }
      ])
 
