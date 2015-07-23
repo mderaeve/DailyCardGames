@@ -60,19 +60,15 @@ angular.module('Home')
         }
      ])
 
-     .directive('maxRowValue', [
+        .directive('maxRowValue', [
         function () {
             return {
                 restrict: 'A',
                 require: 'ngModel',
                 link: function (scope, element, attrs, ngModel) {
-                    //scope.isVisible = true;
                     scope.$watch(function () {
                         return ngModel.$modelValue;
                     }, function (newValue) {
-                        //console.log(newValue);
-                        //console.log(attrs.rowValue);
-                        //console.log('value in $root', scope.$root.game.scores[attrs.rowNumber][0]);
 
                         var totalRow = 0;
                         var goOn = true;
@@ -106,7 +102,7 @@ angular.module('Home')
                 }
             }
         }
-     ])
+        ])
 
     .directive('selectOnClick', ['$window', function ($window) {
         return {
