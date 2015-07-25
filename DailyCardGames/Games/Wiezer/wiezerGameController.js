@@ -21,13 +21,7 @@ angular.module('Games')
         $scope.scores = $rootScope.game.scores;
 
         $scope.checkCanInsertScore = function () {
-            console.log(parseInt($scope.newScore1, 10));
-            console.log(parseInt($scope.newScore2, 10));
-            console.log(parseInt($scope.newScore3, 10));
-            console.log(parseInt($scope.newScore4, 10));
-
             var check = parseInt($scope.newScore1, 10) + parseInt($scope.newScore2, 10) + parseInt($scope.newScore3, 10) + parseInt($scope.newScore4, 10);
-            console.log(check);
             if (check == 0) {
                 $scope.canInsertScore = true;
             }
@@ -36,8 +30,6 @@ angular.module('Games')
                 $scope.newScore4 = 0 - parseInt($scope.newScore1) - parseInt($scope.newScore2) - parseInt($scope.newScore3);
                 $scope.canInsertScore = true;
             }
-            console.log(check);
-            
         };
 
         $scope.changeTurn = function () {
@@ -167,13 +159,7 @@ angular.module('Games')
                 if ($scope.scores != null) {
                     $scope.scores = $scope.scores.sort(SortById);
                 }
-                
-
-                checkColor($scope.player1.total,1);
-                checkColor($scope.player2.total, 2);
-                checkColor($scope.player3.total, 3);
-                checkColor($scope.player4.total, 4);
-
+            
         };
 
 
@@ -184,32 +170,6 @@ angular.module('Games')
             var scoreB = b.counter;
             return ((scoreA > scoreB) ? -1 : ((scoreA < scoreB) ? 1 : 0));
         };
-
-        function checkColor(total, player)
-        {
-            var color;
-            if (parseInt(total) > 0)
-            {
-                color = "green";
-            }
-            else if (parseInt(total) < 0)
-            {
-                color = "red";
-            }
-            else
-            {
-                color = "black";
-            }
-            switch (player) 
-            {
-                case 1: $scope.player1Total = color;
-                case 2: $scope.player2Total = color;
-                case 3: $scope.player3Total = color;
-                case 4: $scope.player4Total = color;
-            }
-            console.log(color);
-            console.log(total);
-        }
 
         refreshScores();
 

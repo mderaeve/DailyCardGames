@@ -23,12 +23,7 @@ angular.module('Games')
         $scope.player2 = $rootScope.game.players[1];
         $scope.player3 = $rootScope.game.players[2];
         $scope.player4 = $rootScope.game.players[3];
-       
-        checkColor($scope.player1.total, 0);
-        checkColor($scope.player2.total, 1);
-        checkColor($scope.player3.total, 2);
-        checkColor($scope.player4.total, 3);
-
+      
         $scope.stopGame = function () {
             $rootScope.game.active = 0;
             indexedDBDataSvc.updateGame($rootScope.game).then(function (data) {
@@ -85,12 +80,9 @@ angular.module('Games')
             //Update the game with the new score
             $rootScope.game.players[playerColumn] = player;
 
-            checkColor(player.total, playerColumn);
-            
-
             indexedDBDataSvc.updateGame($rootScope.game).then(function (data) {
             }, function (err) {
-                console.log(err); //$window.alert(err);
+                console.log(err); 
             });
         };
 
@@ -104,7 +96,7 @@ angular.module('Games')
 
             indexedDBDataSvc.updateGame($rootScope.game).then(function () {
             }, function (err) {
-                console.log(err); //$window.alert(err);
+                console.log(err); 
             });
         };
 
@@ -132,23 +124,6 @@ angular.module('Games')
             }
         };
 
-        function checkColor(total, player) {
-            var color;
-            if (parseInt(total) > 0) {
-                color = "green";
-            }
-            else if (parseInt(total) < 0) {
-                color = "red";
-            }
-            else {
-                color = "black";
-            }
-            switch (player) {
-                case 0: $scope.player1Total = color;
-                case 1: $scope.player2Total = color;
-                case 2: $scope.player3Total = color;
-                case 3: $scope.player4Total = color;
-            }
-        };
+     
 
     }]);

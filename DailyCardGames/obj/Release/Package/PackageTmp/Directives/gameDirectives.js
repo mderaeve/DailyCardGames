@@ -60,19 +60,15 @@ angular.module('Home')
         }
      ])
 
-     .directive('maxRowValue', [
+        .directive('maxRowValue', [
         function () {
             return {
                 restrict: 'A',
                 require: 'ngModel',
                 link: function (scope, element, attrs, ngModel) {
-                    //scope.isVisible = true;
                     scope.$watch(function () {
                         return ngModel.$modelValue;
                     }, function (newValue) {
-                        //console.log(newValue);
-                        //console.log(attrs.rowValue);
-                        //console.log('value in $root', scope.$root.game.scores[attrs.rowNumber][0]);
 
                         var totalRow = 0;
                         var goOn = true;
@@ -89,24 +85,52 @@ angular.module('Home')
 
                         if (goOn == true && totalRow < attrs.rowValue)
                         {
-                            console.log('OK');
-                            element.css('background', 'white');
+                            //element.css('border-bottom', '3px outset white');
+                            element.css('border-left', '10px white');
                         }
                         else if (goOn == true && totalRow == attrs.rowValue)
                         {
-                            console.log('Complete');
-                            element.css('background', 'green');
+                           // element.css('border-bottom', '3px outset green');
+                            element.css('border-left', '10px outset green');
                         }
                         else
                         {
-                            console.log('Row values not correct');
-                            element.css('background', 'red');
+                            //element.css('border-bottom', '3px outset red');
+                            element.css('border-left', '10px outset red');
                         }
                     });
                 }
             }
         }
-     ])
+        ])
+
+        .directive('valueColor', [
+        function () {
+            return {
+                restrict: 'A',
+                require: 'ngModel',
+                link: function (scope, element, attrs) {
+
+                    scope.$watch(attrs.ngModel, function (newValue)
+                    {
+                        console.log(newValue);
+                        var test = parseInt(newValue);
+
+                        if (test > 0) {
+                            element.css('color', 'green');
+                        }
+                        else if (test < 0) {
+                            element.css('color', 'red');
+                        }
+                        else if (test == 0) {
+                            element.css('color', 'black');
+                        }
+                        else { console.log('Nan value: ',test);}
+                    });
+                }
+            }
+        }
+        ])
 
     .directive('selectOnClick', ['$window', function ($window) {
         return {

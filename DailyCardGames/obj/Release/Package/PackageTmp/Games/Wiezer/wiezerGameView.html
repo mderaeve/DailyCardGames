@@ -19,20 +19,20 @@
             <div class="col-md-3">
                 <row ng-style="{'text-decoration': player1.turn}" ><h2>{{player1.text}}</h2></row>
                 <row>
-                    <h3 ng-style="{color: player1Total}">{{player1.total}}</h3>
+                    <h3 value-color ng-model="player1.total">{{player1.total}}</h3>
                 </row>
             </div>
             <div class="col-md-3">
                 <row><h2 ng-style="{'text-decoration': player2.turn}" >{{player2.text}}</h2></row>
-                <row><h3 ng-style="{color: player2Total}">{{player2.total}}</h3></row>
+                <row><h3 value-color ng-model="player2.total">{{player2.total}}</h3></row>
             </div>
             <div class="col-md-3">
                 <row><h2 ng-style="{'text-decoration': player3.turn}" >{{player3.text}}</h2></row>
-                <row><h3 ng-style="{color: player3Total}">{{player3.total}}</h3></row>
+                <row><h3 value-color ng-model="player3.total">{{player3.total}}</h3></row>
             </div>
             <div class="col-md-3">
                 <row><h2 ng-style="{'text-decoration': player4.turn}" >{{player4.text}}</h2></row>
-                <row><h3 ng-style="{color: player4Total}">{{player4.total}}</h3></row>
+                <row><h3 value-color ng-model="player4.total">{{player4.total}}</h3></row>
             </div>
         </row>
     </div>
@@ -90,16 +90,16 @@
                     <div class="scorefontBodyId">{{score.counter}}</div>
                 </td>
                 <td class="col-md-2">
-                    <div class="scorefontBody">{{score[0]}}</div>
+                    <div value-color ng-model="score[0]" class="scorefontBody">{{score[0]}}</div>
                 </td>
                 <td class="col-md-2">
-                    <label class="scorefontBody">{{score[1]}}</label>
+                    <div value-color ng-model="score[1]" class="scorefontBody">{{score[1]}}</div>
                 </td>
                 <td class="col-md-2">
-                    <label class="scorefontBody">{{score[2]}}</label>
+                    <div value-color ng-model="score[2]" class="scorefontBody">{{score[2]}}</div>
                 </td>
                 <td class="col-md-2">
-                    <label class="scorefontBody">{{score[3]}}</label>
+                    <div value-color ng-model="score[3]" class="scorefontBody">{{score[3]}}</div>
                 </td>
                 <td class="col-md-1"></td>
             </tr>
