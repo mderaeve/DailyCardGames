@@ -34,7 +34,7 @@ angular.module('Games')
         };
 
         $scope.selectPlayer = function (player) {
-            console.log('push player: ' + player);
+            
 
             //Check if the player is in the list
             if ($scope.selectedPlayers != null) {
@@ -44,6 +44,7 @@ angular.module('Games')
                 for (p in $scope.selectedPlayers) {
                     if ($scope.selectedPlayers[p].id == player.id) {
                         $scope.selectedPlayers.splice(index, 1);
+                        player.number = 0;
                         removed = true;
                     }
                     index++;
@@ -51,10 +52,11 @@ angular.module('Games')
             };
 
             if (removed == false) {
+                player.number = index + 1;
                 $scope.selectedPlayers.push(player);
             }
 
-            console.log('Length ' + $scope.selectedPlayers.length);
+            console.log('number ' + player.number);
 
             if ($scope.selectedPlayers.length == 4) {
                 $scope.fourPlayersSelected = true;

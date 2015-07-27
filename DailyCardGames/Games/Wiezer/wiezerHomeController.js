@@ -17,8 +17,6 @@ angular.module('Games')
         $scope.refreshList = function () {
             indexedDBDataSvc.getPlayers().then(function (data) {
                 $scope.players = data;
-
-                ;
             }, function (err) {
                 console.log(err);// $window.alert(err);
             });
@@ -70,6 +68,7 @@ angular.module('Games')
                 for (p in $scope.selectedPlayers) {
                     if ($scope.selectedPlayers[p].id == player.id) {
                         $scope.selectedPlayers.splice(index, 1);
+                        player.number = 0;
                         removed = true;
                     }
                     index++;
@@ -77,7 +76,9 @@ angular.module('Games')
             };
             
             if (removed == false) {
+                player.number = index+1;
                 $scope.selectedPlayers.push(player);
+                //set the counter
             }
 
 

@@ -3,7 +3,10 @@
 <div class="panel panel-default">
     <div class="panel-heading">Spelers</div>
     <div class="panel-body" data-ng-repeat="player in players">
-        <input type="button" class="btn btn-default input-block-level form-control" ng-click="selectPlayer(player)" value="{{player.text}}" ng-class="{true :'btn btn-primary input-block-level form-control', false : 'btn btn-default input-block-level form-control' }[isSelected(player)]">
+        <button class="btn btn-default input-block-level form-control" ng-click="selectPlayer(player)" ng-class="{true :'btn btn-primary input-block-level form-control', false : 'btn btn-default input-block-level form-control' }[isSelected(player)]">
+            <div ng-if="player.number != 0" class="label label-info">{{player.number}}</div>
+            {{player.text}}
+        </button>
     </div>
 </div>
 

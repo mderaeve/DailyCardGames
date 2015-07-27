@@ -120,7 +120,8 @@ angular.module('Home')
             lastPlayerIndex++;
             var request = store.put({
                 "id": lastPlayerIndex,
-                "text": playerText
+                "text": playerText,
+                "number":0
             });
 
             request.onsuccess = function (e) {
