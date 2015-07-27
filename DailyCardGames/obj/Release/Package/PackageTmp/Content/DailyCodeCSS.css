@@ -18,5 +18,18 @@
 }
 
 .scorefontHeader {  font-size: 20px;}
-.scorefontBody {  font-size: 18px;}
-.scorefontBodyId {  font-size: 18px; color:gray;}
+.scorefontBody {  
+    font-size: 18px;
+    text-align:center;
+}
+.scorefontBodyId {  
+    font-size: 18px; color:gray;
+    text-align:center;
+}
+
+.fixed{
+    position:fixed;
+    top:0px;
+    height:100px;
+    background:white;
+}

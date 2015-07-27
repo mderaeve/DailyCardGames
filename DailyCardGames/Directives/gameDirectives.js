@@ -87,16 +87,19 @@ angular.module('Home')
                         {
                             //element.css('border-bottom', '3px outset white');
                             element.css('border-left', '10px white');
+                            element.css('border-right', '10px white');
                         }
                         else if (goOn == true && totalRow == attrs.rowValue)
                         {
                            // element.css('border-bottom', '3px outset green');
                             element.css('border-left', '10px outset green');
+                            element.css('border-right', '10px outset green');
                         }
                         else
                         {
                             //element.css('border-bottom', '3px outset red');
                             element.css('border-left', '10px outset red');
+                            element.css('border-right', '10px outset red');
                         }
                     });
                 }
