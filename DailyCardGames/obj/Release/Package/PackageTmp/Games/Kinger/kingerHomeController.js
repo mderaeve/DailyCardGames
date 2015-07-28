@@ -23,16 +23,6 @@ angular.module('Games')
             });
         };
 
-        $scope.isSelected = function (player) {
-            var p;
-            for (p in $scope.selectedPlayers) {
-                if ($scope.selectedPlayers[p].id == player.id) {
-                    return true
-                }
-            }
-            return false;
-        };
-
         $scope.selectPlayer = function (player) {
             
 
@@ -55,7 +45,7 @@ angular.module('Games')
                 player.number = index + 1;
                 $scope.selectedPlayers.push(player);
             }
-
+           
             console.log('number ' + player.number);
 
             if ($scope.selectedPlayers.length == 4) {
@@ -65,6 +55,11 @@ angular.module('Games')
                 $scope.fourPlayersSelected = false;
             }
         };
+
+        $scope.setGameType = function (value)
+        {
+            $scope.kingerFull = value;
+        }
 
         $scope.startGame = function () {
             

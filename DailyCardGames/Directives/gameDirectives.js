@@ -1,66 +1,28 @@
 ﻿'use strict';
 
 angular.module('Home')
-    /*
-.directive('toggleClass', function() {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-            
-            element.bind('click', function() {
-                if (element.attr("class") == "btn btn-default input-block-level form-control") {
-                    element.removeClass("btn btn-default input-block-level form-control");
-                    element.addClass(attrs.toggleClass);
-                } else {
-                    element.removeClass("btn btn-primary input-block-level form-control");
-                    element.addClass("btn btn-default input-block-level form-control");
-                }
-            });
+
+.constant('keyCodes', {
+    esc: 27,
+    //space: 32,
+    enter: 13,
+    //tab: 9,
+    //backspace: 8,
+    //shift: 16,
+    //ctrl: 17,
+    //alt: 18,
+    //capslock: 20,
+    //numlock: 144
+})
+
+    .directive('playerButton', function() {
+        return {
+            scope: { player: '=playerButton', onClick: '&' },
+            template: '<button class="btn btn-default input-block-level form-control" ng-click="onClick({player : player})" ng-class="{true : \'btn btn-primary input-block-level form-control\', false : \'btn btn-default input-block-level form-control\' }[player.number > 0]"><div ng-if="player.number != 0" class="label label-info">{{player.number}}</div>&nbsp;{{player.text}}</button>',
         }
-    };
-});*/
-    .constant('keyCodes', {
-        esc: 27,
-        //space: 32,
-        enter: 13,
-        //tab: 9,
-        //backspace: 8,
-        //shift: 16,
-        //ctrl: 17,
-        //alt: 18,
-        //capslock: 20,
-        //numlock: 144
     })
 
-     .directive('bootstrapSwitch', [
-        function() {
-            return {
-                restrict: 'A',
-                require: '?ngModel',
-                link: function(scope, element, attrs, ngModel) {
-                    element.bootstrapSwitch();
- 
-                    element.on('switchChange.bootstrapSwitch', function(event, state) {
-                        if (ngModel) {
-                            scope.$apply(function() {
-                                ngModel.$setViewValue(state);
-                            });
-                        }
-                    });
- 
-                    scope.$watch(attrs.ngModel, function(newValue, oldValue) {
-                        if (newValue) {
-                            element.bootstrapSwitch('state', true, true);
-                        } else {
-                            element.bootstrapSwitch('state', false, true);
-                        }
-                    });
-                }
-            };
-        }
-     ])
-
-        .directive('maxRowValue', [
+    .directive('maxRowValue', [
         function () {
             return {
                 restrict: 'A',
@@ -91,7 +53,7 @@ angular.module('Home')
                         }
                         else if (goOn == true && totalRow == attrs.rowValue)
                         {
-                           // element.css('border-bottom', '3px outset green');
+                            // element.css('border-bottom', '3px outset green');
                             element.css('border-left', '10px outset green');
                             element.css('border-right', '10px outset green');
                         }
@@ -105,9 +67,9 @@ angular.module('Home')
                 }
             }
         }
-        ])
+    ])
 
-        .directive('valueColor', [
+    .directive('valueColor', [
         function () {
             return {
                 restrict: 'A',
@@ -133,7 +95,7 @@ angular.module('Home')
                 }
             }
         }
-        ])
+    ])
 
     .directive('selectOnClick', ['$window', function ($window) {
         return {

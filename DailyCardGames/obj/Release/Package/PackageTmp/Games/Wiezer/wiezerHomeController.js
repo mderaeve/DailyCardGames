@@ -22,16 +22,6 @@ angular.module('Games')
             });
         };
 
-        $scope.isSelected = function (player) {
-            var p;
-            for (p in $scope.selectedPlayers) {
-                if ($scope.selectedPlayers[p].id == player.id) {
-                    return true
-                }
-            }
-            return false;
-        };
-
         function init() {
             indexedDBDataSvc.open().then(function () {
                 $scope.refreshList();
