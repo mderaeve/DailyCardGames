@@ -9,7 +9,6 @@ angular.module('Games')
         $scope.fourPlayersSelected = false;
         $scope.players = [];
         $scope.selectedPlayers = [];
-        console.log('kinger');
         $scope.kingerFull = false;
         checkActiveGame();
         
@@ -126,7 +125,6 @@ angular.module('Games')
 
             //update the game in the database
             indexedDBDataSvc.updateGame($rootScope.game).then(function (data) {
-                console.log('start the game');
                 $state.go('kingergame');
             }, function (err) {
                 console.log(err); //$window.alert(err);

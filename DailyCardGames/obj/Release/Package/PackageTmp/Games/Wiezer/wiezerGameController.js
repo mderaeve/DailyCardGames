@@ -67,9 +67,21 @@ angular.module('Games')
             $rootScope.game.active = 0;
             indexedDBDataSvc.updateGame($rootScope.game).then(function (data) {
                 $rootScope.game = null;
-                $state.go('wiezer');
+                //check if there are at least 4 players, else redirect to home
+                indexedDBDataSvc.getPlayers().then(function (data) {
+                    if (data != null && data.length > 3) 
+                    {
+                        $state.go('wiezer');
+                    }
+                    else
+                    {
+                        $state.go('home');
+                    }
+                }, function (err) {
+                    console.log('Error get players ',err); 
+                });
             }, function (err) {
-                console.log(err); //$window.alert(err);
+                console.log('Error update game ',err);
             });
         };
 
@@ -161,8 +173,6 @@ angular.module('Games')
                 }
             
         };
-
-
 
         //This will sort your array
         function SortById(a, b) {

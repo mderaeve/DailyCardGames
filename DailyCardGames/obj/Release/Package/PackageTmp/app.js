@@ -53,9 +53,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
 });
 
-app.run(['$rootScope', '$location', '$http', '$state',
-    function ($rootScope, $location, $http, $state) {
-
+app.run(['$rootScope', '$location', '$http', '$state', 'indexedDBDataSvc',
+    function ($rootScope, $location, $http, $state, indexedDBDataSvc) {
+        
         //// keep user logged in after page refresh
         //$rootScope.globals = $cookieStore.get('globals') || {};
         //if ($rootScope.globals.currentUser) {

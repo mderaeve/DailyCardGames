@@ -10,12 +10,10 @@ angular.module('Games')
         $scope.topScoreCount = 0;
         $scope.bottomScoreCount = 0;
         $scope.rules = function () {
-            console.log('go to rules');
             $state.go('kingerrules');
         };
         if ($rootScope.game == null)
         {
-            console.log('go to kinger home');
             $state.go('kinger');
         }
 
@@ -28,10 +26,20 @@ angular.module('Games')
             $rootScope.game.active = 0;
             indexedDBDataSvc.updateGame($rootScope.game).then(function (data) {
                 $rootScope.game = null;
-                console.log('Stop');
-                $state.go('kinger');
+                //check if there are at least 4 players, else redirect to home
+                indexedDBDataSvc.getPlayers().then(function (data) {
+                    if (data != null && data.length > 3) {
+                        $state.go('kinger');
+                    }
+                    else {
+                        $state.go('home');
+                    }
+                }, function (err) {
+                    console.log('Error get players',err);
+                });
+                
             }, function (err) {
-                console.log(err); //$window.alert(err);
+                console.log('Error update game',err); //$window.alert(err);
             });
         };
 

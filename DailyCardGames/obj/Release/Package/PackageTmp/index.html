@@ -50,8 +50,8 @@
                 <a class="navbar-brand" ui-sref="home">Spellen Start</a>
             </div>
             <ul class="nav navbar-nav">
-                <li ui-sref-active="active"><a ui-sref="kinger">Kingen</a> </li>
-                <li ui-sref-active="active"><a ui-sref="wiezer">Wiezen</a></li>
+                <li ui-sref-active="active"><a ui-sref="kinger" ng-show="canPlayKingen">Kingen</a> </li>
+                <li ui-sref-active="active"><a ui-sref="wiezer" ng-show="canPlayWiezen">Wiezen</a></li>
             </ul>
         </nav>
     </div>
