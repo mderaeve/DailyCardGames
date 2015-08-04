@@ -20,7 +20,7 @@
     <!-- Angular-->
     <script src="scripts/angular.js"></script>
     <script src="scripts/angular-ui-router.min.js"></script>
-    <script src="app.js"></script>
+    <script src="app/app.js"></script>
 
     <!-- Smart Table -->
     <script src="Scripts/smart-table.min.js"></script>
@@ -41,30 +41,28 @@
     <script src="Games/Wiezer/wiezerGameController.js"></script>
 
 </head>
-<body id="top" ng-app="dailycardApp">
+    <body id="top" ng-app="dailycardApp">
 
-    <div class="container">
-        <!-- NAVIGATION -->
-        <nav class="navbar navbar-default">
-            <div class="navbar-header">
-                <a class="navbar-brand" ui-sref="home">Spellen Start</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li ui-sref-active="active"><a ui-sref="kinger" ng-show="canPlayKingen">Kingen</a> </li>
-                <li ui-sref-active="active"><a ui-sref="wiezer" ng-show="canPlayWiezen">Wiezen</a></li>
-            </ul>
-        </nav>
-    </div>
-
-    <!-- Main -->
-    <div id="main">
-        <!-- MAIN CONTENT -->
         <div class="container">
-
-            <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
-            <div ui-view></div>
+            <!-- NAVIGATION -->
+            <nav class="navbar navbar-default">
+                <div class="navbar-header">
+                    <a class="navbar-brand" ui-sref="home">Spellen Start</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li ui-sref-active="active"><a ui-sref="kinger" ng-show="canPlayKingen">Kingen</a> </li>
+                    <li ui-sref-active="active"><a ui-sref="wiezer" ng-show="canPlayWiezen">Wiezen</a></li>
+                </ul>
+            </nav>
         </div>
 
-    </div>
-</body>
+        <!-- Main -->
+        <div id="main">
+            <!-- MAIN CONTENT -->
+            <div class="container">
+                <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+                <div ui-view></div>
+            </div>
+        </div>
+    </body>
 </html>

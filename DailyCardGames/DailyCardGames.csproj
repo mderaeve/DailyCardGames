@@ -57,7 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app.js" />
+    <Content Include="app\app.js" />
     <Content Include="Content\bootstrap-switch\bootstrap2\bootstrap-switch.css" />
     <Content Include="Content\bootstrap-switch\bootstrap2\bootstrap-switch.min.css" />
     <Content Include="Content\bootstrap-switch\bootstrap3\bootstrap-switch.css" />
@@ -79,6 +79,7 @@
     <Content Include="Games\Wiezer\wiezerGameController.js" />
     <Content Include="Games\Wiezer\wiezerGameView.html" />
     <Content Include="Games\Wiezer\wiezerRulesView.html" />
+    <Content Include="Gruntfile.js" />
     <Content Include="images\bg.jpg" />
     <Content Include="images\overlay.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -123,6 +124,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="package.json" />
     <None Include="Properties\PublishProfiles\DailyCardGames.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
