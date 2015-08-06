@@ -8,47 +8,48 @@ var app = angular.module('dailycardApp', ['ui.router', 'Home','Games']);
 app.config(function ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/home');
-
+    //var virtualDir = '/DailyCardGames';
+    var virtualDir = '';
     $stateProvider
 
      .state('home', {
          url: '/home',
-         templateUrl: '/Home/homeView.html',
+         templateUrl: virtualDir + '/Home/homeView.html',
          controller: 'homeController'
      })
 
     .state('wiezer', {
         url: '/wiezer',
-        templateUrl: '/Games/Wiezer/wiezerHomeView.html',
+        templateUrl: virtualDir + '/Games/Wiezer/wiezerHomeView.html',
         controller: 'wiezerHomeController'
     })
 
     .state('wiezergame', {
         url: '/wiezer/game',
-        templateUrl: '/Games/Wiezer/wiezerGameView.html',
+        templateUrl: virtualDir + '/Games/Wiezer/wiezerGameView.html',
         controller: 'wiezerGameController'
     })
 
     .state('wiezerrules', {
         url: '/wiezer/rules',
-        templateUrl: '/Games/Wiezer/wiezerRulesView.html',
+        templateUrl: virtualDir + '/Games/Wiezer/wiezerRulesView.html',
     })
 
     .state('kinger', {
         url: '/kinger',
-        templateUrl: '/Games/Kinger/kingerHomeView.html',
+        templateUrl: virtualDir + '/Games/Kinger/kingerHomeView.html',
         controller: 'kingerHomeController'
     })
 
      .state('kingergame', {
          url: '/kinger/game',
-         templateUrl: '/Games/Kinger/kingerGameView.html',
+         templateUrl: virtualDir + '/Games/Kinger/kingerGameView.html',
          controller: 'kingerGameController'
      })
 
     .state('kingerrules', {
         url: '/kinger/rules',
-        templateUrl: '/Games/Kinger/kingerRulesView.html',
+        templateUrl: virtualDir + '/Games/Kinger/kingerRulesView.html',
     })
 
 });

@@ -70,6 +70,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="DB\dailyGamesDB.js" />
     <Content Include="Directives\gameDirectives.js" />
+    <Content Include="dist\daily-card-games-min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Games\Kinger\kingerGameController.js" />
     <Content Include="Games\Kinger\kingerGameView.html" />
@@ -79,15 +80,15 @@
     <Content Include="Games\Wiezer\wiezerGameController.js" />
     <Content Include="Games\Wiezer\wiezerGameView.html" />
     <Content Include="Games\Wiezer\wiezerRulesView.html" />
-    <Content Include="Gruntfile.js" />
     <Content Include="images\bg.jpg" />
-    <Content Include="images\overlay.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Games\Wiezer\wiezerHomeView.html" />
     <Content Include="Games\Kinger\kingerHomeView.html" />
     <Content Include="Home\homeView.html" />
     <Content Include="Home\homeController.js" />
     <Content Include="Icon.png" />
+    <Content Include="images\bg2.jpg" />
+    <Content Include="images\cards50.gif" />
     <Content Include="index.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
@@ -124,7 +125,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="package.json" />
     <None Include="Properties\PublishProfiles\DailyCardGames.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
