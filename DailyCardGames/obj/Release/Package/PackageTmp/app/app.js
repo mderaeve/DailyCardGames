@@ -57,27 +57,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 app.run(['$rootScope', '$location', '$http', '$state', 'indexedDBDataSvc',
     function ($rootScope, $location, $http, $state, indexedDBDataSvc) {
         
-        //// keep user logged in after page refresh
-        //$rootScope.globals = $cookieStore.get('globals') || {};
-        //if ($rootScope.globals.currentUser) {
-        //    $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
-
-        //}
-        //else {
-        //    // redirect to login page if not logged in
-        //    if ($location.path() !== 'login' && !$rootScope.globals.currentUser) {
-        //        $location.path('login');
-        //    }
-        //}
-
-
-        //$rootScope.$on('$locationChangeStart', function (event, next, current) {
-        //    // redirect to login page if not logged in
-        //    if ($location.path() !== 'login' && !$rootScope.globals.currentUser) {
-        //        $state.go('login');
-        //    }
-        //});
-
+       
         //Keep the previous state.
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState) {
             $state.previous = fromState;

@@ -13,7 +13,6 @@ angular.module('Games')
 
         checkActiveGame();
         
-
         $scope.refreshList = function () {
             indexedDBDataSvc.getPlayers().then(function (data) {
                 $scope.players = data;
