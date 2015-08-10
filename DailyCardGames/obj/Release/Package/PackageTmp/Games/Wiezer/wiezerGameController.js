@@ -6,12 +6,10 @@ angular.module('Games')
     ['$scope', '$rootScope', '$state', '$window', 'indexedDBDataSvc',
     function ($scope, $rootScope, $state, $window, indexedDBDataSvc)
     {
-
+        var score1Inserted, score2Inserted, score3Inserted, score4Inserted;
+        var nrOfScoresInserted;
         $scope.canInsertScore = true;
-        $scope.newScore1 = 0;
-        $scope.newScore2 = 0;
-        $scope.newScore3 = 0;
-        $scope.newScore4 = 0;
+        resetScores();
         
         $scope.player1 = $rootScope.game.players[0];
         $scope.player2 = $rootScope.game.players[1];
@@ -20,17 +18,112 @@ angular.module('Games')
 
         $scope.scores = $rootScope.game.scores;
 
-        $scope.checkCanInsertScore = function () {
-            var check = parseInt($scope.newScore1, 10) + parseInt($scope.newScore2, 10) + parseInt($scope.newScore3, 10) + parseInt($scope.newScore4, 10);
+        $scope.checkCanInsertScore = function (nr)
+        {
+            
+            var check = sumScores();
+            var input = 0;
+            console.log('nr ', nr);
             if (check == 0) {
                 $scope.canInsertScore = true;
             }
-            else {
+            else if (nrOfScoresInserted==4)
+            {
                 $scope.canInsertScore = false;
+            }
+            else
+            {
+                switch(nr)
+                {
+                    case 1:
+                        if (score1Inserted == false)
+                        {
+                            nrOfScoresInserted++;
+                            score1Inserted = true;
+                        }
+                        input = $scope.newScore1; break;
+                    case 2:
+                        if (score2Inserted == false)
+                        {
+                            nrOfScoresInserted++;
+                            score2Inserted = true;
+                        }
+                        input = $scope.newScore2; break;
+                    case 3:
+                        if (score3Inserted == false) {
+                            nrOfScoresInserted++;
+                            score3Inserted = true;
+                        }
+                        input = $scope.newScore3; break;
+                    case 4:
+                        if (score4Inserted == false) {
+                            nrOfScoresInserted++;
+                            score4Inserted = true;
+                        }
+                        input = $scope.newScore4; break;
+                }
+                var scoreToGive = 0 - input;
+                console.log('input', input);
+
+                if (nrOfScoresInserted == 1)
+                {
+                    if (scoreToGive % 3 === 0) {
+                        scoreToGive = scoreToGive / 3;
+                        setScores(scoreToGive);
+                    }
+                }
+                else if (nrOfScoresInserted == 2)
+                {
+                    scoreToGive = scoreToGive;
+                    setScores(scoreToGive);
+                }
+                else if(nrOfScoresInserted == 3)
+                {
+                    if (scoreToGive % 3 === 0) {
+                        scoreToGive = scoreToGive * 3;
+                        setScores(scoreToGive);
+                    }
+                }
+                else
+                {
+                    //show that the scores is not filled in.
+                }
+             /*   $scope.canInsertScore = false;
                 $scope.newScore4 = 0 - parseInt($scope.newScore1) - parseInt($scope.newScore2) - parseInt($scope.newScore3);
+                $scope.canInsertScore = true;*/
+            }
+            
+        };
+
+        function setScores(scoreToGive)
+        {
+            console.log('scoreToGive', scoreToGive);
+            if (score1Inserted == false) {
+                $scope.newScore1 = scoreToGive;
+            }
+            if (score2Inserted == false) {
+                $scope.newScore2 = scoreToGive;
+            }
+            if (score3Inserted == false) {
+                $scope.newScore3 = scoreToGive;
+            }
+            if (score4Inserted == false) {
+                $scope.newScore4 = scoreToGive;
+            }
+            var check = sumScores();
+            if (check == 0) {
                 $scope.canInsertScore = true;
             }
+            else
+            {
+                $scope.canInsertScore = false;
+            }
         };
+
+        function sumScores()
+        {
+           return parseInt($scope.newScore1, 10) + parseInt($scope.newScore2, 10) + parseInt($scope.newScore3, 10) + parseInt($scope.newScore4, 10);
+        }
 
         $scope.changeTurn = function () {
             changeTurn();
@@ -104,14 +197,24 @@ angular.module('Games')
             indexedDBDataSvc.updateGame($rootScope.game).then(function ()
             {
                 refreshScores();
-                $scope.newScore1 = 0;
-                $scope.newScore2 = 0;
-                $scope.newScore3 = 0;
-                $scope.newScore4 = 0;
+                resetScores();
             }, function (err) {
                 console.log(err); //$window.alert(err);
             });
         };
+
+        function resetScores()
+        {
+            score1Inserted = false;
+            score2Inserted = false;
+            score3Inserted = false;
+            score4Inserted = false;
+            $scope.newScore1 = 0;
+            $scope.newScore2 = 0;
+            $scope.newScore3 = 0;
+            $scope.newScore4 = 0;
+            nrOfScoresInserted = 0;
+        }
 
         function changeTurn()
         {
