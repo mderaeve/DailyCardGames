@@ -23,13 +23,14 @@ angular.module('Games')
             
             var check = sumScores();
             var input = 0;
-            console.log('nr ', nr);
+            console.log('nr + check ', nr, check);
             if (check == 0) {
                 $scope.canInsertScore = true;
             }
             else if (nrOfScoresInserted==4)
             {
                 $scope.canInsertScore = false;
+                console.log('nr of scores inserterd:', nrOfScoresInserted);
             }
             else
             {
@@ -79,15 +80,12 @@ angular.module('Games')
                 }
                 else if(nrOfScoresInserted == 3)
                 {
-                    if (scoreToGive % 3 === 0) {
+                    //if (scoreToGive % 3 === 0) {
                         scoreToGive = scoreToGive * 3;
                         setScores(scoreToGive);
-                    }
+                    //}
                 }
-                else
-                {
-                    //show that the scores is not filled in.
-                }
+                if (sumScores() == 0) { $scope.canInsertScore = true; } else { $scope.canInsertScore = false; }
              /*   $scope.canInsertScore = false;
                 $scope.newScore4 = 0 - parseInt($scope.newScore1) - parseInt($scope.newScore2) - parseInt($scope.newScore3);
                 $scope.canInsertScore = true;*/
@@ -110,14 +108,7 @@ angular.module('Games')
             if (score4Inserted == false) {
                 $scope.newScore4 = scoreToGive;
             }
-            var check = sumScores();
-            if (check == 0) {
-                $scope.canInsertScore = true;
-            }
-            else
-            {
-                $scope.canInsertScore = false;
-            }
+            
         };
 
         function sumScores()
