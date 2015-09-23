@@ -10,7 +10,7 @@ angular.module('Games')
         $scope.fourPlayersSelected = false;
         $scope.players = [];
         $scope.selectedPlayers = [];
-
+        $scope.maxScore = 50;
         checkActiveGame();
         
         $scope.refreshList = function () {
@@ -81,11 +81,11 @@ angular.module('Games')
 
         $scope.startGame = function () {
             console.log('Start wiezer');
-            $scope.selectedPlayers[0].turn = "underline";
-            $scope.selectedPlayers[1].turn = "none";
-            $scope.selectedPlayers[2].turn = "none";
-            $scope.selectedPlayers[3].turn = "none";
-            indexedDBDataSvc.addGame($scope.selectedPlayers, "wiezen", false).then(function () {
+            $scope.selectedPlayers[0].turn = $rootScope.selectedPlayerColor;
+            $scope.selectedPlayers[1].turn = "#FFFFFF";
+            $scope.selectedPlayers[2].turn = "#FFFFFF";
+            $scope.selectedPlayers[3].turn = "#FFFFFF";
+            indexedDBDataSvc.addGame($scope.selectedPlayers, "wiezen", false, $scope.maxScore).then(function () {
                 checkActiveGame();
             }, function (err) {
                 console.log(err); //$window.alert(err);

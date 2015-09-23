@@ -14,11 +14,13 @@ angular.module('Home')
                 if (data != null && $scope.players.length > 3) {
                     $rootScope.canPlayKingen = true;
                     $rootScope.canPlayWiezen = true;
+                    $rootScope.canPlay = true;
                 }
                 else
                 {
                     $rootScope.canPlayKingen = false;
                     $rootScope.canPlayWiezen = false;
+                    $rootScope.canPlay = false;
                     //kijken als er een actief spel is.
                     indexedDBDataSvc.getActiveGame("kingen").then(function (data) {
                         if (data != null) {

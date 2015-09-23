@@ -63,7 +63,7 @@ angular.module('Games')
         $scope.startGame = function () {
             
             
-            indexedDBDataSvc.addGame($scope.selectedPlayers, "kingen", $scope.kingerFull).then(function () 
+            indexedDBDataSvc.addGame($scope.selectedPlayers, "kingen", $scope.kingerFull,0).then(function () 
             {
 
                 indexedDBDataSvc.getActiveGame("kingen").then(function (data) {
@@ -117,11 +117,11 @@ angular.module('Games')
                 $rootScope.game.scores.push([0, 0, 0, 0]);
 
             }
-         
-            $rootScope.game.players[0].turn = "underline";
-            $rootScope.game.players[1].turn = "none";
-            $rootScope.game.players[2].turn = "none";
-            $rootScope.game.players[3].turn = "none";
+
+            $rootScope.game.players[0].turn = $rootScope.selectedPlayerColor;
+            $rootScope.game.players[1].turn = "#FFFFFF";
+            $rootScope.game.players[2].turn = "#FFFFFF";
+            $rootScope.game.players[3].turn = "#FFFFFF";
 
             //update the game in the database
             indexedDBDataSvc.updateGame($rootScope.game).then(function (data) {

@@ -109,26 +109,27 @@ angular.module('Games')
         };
 
         function changeTurn() {
-            if ($scope.player1.turn == "underline") {
-                $scope.player1.turn = "none";
-                $scope.player2.turn = "underline";
-                $scope.player3.turn = "none";
-                $scope.player4.turn = "none";
-            } else if ($scope.player2.turn == "underline") {
-                $scope.player1.turn = "none";
-                $scope.player2.turn = "none";
-                $scope.player3.turn = "underline";
-                $scope.player4.turn = "none";
-            } else if ($scope.player3.turn == "underline") {
-                $scope.player1.turn = "none";
-                $scope.player2.turn = "none";
-                $scope.player3.turn = "none";
-                $scope.player4.turn = "underline";
+
+            if ($scope.player1.turn == $rootScope.selectedPlayerColor) {
+                $scope.player1.turn = "#FFFFFF";
+                $scope.player2.turn = $rootScope.selectedPlayerColor;
+                $scope.player3.turn = "#FFFFFF";
+                $scope.player4.turn = "#FFFFFF";
+            } else if ($scope.player2.turn == $rootScope.selectedPlayerColor) {
+                $scope.player1.turn = "#FFFFFF";
+                $scope.player2.turn = "#FFFFFF";
+                $scope.player3.turn = $rootScope.selectedPlayerColor;
+                $scope.player4.turn = "#FFFFFF";
+            } else if ($scope.player3.turn == $rootScope.selectedPlayerColor) {
+                $scope.player1.turn = "#FFFFFF";
+                $scope.player2.turn = "#FFFFFF";
+                $scope.player3.turn = "#FFFFFF";
+                $scope.player4.turn = $rootScope.selectedPlayerColor;
             } else {
-                $scope.player1.turn = "underline";
-                $scope.player2.turn = "none";
-                $scope.player3.turn = "none";
-                $scope.player4.turn = "none";
+                $scope.player1.turn = $rootScope.selectedPlayerColor;
+                $scope.player2.turn = "#FFFFFF";
+                $scope.player3.turn = "#FFFFFF";
+                $scope.player4.turn = "#FFFFFF";
             }
         };
 

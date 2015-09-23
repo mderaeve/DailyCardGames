@@ -57,6 +57,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 app.run(['$rootScope', '$location', '$http', '$state', 'indexedDBDataSvc',
     function ($rootScope, $location, $http, $state, indexedDBDataSvc) {
         
+        $rootScope.selectedPlayerColor = "#5CB85C";
        
         //Keep the previous state.
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState) {

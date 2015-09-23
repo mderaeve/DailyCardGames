@@ -1,7 +1,6 @@
-﻿<div class="page-header hidden-sm hidden-xs">
-    <h2>
-        Maak hier minstens 4 spelers aan om een spel te starten.
-    </h2>
+﻿<div class="page-header hidden-sm hidden-xs" >
+    <div ng-show="!canPlay"><h2>Maak hier minstens 4 spelers aan om een spel te starten.</h2></div>
+    <div ng-show="canPlay"><h2>Kies bovenaan een spel om te starten.</h2></div>
 </div>
     <div>
         <div class="form-group">

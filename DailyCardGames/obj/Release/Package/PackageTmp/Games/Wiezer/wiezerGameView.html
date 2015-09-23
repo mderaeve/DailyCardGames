@@ -17,21 +17,33 @@
         </row>
         <row>
             <div class="col-xs-3">
-                <row class="text-center"><h2 ng-style="{'text-decoration': player1.turn}">{{player1.text}}</h2></row>
+                <row class="text-center">
+                    <h2 ng-style="{'background': player1.turn}">{{player1.text}}</h2>
+                    <img src="/images/crown.gif" style=" position: absolute;top:0; " ng-show="player1.total>game.maxScore" class="img-responsive" />
+                </row>
                 <row class="text-center">
                     <h3 value-color ng-model="player1.total">{{player1.total}}</h3>
                 </row>
             </div>
             <div class="col-xs-3">
-                <row class="text-center"><h2 ng-style="{'text-decoration': player2.turn}">{{player2.text}}</h2></row>
+                <row class="text-center">
+                    <h2 ng-style="{'background': player2.turn}">{{player2.text}}</h2>
+                    <img src="../../images/crown.gif" style=" position: absolute;top:0; " ng-show="player2.total>game.maxScore" class="img-responsive" />
+                </row>
                 <row class ="text-center"><h3 value-color ng-model="player2.total">{{player2.total}}</h3></row>
             </div>
             <div class="col-xs-3">
-                <row class="text-center"><h2 ng-style="{'text-decoration': player3.turn}">{{player3.text}}</h2></row>
+                <row class="text-center">
+                    <h2 ng-style="{'background': player3.turn}">{{player3.text}}</h2>
+                    <img src="../../images/crown.gif" style=" position: absolute;top:0; " ng-show="player3.total>game.maxScore" class="img-responsive" />
+                </row>
                 <row class ="text-center"><h3 value-color ng-model="player3.total">{{player3.total}}</h3></row>
             </div>
             <div class="col-xs-3">
-                <row class="text-center"><h2 ng-style="{'text-decoration': player4.turn}">{{player4.text}}</h2></row>
+                <row class="text-center">
+                    <h2 ng-style="{'background': player4.turn}">{{player4.text}}</h2>
+                    <img src="../../images/crown.gif" style=" position: absolute;top:0; " ng-show="player4.total>game.maxScore" class="img-responsive" />
+                </row>
                 <row class="text-center"><h3 value-color ng-model="player4.total">{{player4.total}}</h3></row>
             </div>
         </row>
@@ -42,7 +54,7 @@
         <thead class="scorefontHeader">
             <tr class="row">
                 <th class="col-xs-1 text-center">
-                    Ronde
+                    <div class="hidden-xs">Ronde</div>
                 </th>
                 <th class="col-xs-2 text-center">
                     {{player1.text}}
