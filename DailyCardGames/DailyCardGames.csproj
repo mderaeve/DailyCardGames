@@ -90,6 +90,7 @@
     <Content Include="images\bg2.jpg" />
     <Content Include="images\cards50.gif" />
     <Content Include="images\crown.GIF" />
+    <Content Include="images\won.gif" />
     <Content Include="index.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
