@@ -44,17 +44,26 @@
 </head>
     <body id="top" ng-app="dailycardApp" style="background:url(images/bg2.jpg)">
 
-        <div class="container">
+        <div class="container-fluid">
             <!-- NAVIGATION -->
             <nav class="navbar navbar-default">
                 <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-menu1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                     <a class="navbar-brand" ui-sref="home">Spellen Start</a>
                 </div>
-                <ul class="nav navbar-nav">
-                    <li ui-sref-active="active"><a ui-sref="kinger" ng-show="canPlayKingen">Kingen</a> </li>
-                    <li ui-sref-active="active"><a ui-sref="wiezer" ng-show="canPlayWiezen">Wiezen</a></li>
-                </ul>
-                <div class="pull-right hidden-xs"><img src="images/cards50.gif" class="img-responsive" /></div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-menu1">
+                    <ul class="nav navbar-nav">
+                        <li ui-sref-active="active"><a ui-sref="kinger" ng-show="canPlayKingen">Kingen</a> </li>
+                        <li ui-sref-active="active"><a ui-sref="wiezer" ng-show="canPlayWiezen">Wiezen</a></li>
+                    </ul>
+                    <div class="pull-right hidden-xs"><img src="images/cards50.gif" class="img-responsive" /></div>
+                </div>
             </nav>
         </div>
 
