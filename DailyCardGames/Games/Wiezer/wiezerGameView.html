@@ -79,16 +79,16 @@
                     
                 </td>
                 <td class="col-xs-2">
-                    <input type="number" class="form-control input-lg text-center" ng-model="newScore1" ng-change="checkCanInsertScore(1)" select-on-click />
+                    <input type="text" class="form-control input-lg text-center" ng-model="newScore1" ng-change="checkCanInsertScore(1)" select-on-click ng-keyup="$event.keyCode == 13 && insertScore()"/>
                 </td>
                 <td class="col-xs-2">
-                    <input type="number" class="form-control input-lg text-center" ng-model="newScore2" ng-change="checkCanInsertScore(2)" select-on-click />
+                    <input type="text" class="form-control input-lg text-center" ng-model="newScore2" ng-change="checkCanInsertScore(2)" select-on-click ng-keyup="$event.keyCode == 13 && insertScore()"/>
                 </td>
                 <td class="col-xs-2">
-                    <input type="number" class="form-control input-lg text-center" ng-model="newScore3" ng-change="checkCanInsertScore(3)" select-on-click />
+                    <input type="text" class="form-control input-lg text-center" ng-model="newScore3" ng-change="checkCanInsertScore(3)" select-on-click ng-keyup="$event.keyCode == 13 && insertScore()"/>
                 </td>
                 <td class="col-xs-2">
-                    <input type="number" class="form-control input-lg text-center" ng-model="newScore4" ng-change="checkCanInsertScore(4)" select-on-click />
+                    <input type="text" class="form-control input-lg text-center" ng-model="newScore4" ng-change="checkCanInsertScore(4)" select-on-click ng-keyup="$event.keyCode == 13 && insertScore()"/>
                 </td>
                 <td class="col-xs-1">
                     <button type="button" ng-click="insertScore()" class="btn btn-lg btn-success" ng-show="canInsertScore">
