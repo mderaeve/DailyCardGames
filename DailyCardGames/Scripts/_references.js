@@ -1,4 +1,5 @@
-﻿
+﻿/// <reference path="jquery-2.2.3.js" />
+
 ///    <reference path="Scripts/jquery-1.9.1.min.js"/>
 ///    <reference path="Scripts/jquery.poptrox.min.js"/>
 ///    <reference path="Scripts/bootstrap.min.js"/>

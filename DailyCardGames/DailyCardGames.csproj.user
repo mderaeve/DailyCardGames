@@ -3,6 +3,7 @@
   <PropertyGroup>
     <NameOfLastUsedPublishProfile>DailyCardGames</NameOfLastUsedPublishProfile>
     <ProjectView>ShowAllFiles</ProjectView>
+    <ToolsVersionPromptShown>1.8</ToolsVersionPromptShown>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
