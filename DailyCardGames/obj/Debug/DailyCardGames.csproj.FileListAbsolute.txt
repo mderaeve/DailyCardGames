@@ -10,3 +10,9 @@ E:\Mark\Develop\DailyCardGames\DailyCardGames\obj\Debug\DailyCardGames.csprojRes
 E:\Mark\Develop\DailyCardGames\DailyCardGames\obj\Debug\DailyCardGames.dll
 E:\Mark\Develop\DailyCardGames\DailyCardGames\obj\Debug\DailyCardGames.pdb
 D:\Projects\DailyCode\DailyCardGames\DailyCardGames\obj\Debug\DailyCardGames.csprojResolveAssemblyReference.cache
+D:\R_N_D\Games\DailyCardGames\DailyCardGames\bin\DailyCardGames.dll.config
+D:\R_N_D\Games\DailyCardGames\DailyCardGames\bin\DailyCardGames.dll
+D:\R_N_D\Games\DailyCardGames\DailyCardGames\bin\DailyCardGames.pdb
+D:\R_N_D\Games\DailyCardGames\DailyCardGames\obj\Debug\DailyCardGames.csproj.CoreCompileInputs.cache
+D:\R_N_D\Games\DailyCardGames\DailyCardGames\obj\Debug\DailyCardGames.dll
+D:\R_N_D\Games\DailyCardGames\DailyCardGames\obj\Debug\DailyCardGames.pdb
