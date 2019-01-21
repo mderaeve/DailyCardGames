@@ -1,21 +1,21 @@
 ﻿<div class="h2">Kingen <div class="h4 hidden-xs">Kies 4 spelers om te beginnen</div>  </div>
 
-<div class="panel panel-default">
-    <div class="panel-heading">Spelers</div>
-    <div class="panel-body" data-ng-repeat="player in players">
+<div class="card">
+    <div class="card-header">Spelers</div>
+    <div class="card-body" data-ng-repeat="player in players">
         <div player-button="player" on-click="selectPlayer(player)" ></div>
     </div>
 </div>
 
-<div class="panel panel-default" ng-show="fourPlayersSelected">
-    <div class="panel-heading">Spel</div>
-    <div class="panel-body">
-        <row>
+<div class="card" ng-show="fourPlayersSelected">
+    <div class="card-header">Spel</div>
+    <div class="card-body">
+        <div class="row">
             <div class="col-md-6"><input type="button" ng-click="setGameType(false)" value="Enkele" ng-class="{false :'btn btn-primary input-block-level form-control', true : 'btn btn-default input-block-level form-control' }[kingerFull]" /></div>
             <div class="col-md-6"><input type="button" ng-click="setGameType(true)" value="Dubbele" ng-class="{true :'btn btn-primary input-block-level form-control', false : 'btn btn-default input-block-level form-control' }[kingerFull]" /></div>
-        </row>
+        </div>
     </div>
-    <div class="panel-body">
+    <div class="card-body">
         <row>
             <div class="col-md-12"><input class="btn btn-success input-block-level form-control" type="submit" value="Start" ng-click="startGame()"></div>
         </row>

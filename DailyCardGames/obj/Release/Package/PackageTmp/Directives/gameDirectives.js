@@ -18,7 +18,7 @@ angular.module('Home')
     .directive('playerButton', function() {
         return {
             scope: { player: '=playerButton', onClick: '&' },
-            template: '<button class="btn btn-default input-block-level form-control" ng-click="onClick({player : player})" ng-class="{true : \'btn btn-primary input-block-level form-control\', false : \'btn btn-default input-block-level form-control\' }[player.number > 0]"><div ng-if="player.number != 0" class="label label-info">{{player.number}}</div>&nbsp;{{player.text}}</button>',
+            template: '<button class="btn btn-default input-block-level form-control" ng-click="onClick({player : player})" ng-class="{true : \'btn btn-primary input-block-level form-control\', false : \'btn btn-default input-block-level form-control\' }[player.number > 0]"><div ng-if="player.number != 0" class="badge badge-info">{{player.number}}</div>&nbsp;{{player.text}}</button>',
         }
     })
 

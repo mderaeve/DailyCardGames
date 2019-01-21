@@ -1,20 +1,20 @@
 ﻿<div class="h2">Wiezen<div class="h4 hidden-xs">Kies 4 spelers om te beginnen</div> </div>
 
-<div class="panel panel-default">
-    <div class="panel-heading">Spelers</div>
-    <div class="panel-body" data-ng-repeat="player in players" >
+<div class="card">
+    <div class="card-header">Spelers</div>
+    <div class="card-body" data-ng-repeat="player in players" >
         <div player-button="player" on-click="selectPlayer(player)"></div>
     </div>
 </div>
 
-<div class="panel panel-default" ng-show="fourPlayersSelected">
-    <div class="panel-heading">Spel</div>
-    <div class="panel-body">
-        <row>
+<div class="card" ng-show="fourPlayersSelected">
+    <div class="card-header">Spel</div>
+    <div class="card-body">
+        <div class="row">
             <div class="col-md-12"><input type="text" ng-model="maxScore" class="form-control input-lg text-center" /></div>
-        </row>
+        </div>
     </div>
-    <div class="panel-body">
+    <div class="card-body">
         <input class="btn btn-success input-block-level form-control" type="submit" value="Start" ng-click="startGame()">
     </div>
 </div>

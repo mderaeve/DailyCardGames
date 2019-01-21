@@ -15,7 +15,7 @@
     <RootNamespace>DailyCardGames</RootNamespace>
     <AssemblyName>DailyCardGames</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -978,7 +978,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>59262</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:59262/</IISUrl>
+          <IISUrl>http://localhost:777</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
