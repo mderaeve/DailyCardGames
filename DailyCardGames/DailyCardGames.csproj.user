@@ -4,7 +4,7 @@
     <NameOfLastUsedPublishProfile>Kaarten - Web Deploy</NameOfLastUsedPublishProfile>
     <ProjectView>ShowAllFiles</ProjectView>
     <ToolsVersionPromptShown>1.8</ToolsVersionPromptShown>
-    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
+    <LastActiveSolutionConfig>Release|Any CPU</LastActiveSolutionConfig>
     <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
