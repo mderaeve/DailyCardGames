@@ -19,7 +19,7 @@
             <div class="col-lg-3">
                 <div class="text-center">
                     <h2 ng-style="{'background': player1.turn}">{{player1.text}}</h2>
-                    <!--<img src="/images/won.gif" style=" position: absolute;top:0; " ng-show="player1.total>game.malgcore-1" class="img-responsive" />-->
+                    <img src="/images/won.gif" ng-show="player1.won"  />
                 </div>
                 <div class="text-center">
                     <h3 value-color ng-model="player1.total">{{player1.total}}</h3>
@@ -28,28 +28,26 @@
             <div class="col-lg-3">
                 <div class="text-center">
                     <h2 ng-style="{'background': player2.turn}">{{player2.text}}</h2>
-                    <!--<img src="../../images/won.gif" style=" position: absolute;top:0; " ng-show="player2.total>game.malgcore-1" class="img-responsive" />-->
                 </div>
-                <div class ="text-center"><h3 value-color ng-model="player2.total">{{player2.total}}</h3></div>
+                <div class="text-center"><h3 value-color ng-model="player2.total">{{player2.total}}</h3></div>
+                <img src="/images/won.gif" ng-show="player2.won" class="float-lg-left"/>
             </div>
             <div class="col-lg-3">
                 <div class="text-center">
                     <h2 ng-style="{'background': player3.turn}">{{player3.text}}</h2>
-                    <!--<img src="../../images/won.gif" style=" position: absolute;top:0; " ng-show="player3.total>game.malgcore-1" class="img-responsive" />-->
                 </div>
-                <div class ="text-center"><h3 value-color ng-model="player3.total">{{player3.total}}</h3></div>
+                <div class="text-center"><h3 value-color ng-model="player3.total">{{player3.total}}</h3></div>
+                <img src="/images/won.gif" ng-show="player3.won" class="float-lg-left"  />
             </div>
             <div class="col-lg-3">
                 <div class="text-center">
                     <h2 ng-style="{'background': player4.turn}">{{player4.text}}</h2>
-                    <!--<img src="../../images/won.gif" style=" position: absolute;top:0; " ng-show="player4.total>game.malgcore-1" class="img-responsive" />-->
                 </div>
                 <div class="text-center"><h3 value-color ng-model="player4.total">{{player4.total}}</h3></div>
+                <img src="/images/won.gif" ng-show="player4.won"  />
             </div>
         </div>
     </div>
-
-
     <div class="card">
         <div class="card-header">
             <div class="row">
@@ -57,16 +55,25 @@
                     <div class="hidden-lg">Ronde</div>
                 </div>
                 <div class="col-lg-2">
-                    <center><h2>{{player1.text}}</h2></center>
+                    <center>
+                        <h2>{{player1.text}}</h2>
+
+                    </center>
                 </div>
                 <div class="col-lg-2">
-                    <center><h2>{{player2.text}}</h2></center>
+                    <center>
+                        <h2>{{player2.text}}</h2>
+                    </center>
                 </div>
                 <div class="col-lg-2">
-                    <center><h2>{{player3.text}}</h2></center>
+                    <center>
+                        <h2>{{player3.text}}</h2>
+                    </center>
                 </div>
                 <div class="col-lg-2">
-                    <center><h2>{{player4.text}}</h2></center>
+                    <center>
+                        <h2>{{player4.text}}</h2>
+                    </center>
                 </div>
                 <div class="col-lg-1">
 

@@ -10,12 +10,16 @@ angular.module('Games')
         var nrOfScoresInserted;
         $scope.canInsertScore = true;
         resetScores();
-        
-        $scope.player1 = $rootScope.game.players[0];
-        $scope.player2 = $rootScope.game.players[1];
-        $scope.player3 = $rootScope.game.players[2];
-        $scope.player4 = $rootScope.game.players[3];
-
+        if ($rootScope.game != null) {
+            $scope.player1 = $rootScope.game.players[0];
+            $scope.player2 = $rootScope.game.players[1];
+            $scope.player3 = $rootScope.game.players[2];
+            $scope.player4 = $rootScope.game.players[3];
+            if ($scope.player1.total > $rootScope.game.maxScore - 1) { ShowPlayerWon($scope.player1); }
+            if ($scope.player2.total > $rootScope.game.maxScore - 1) { ShowPlayerWon($scope.player2); }
+            if ($scope.player3.total > $rootScope.game.maxScore - 1) { ShowPlayerWon($scope.player3); }
+            if ($scope.player4.total > $rootScope.game.maxScore - 1) { ShowPlayerWon($scope.player4); }
+        }
         $scope.scores = $rootScope.game.scores;
 
         $scope.checkCanInsertScore = function (nr)
@@ -187,8 +191,27 @@ angular.module('Games')
                 resetScores();
             }, function (err) {
                 console.log(err); //$window.alert(err);
-            });
+                });
         };
+
+        function checkScore (player) {
+            var win = (player.total > $rootScope.game.maxScore - 1);
+            if (win == true)
+            {
+                player.wins++;
+                indexedDBDataSvc.updatePlayer(player).then(function () {
+                }, function (err) {
+                    console.log(err); //$window.alert(err);
+                });
+                ShowPlayerWon(player);
+            }
+            return win;
+        }
+
+        function ShowPlayerWon(player) {
+            player.turn = "#FFD700";
+            player.won = true;
+        }
 
         function resetScores()
         {
@@ -231,35 +254,39 @@ angular.module('Games')
         function refreshScores()
         {
                 
-                //calculate totals
-                $scope.player1.total = 0;
-                $scope.player2.total = 0;
-                $scope.player3.total = 0;
-                $scope.player4.total = 0;
-                var i = 1;
+            //calculate totals
+            $scope.player1.total = 0;
+            $scope.player2.total = 0;
+            $scope.player3.total = 0;
+            $scope.player4.total = 0;
+            var i = 1;
 
-                $scope.scores.forEach(function (score) {
-                    console.log(score);
-                    if (score.counter ==  null || score.counter == 0)
-                    {
-                        score.counter = i;
-                        i++;
-                    }
-                    else
-                    {
-                        if (i <= score.counter) i = score.counter +1;
-                    }
-                   
-                    $scope.player1.total += parseInt(score[0]);
-                    $scope.player2.total += parseInt(score[1]);
-                    $scope.player3.total += parseInt(score[2]);
-                    $scope.player4.total += parseInt(score[3]);
-                });
-
-                if ($scope.scores != null) {
-                    $scope.scores = $scope.scores.sort(SortById);
+            $scope.scores.forEach(function (score)
+            {
+                console.log(score);
+                if (score.counter ==  null || score.counter == 0)
+                {
+                    score.counter = i;
+                    i++;
                 }
-            
+                else
+                {
+                    if (i <= score.counter) i = score.counter +1;
+                }
+                   
+                $scope.player1.total += parseInt(score[0]);
+                $scope.player2.total += parseInt(score[1]);
+                $scope.player3.total += parseInt(score[2]);
+                $scope.player4.total += parseInt(score[3]);
+            });
+
+            if ($scope.scores != null) {
+                $scope.scores = $scope.scores.sort(SortById);
+            }
+            checkScore($scope.player1);
+            checkScore($scope.player2);
+            checkScore($scope.player3);
+            checkScore($scope.player4);
         };
 
         //This will sort your array
@@ -268,7 +295,5 @@ angular.module('Games')
             var scoreB = b.counter;
             return ((scoreA > scoreB) ? -1 : ((scoreA < scoreB) ? 1 : 0));
         };
-
-        refreshScores();
 
     }]);

@@ -109,6 +109,30 @@ angular.module('Home')
         return deferred.promise;
     };
 
+    var updatePlayer = function (player) {
+        var deferred = $q.defer();
+
+        if (db === null) {
+            deferred.reject("IndexDB is not opened yet!");
+        } else {
+            var trans = db.transaction(["players"], "readwrite");
+            var store = trans.objectStore("players");
+
+            var request = store.put(player);
+
+            request.onsuccess = function (e) {
+                deferred.resolve();
+            };
+
+            request.onerror = function (e) {
+                console.log(e.value);
+                deferred.reject("players item couldn't be deleted");
+            };
+        }
+
+        return deferred.promise;
+    };
+
     var addPlayer = function (playerText) {
         var deferred = $q.defer();
 
@@ -121,7 +145,8 @@ angular.module('Home')
             var request = store.put({
                 "id": lastPlayerIndex,
                 "text": playerText,
-                "number":0
+                "number": 0,
+                "wins": 0
             });
 
             request.onsuccess = function (e) {
@@ -233,6 +258,7 @@ angular.module('Home')
         open: open,
         getPlayers: getPlayers,
         addPlayer: addPlayer,
+        updatePlayer: updatePlayer,
         deletePlayer: deletePlayer,
         getActiveGame: getActiveGame,
         addGame: addGame,

@@ -16,3 +16,4 @@ D:\R_N_D\Games\DailyCardGames\DailyCardGames\bin\DailyCardGames.pdb
 D:\R_N_D\Games\DailyCardGames\DailyCardGames\obj\Debug\DailyCardGames.csproj.CoreCompileInputs.cache
 D:\R_N_D\Games\DailyCardGames\DailyCardGames\obj\Debug\DailyCardGames.dll
 D:\R_N_D\Games\DailyCardGames\DailyCardGames\obj\Debug\DailyCardGames.pdb
+D:\R_N_D\Games\DailyCardGames\DailyCardGames\obj\Debug\DailyCardGames.csprojAssemblyReference.cache
