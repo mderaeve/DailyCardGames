@@ -15,12 +15,10 @@ angular.module('Games')
             $scope.player2 = $rootScope.game.players[1];
             $scope.player3 = $rootScope.game.players[2];
             $scope.player4 = $rootScope.game.players[3];
-            if ($scope.player1.total > $rootScope.game.maxScore - 1) { ShowPlayerWon($scope.player1); }
-            if ($scope.player2.total > $rootScope.game.maxScore - 1) { ShowPlayerWon($scope.player2); }
-            if ($scope.player3.total > $rootScope.game.maxScore - 1) { ShowPlayerWon($scope.player3); }
-            if ($scope.player4.total > $rootScope.game.maxScore - 1) { ShowPlayerWon($scope.player4); }
+            $scope.scores = $rootScope.game.scores;
+            refreshScores();
         }
-        $scope.scores = $rootScope.game.scores;
+        
 
         $scope.checkCanInsertScore = function (nr)
         {

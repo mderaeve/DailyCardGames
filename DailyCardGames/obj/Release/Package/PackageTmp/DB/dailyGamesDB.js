@@ -117,7 +117,7 @@ angular.module('Home')
         } else {
             var trans = db.transaction(["players"], "readwrite");
             var store = trans.objectStore("players");
-
+            player.number = 0;
             var request = store.put(player);
 
             request.onsuccess = function (e) {

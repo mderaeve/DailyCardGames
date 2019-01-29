@@ -2,21 +2,21 @@
     <div class="card-header">Spel</div>
     <div class="card-body">
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-md-3">
                 <input class="btn btn-info input-block-level form-control" type="submit" value="Regels" ng-click="rules()">
             </div>
-            <div class="col-lg-3">
+            <div class="col-md-3">
                 <input class="btn btn-primary form-control" type="submit" value="Wissel deler" ng-click="changeTurn()">
             </div>
-            <div class="col-lg-3">
+            <div class="col-md-3">
                 <input class="btn btn-primary form-control" type="submit" value="Pas" ng-click="pass()">
             </div>
-            <div class="col-lg-3">
+            <div class="col-md-3">
                 <input class="btn btn-danger input-block-level form-control" type="submit" value="Stop" ng-click="stopGame()">
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-md-3">
                 <div class="text-center">
                     <h2 ng-style="{'background': player1.turn}">{{player1.text}}</h2>
                     <img src="/images/won.gif" ng-show="player1.won"  />
@@ -25,21 +25,21 @@
                     <h3 value-color ng-model="player1.total">{{player1.total}}</h3>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-md-3">
                 <div class="text-center">
                     <h2 ng-style="{'background': player2.turn}">{{player2.text}}</h2>
                 </div>
                 <div class="text-center"><h3 value-color ng-model="player2.total">{{player2.total}}</h3></div>
                 <img src="/images/won.gif" ng-show="player2.won" class="float-lg-left"/>
             </div>
-            <div class="col-lg-3">
+            <div class="col-md-3">
                 <div class="text-center">
                     <h2 ng-style="{'background': player3.turn}">{{player3.text}}</h2>
                 </div>
                 <div class="text-center"><h3 value-color ng-model="player3.total">{{player3.total}}</h3></div>
                 <img src="/images/won.gif" ng-show="player3.won" class="float-lg-left"  />
             </div>
-            <div class="col-lg-3">
+            <div class="col-md-3">
                 <div class="text-center">
                     <h2 ng-style="{'background': player4.turn}">{{player4.text}}</h2>
                 </div>
@@ -51,75 +51,75 @@
     <div class="card">
         <div class="card-header">
             <div class="row">
-                <div class="col-lg-1">
+                <div class="col-md-2">
                     <div class="hidden-lg">Ronde</div>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-md-2">
                     <center>
                         <h2>{{player1.text}}</h2>
 
                     </center>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-md-2">
                     <center>
                         <h2>{{player2.text}}</h2>
                     </center>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-md-2">
                     <center>
                         <h2>{{player3.text}}</h2>
                     </center>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-md-2">
                     <center>
                         <h2>{{player4.text}}</h2>
                     </center>
                 </div>
-                <div class="col-lg-1">
+                <div class="col-md-2">
 
                 </div>
             </div>
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-lg-1">
+                <div class="col-md-2">
 
                 </div>
-                <div class="col-lg-2">
+                <div class="col-md-2">
                     <input type="text" class="form-control input-lg text-center" ng-model="newScore1" ng-change="checkCanInsertScore(1)" select-on-click ng-keyup="$event.keyCode == 13 && insertScore()" />
                 </div>
-                <div class="col-lg-2">
+                <div class="col-md-2">
                     <input type="text" class="form-control input-lg text-center" ng-model="newScore2" ng-change="checkCanInsertScore(2)" select-on-click ng-keyup="$event.keyCode == 13 && insertScore()" />
                 </div>
-                <div class="col-lg-2">
+                <div class="col-md-2">
                     <input type="text" class="form-control input-lg text-center" ng-model="newScore3" ng-change="checkCanInsertScore(3)" select-on-click ng-keyup="$event.keyCode == 13 && insertScore()" />
                 </div>
-                <div class="col-lg-2">
+                <div class="col-md-2">
                     <input type="text" class="form-control input-lg text-center" ng-model="newScore4" ng-change="checkCanInsertScore(4)" select-on-click ng-keyup="$event.keyCode == 13 && insertScore()" />
                 </div>
-                <div class="col-lg-1">
+                <div class="col-md-2">
                     <button type="button" ng-click="insertScore()" class="btn btn-lg btn-success" ng-show="canInsertScore">
                         <i class="fas fa-check-circle"></i>
                     </button>
                 </div>
             </div>
             <div ng-repeat="score in scores track by $index" class="row">
-                <div class="col-lg-1">
+                <div class="col-md-2">
                     <div class="scorefontBodyId">{{score.counter}}</div>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-md-2">
                     <div value-color ng-model="score[0]" class="scorefontBody">{{score[0]}}</div>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-md-2">
                     <div value-color ng-model="score[1]" class="scorefontBody">{{score[1]}}</div>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-md-2">
                     <div value-color ng-model="score[2]" class="scorefontBody">{{score[2]}}</div>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-md-2">
                     <div value-color ng-model="score[3]" class="scorefontBody">{{score[3]}}</div>
                 </div>
-                <div class="col-lg-1"></div>
+                <div class="col-md-2"></div>
             </div>
         </div>
     </div>

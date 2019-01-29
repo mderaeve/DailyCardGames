@@ -2,18 +2,18 @@
     <div class="card-header">Spel</div>
     <div class="card-body">
         <div class="row">
-            <div class="col-xs-4">
+            <div class="col-md-4">
                 <input class="btn btn-info input-block-level form-control" type="submit" value="Regels" ng-click="rules()">
             </div>
-            <div class="col-xs-4">
+            <div class="col-md-4">
                 <input class="btn btn-primary form-control" type="submit" value="Wissel deler" ng-click="changeTurn()">
             </div>
-            <div class="col-xs-4">
+            <div class="col-md-4">
                 <input class="btn btn-danger input-block-level form-control" type="submit" value="Stop" ng-click="stopGame()">
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-3">
+            <div class="col-md-3">
                 <div class="row text-center">
                     <h2 ng-style="{'background': player1.turn}">{{player1.text}}</h2>
                 </div>
@@ -21,15 +21,15 @@
                     <h3 value-color ng-model="player1.total">{{player1.total}}</h3>
                 </div>
             </div>
-            <div class="col-xs-3">
+            <div class="col-md-3">
                 <div class="row text-center"><h2 ng-style="{'background': player2.turn}">{{player2.text}}</h2></div>
                 <div class="row text-center"><h3 value-color ng-model="player2.total">{{player2.total}}</h3></div>
             </div>
-            <div class="col-xs-3">
+            <div class="col-md-3">
                 <div class="row text-center"><h2 ng-style="{'background': player3.turn}">{{player3.text}}</h2></div>
                 <div class="row text-center"><h3 value-color ng-model="player3.total">{{player3.total}}</h3></div>
             </div>
-            <div class="col-xs-3">
+            <div class="col-md-3">
                 <div class="row text-center"><h2 ng-style="{'background': player4.turn}">{{player4.text}}</h2></div>
                 <div class="row text-center"><h3 value-color ng-model="player4.total">{{player4.total}}</h3></div>
             </div>
@@ -40,206 +40,206 @@
     <div class="card">
         <div class="card-header">
             <div class="row">
-                <div class="col-xs-1 text-center">
+                <div class="col-md-1 text-center">
                     <center>Ronde</center>
                 </div>
-                <div class="col-xs-2 text-center">
+                <div class="col-md-2 text-center">
                     <center><h2>{{player1.text}}</h2></center>
                 </div>
-                <div class="col-xs-2 text-center">
+                <div class="col-md-2 text-center">
                     <center><h2>{{player2.text}}</h2></center>
                 </div>
-                <div class="col-xs-2 text-center">
+                <div class="col-md-2 text-center">
                     <center><h2>{{player3.text}}</h2></center>
                 </div>
-                <div class="col-xs-2 text-center">
+                <div class="col-md-2 text-center">
                     <center><h2>{{player4.text}}</h2></center>
                 </div>
             </div>
         </div>
         <div class="card-body">
             <div class="row" max-row-value row-value="13" row-number="0" ng-model="topScoreCount">
-                <div class="col-xs-2">Minste harten</div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[0][0]" select-on-click ng-change="leaveTop(0)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[0][1]" select-on-click ng-change="leaveTop(1)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[0][2]" select-on-click ng-change="leaveTop(2)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[0][3]" select-on-click ng-change="leaveTop(3)" /></div>
+                <div class="col-md-2">Minste harten</div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[0][0]" select-on-click ng-change="leaveTop(0)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[0][1]" select-on-click ng-change="leaveTop(1)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[0][2]" select-on-click ng-change="leaveTop(2)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[0][3]" select-on-click ng-change="leaveTop(3)" /></div>
             </div>
             <div class="row"  max-row-value row-value="13" row-number="1" ng-model="topScoreCount" ng-if="game.subType">
-                <div class="col-xs-2">Minste harten</div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[1][0]" select-on-click ng-change="leaveTop(0)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[1][1]" select-on-click ng-change="leaveTop(1)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[1][2]" select-on-click ng-change="leaveTop(2)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[1][3]" select-on-click ng-change="leaveTop(3)" /></div>
+                <div class="col-md-2">Minste harten</div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[1][0]" select-on-click ng-change="leaveTop(0)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[1][1]" select-on-click ng-change="leaveTop(1)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[1][2]" select-on-click ng-change="leaveTop(2)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[1][3]" select-on-click ng-change="leaveTop(3)" /></div>
             </div>
             <div class="row"  max-row-value row-value="13" row-number="2" ng-model="topScoreCount">
-                <div class="col-xs-2">Minste slagen</div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[2][0]" select-on-click ng-change="leaveTop(0)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[2][1]" select-on-click ng-change="leaveTop(1)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[2][2]" select-on-click ng-change="leaveTop(2)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[2][3]" select-on-click ng-change="leaveTop(3)" /></div>
+                <div class="col-md-2">Minste slagen</div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[2][0]" select-on-click ng-change="leaveTop(0)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[2][1]" select-on-click ng-change="leaveTop(1)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[2][2]" select-on-click ng-change="leaveTop(2)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[2][3]" select-on-click ng-change="leaveTop(3)" /></div>
             </div>
             <div class="row"  max-row-value row-value="13" row-number="3" ng-model="topScoreCount" ng-if="game.subType">
-                <div class="col-xs-2">Minste slagen</div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[3][0]" select-on-click ng-change="leaveTop(0)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[3][1]" select-on-click ng-change="leaveTop(1)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[3][2]" select-on-click ng-change="leaveTop(2)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[3][3]" select-on-click ng-change="leaveTop(3)" /></div>
+                <div class="col-md-2">Minste slagen</div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[3][0]" select-on-click ng-change="leaveTop(0)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[3][1]" select-on-click ng-change="leaveTop(1)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[3][2]" select-on-click ng-change="leaveTop(2)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[3][3]" select-on-click ng-change="leaveTop(3)" /></div>
             </div>
             <div class="row"  max-row-value row-value="8" row-number="4" ng-model="topScoreCount">
-                <div class="col-xs-2">Geen heren en boeren</div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[4][0]" select-on-click ng-change="leaveTop(0)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[4][1]" select-on-click ng-change="leaveTop(1)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[4][2]" select-on-click ng-change="leaveTop(2)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[4][3]" select-on-click ng-change="leaveTop(3)" /></div>
+                <div class="col-md-2">Geen heren en boeren</div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[4][0]" select-on-click ng-change="leaveTop(0)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[4][1]" select-on-click ng-change="leaveTop(1)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[4][2]" select-on-click ng-change="leaveTop(2)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[4][3]" select-on-click ng-change="leaveTop(3)" /></div>
             </div>
             <div class="row"  max-row-value row-value="8" row-number="5" ng-model="topScoreCount" ng-if="game.subType">
-                <div class="col-xs-2">Geen heren en boeren</div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[5][0]" select-on-click ng-change="leaveTop(0)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[5][1]" select-on-click ng-change="leaveTop(1)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[5][2]" select-on-click ng-change="leaveTop(2)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[5][3]" select-on-click ng-change="leaveTop(3)" /></div>
+                <div class="col-md-2">Geen heren en boeren</div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[5][0]" select-on-click ng-change="leaveTop(0)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[5][1]" select-on-click ng-change="leaveTop(1)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[5][2]" select-on-click ng-change="leaveTop(2)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[5][3]" select-on-click ng-change="leaveTop(3)" /></div>
             </div>
             <div class="row"  max-row-value row-value="8" row-number="6" ng-model="topScoreCount">
-                <div class="col-xs-2">Minste dames</div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[6][0]" select-on-click ng-change="leaveTop(0)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[6][1]" select-on-click ng-change="leaveTop(1)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[6][2]" select-on-click ng-change="leaveTop(2)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[6][3]" select-on-click ng-change="leaveTop(3)" /></div>
+                <div class="col-md-2">Minste dames</div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[6][0]" select-on-click ng-change="leaveTop(0)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[6][1]" select-on-click ng-change="leaveTop(1)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[6][2]" select-on-click ng-change="leaveTop(2)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[6][3]" select-on-click ng-change="leaveTop(3)" /></div>
             </div>
             <div class="row"  max-row-value row-value="8" row-number="7" ng-model="topScoreCount" ng-if="game.subType">
-                <div class="col-xs-2">Minste dames</div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[7][0]" select-on-click ng-change="leaveTop(0)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[7][1]" select-on-click ng-change="leaveTop(1)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[7][2]" select-on-click ng-change="leaveTop(2)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[7][3]" select-on-click ng-change="leaveTop(3)" /></div>
+                <div class="col-md-2">Minste dames</div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[7][0]" select-on-click ng-change="leaveTop(0)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[7][1]" select-on-click ng-change="leaveTop(1)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[7][2]" select-on-click ng-change="leaveTop(2)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[7][3]" select-on-click ng-change="leaveTop(3)" /></div>
             </div>
             <div class="row"  max-row-value row-value="5" row-number="8" ng-model="topScoreCount">
-                <div class="col-xs-2">7de en laatste slag</div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[8][0]" select-on-click ng-change="leaveTop(0)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[8][1]" select-on-click ng-change="leaveTop(1)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[8][2]" select-on-click ng-change="leaveTop(2)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[8][3]" select-on-click ng-change="leaveTop(3)" /></div>
+                <div class="col-md-2">7de en laatste slag</div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[8][0]" select-on-click ng-change="leaveTop(0)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[8][1]" select-on-click ng-change="leaveTop(1)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[8][2]" select-on-click ng-change="leaveTop(2)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[8][3]" select-on-click ng-change="leaveTop(3)" /></div>
             </div>
             <div class="row"  max-row-value row-value="5" row-number="9" ng-model="topScoreCount" ng-if="game.subType">
-                <div class="col-xs-2">7de en laatste slag</div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[9][0]" select-on-click ng-change="leaveTop(0)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[9][1]" select-on-click ng-change="leaveTop(1)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[9][2]" select-on-click ng-change="leaveTop(2)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[9][3]" select-on-click ng-change="leaveTop(3)" /></div>
+                <div class="col-md-2">7de en laatste slag</div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[9][0]" select-on-click ng-change="leaveTop(0)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[9][1]" select-on-click ng-change="leaveTop(1)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[9][2]" select-on-click ng-change="leaveTop(2)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[9][3]" select-on-click ng-change="leaveTop(3)" /></div>
             </div>
             <div class="row"  max-row-value row-value="5" row-number="10" ng-model="topScoreCount">
-                <div class="col-xs-2">Geen hartenheer</div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[10][0]" select-on-click ng-change="leaveTop(0)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[10][1]" select-on-click ng-change="leaveTop(1)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[10][2]" select-on-click ng-change="leaveTop(2)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[10][3]" select-on-click ng-change="leaveTop(3)" /></div>
+                <div class="col-md-2">Geen hartenheer</div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[10][0]" select-on-click ng-change="leaveTop(0)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[10][1]" select-on-click ng-change="leaveTop(1)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[10][2]" select-on-click ng-change="leaveTop(2)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[10][3]" select-on-click ng-change="leaveTop(3)" /></div>
             </div>
             <div class="row"  max-row-value row-value="5" row-number="11" ng-model="topScoreCount" ng-if="game.subType">
-                <div class="col-xs-2">Geen hartenheer</div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[11][0]" select-on-click ng-change="leaveTop(0)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[11][1]" select-on-click ng-change="leaveTop(1)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[11][2]" select-on-click ng-change="leaveTop(2)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[11][3]" select-on-click ng-change="leaveTop(3)" /></div>
+                <div class="col-md-2">Geen hartenheer</div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[11][0]" select-on-click ng-change="leaveTop(0)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[11][1]" select-on-click ng-change="leaveTop(1)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[11][2]" select-on-click ng-change="leaveTop(2)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[11][3]" select-on-click ng-change="leaveTop(3)" /></div>
             </div>
             <div class="row">
-                <div class="col-xs-2">Sub Totaal</div>
-                <div class="col-xs-2">
+                <div class="col-md-2">Sub Totaal</div>
+                <div class="col-md-2">
                     <h4 style="color:red"> {{player1.totalTop}}</h4>
                 </div>
-                <div class="col-xs-2">
+                <div class="col-md-2">
                     <h4 style="color:red"> {{player2.totalTop}}</h4>
                 </div>
-                <div class="col-xs-2">
+                <div class="col-md-2">
                     <h4 style="color:red"> {{player3.totalTop}}</h4>
                 </div>
-                <div class="col-xs-2">
+                <div class="col-md-2">
                     <h4 style="color:red">{{player4.totalTop}}</h4>
                 </div>
             </div>
             <div class="row"  max-row-value row-value="13" row-number="12" ng-model="bottomScoreCount">
-                <div class="col-xs-2">Troeven {{player1.text}}</div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[12][0]" select-on-click ng-change="leaveBottom(0)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[12][1]" select-on-click ng-change="leaveBottom(1)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[12][2]" select-on-click ng-change="leaveBottom(2)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[12][3]" select-on-click ng-change="leaveBottom(3)" /></div>
+                <div class="col-md-2">Troeven {{player1.text}}</div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[12][0]" select-on-click ng-change="leaveBottom(0)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[12][1]" select-on-click ng-change="leaveBottom(1)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[12][2]" select-on-click ng-change="leaveBottom(2)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[12][3]" select-on-click ng-change="leaveBottom(3)" /></div>
             </div>
             <div class="row"  max-row-value row-value="13" row-number="13" ng-model="bottomScoreCount" ng-if="game.subType">
-                <div class="col-xs-2">Troeven {{player1.text}}</div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[13][0]" select-on-click ng-change="leaveBottom(0)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[13][1]" select-on-click ng-change="leaveBottom(1)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[13][2]" select-on-click ng-change="leaveBottom(2)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[13][3]" select-on-click ng-change="leaveBottom(3)" /></div>
+                <div class="col-md-2">Troeven {{player1.text}}</div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[13][0]" select-on-click ng-change="leaveBottom(0)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[13][1]" select-on-click ng-change="leaveBottom(1)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[13][2]" select-on-click ng-change="leaveBottom(2)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[13][3]" select-on-click ng-change="leaveBottom(3)" /></div>
             </div>
             <div class="row"  max-row-value row-value="13" row-number="14" ng-model="bottomScoreCount">
-                <div class="col-xs-2">Troeven {{player2.text}}</div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[14][0]" select-on-click ng-change="leaveBottom(0)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[14][1]" select-on-click ng-change="leaveBottom(1)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[14][2]" select-on-click ng-change="leaveBottom(2)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[14][3]" select-on-click ng-change="leaveBottom(3)" /></div>
+                <div class="col-md-2">Troeven {{player2.text}}</div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[14][0]" select-on-click ng-change="leaveBottom(0)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[14][1]" select-on-click ng-change="leaveBottom(1)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[14][2]" select-on-click ng-change="leaveBottom(2)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[14][3]" select-on-click ng-change="leaveBottom(3)" /></div>
             </div>
             <div class="row"  max-row-value row-value="13" row-number="15" ng-model="bottomScoreCount" ng-if="game.subType">
-                <div class="col-xs-2">Troeven {{player2.text}}</div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[15][0]" select-on-click ng-change="leaveBottom(0)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[15][1]" select-on-click ng-change="leaveBottom(1)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[15][2]" select-on-click ng-change="leaveBottom(2)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[15][3]" select-on-click ng-change="leaveBottom(3)" /></div>
+                <div class="col-md-2">Troeven {{player2.text}}</div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[15][0]" select-on-click ng-change="leaveBottom(0)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[15][1]" select-on-click ng-change="leaveBottom(1)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[15][2]" select-on-click ng-change="leaveBottom(2)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[15][3]" select-on-click ng-change="leaveBottom(3)" /></div>
             </div>
             <div class="row"  max-row-value row-value="13" row-number="16" ng-model="bottomScoreCount">
-                <div class="col-xs-2">Troeven {{player3.text}}</div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[16][0]" select-on-click ng-change="leaveBottom(0)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[16][1]" select-on-click ng-change="leaveBottom(1)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[16][2]" select-on-click ng-change="leaveBottom(2)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[16][3]" select-on-click ng-change="leaveBottom(3)" /></div>
+                <div class="col-md-2">Troeven {{player3.text}}</div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[16][0]" select-on-click ng-change="leaveBottom(0)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[16][1]" select-on-click ng-change="leaveBottom(1)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[16][2]" select-on-click ng-change="leaveBottom(2)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[16][3]" select-on-click ng-change="leaveBottom(3)" /></div>
             </div>
             <div class="row"  max-row-value row-value="13" row-number="17" ng-model="bottomScoreCount" ng-if="game.subType">
-                <div class="col-xs-2">Troeven {{player3.text}}</div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[17][0]" select-on-click ng-change="leaveBottom(0)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[17][1]" select-on-click ng-change="leaveBottom(1)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[17][2]" select-on-click ng-change="leaveBottom(2)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[17][3]" select-on-click ng-change="leaveBottom(3)" /></div>
+                <div class="col-md-2">Troeven {{player3.text}}</div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[17][0]" select-on-click ng-change="leaveBottom(0)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[17][1]" select-on-click ng-change="leaveBottom(1)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[17][2]" select-on-click ng-change="leaveBottom(2)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[17][3]" select-on-click ng-change="leaveBottom(3)" /></div>
             </div>
             <div class="row"  max-row-value row-value="13" row-number="18" ng-model="bottomScoreCount">
-                <div class="col-xs-2">Troeven {{player4.text}}</div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[18][0]" select-on-click ng-change="leaveBottom(0)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[18][1]" select-on-click ng-change="leaveBottom(1)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[18][2]" select-on-click ng-change="leaveBottom(2)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[18][3]" select-on-click ng-change="leaveBottom(3)" /></div>
+                <div class="col-md-2">Troeven {{player4.text}}</div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[18][0]" select-on-click ng-change="leaveBottom(0)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[18][1]" select-on-click ng-change="leaveBottom(1)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[18][2]" select-on-click ng-change="leaveBottom(2)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[18][3]" select-on-click ng-change="leaveBottom(3)" /></div>
             </div>
             <div class="row"  max-row-value row-value="13" row-number="19" ng-model="bottomScoreCount" ng-if="game.subType">
-                <div class="col-xs-2">Troeven {{player4.text}}</div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[19][0]" select-on-click ng-change="leaveBottom(0)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[19][1]" select-on-click ng-change="leaveBottom(1)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[19][2]" select-on-click ng-change="leaveBottom(2)" /></div>
-                <div class="col-xs-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[19][3]" select-on-click ng-change="leaveBottom(3)" /></div>
+                <div class="col-md-2">Troeven {{player4.text}}</div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[19][0]" select-on-click ng-change="leaveBottom(0)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[19][1]" select-on-click ng-change="leaveBottom(1)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[19][2]" select-on-click ng-change="leaveBottom(2)" /></div>
+                <div class="col-md-2"><input type="text" class="form-control input-lg text-center" ng-model="game.scores[19][3]" select-on-click ng-change="leaveBottom(3)" /></div>
             </div>
             <div class="row">
-                <div class="col-xs-2">Sub Totaal</div>
-                <div class="col-xs-2">
+                <div class="col-md-2">Sub Totaal</div>
+                <div class="col-md-2">
                     <h4 style="color: green">  {{player1.totalBottom}}</h4>
                 </div>
-                <div class="col-xs-2">
+                <div class="col-md-2">
                     <h4 style="color: green">{{player2.totalBottom}}</h4>
                 </div>
-                <div class="col-xs-2">
+                <div class="col-md-2">
                     <h4 style="color: green">{{player3.totalBottom}}</h4>
                 </div>
-                <div class="col-xs-2">
+                <div class="col-md-2">
                     <h4 style="color: green">{{player4.totalBottom}}</h4>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-2">Totaal</div>
-                <div class="col-xs-2">
+                <div class="col-md-2">Totaal</div>
+                <div class="col-md-2">
                     <h3 value-color ng-model="player1.total">{{player1.total}}</h3>
                 </div>
-                <div class="col-xs-2">
+                <div class="col-md-2">
                     <h3 value-color ng-model="player2.total">{{player2.total}}</h3>
                 </div>
-                <div class="col-xs-2">
+                <div class="col-md-2">
                     <h3 value-color ng-model="player3.total">{{player3.total}}</h3>
                 </div>
-                <div class="col-xs-2">
+                <div class="col-md-2">
                     <h3 value-color ng-model="player4.total">{{player4.total}}</h3>
                 </div>
             </div>
