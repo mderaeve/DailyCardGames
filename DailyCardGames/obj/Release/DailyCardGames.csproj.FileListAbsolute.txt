@@ -11,3 +11,10 @@ D:\R_N_D\Games\DailyCardGames\DailyCardGames\obj\Release\DailyCardGames.csprojAs
 D:\R_N_D\Games\DailyCardGames\DailyCardGames\obj\Release\DailyCardGames.csproj.CoreCompileInputs.cache
 D:\R_N_D\Games\DailyCardGames\DailyCardGames\obj\Release\DailyCardGames.dll
 D:\R_N_D\Games\DailyCardGames\DailyCardGames\obj\Release\DailyCardGames.pdb
+C:\LocalDev\Kaarten\DailyCardGames\DailyCardGames\bin\DailyCardGames.dll.config
+C:\LocalDev\Kaarten\DailyCardGames\DailyCardGames\bin\DailyCardGames.dll
+C:\LocalDev\Kaarten\DailyCardGames\DailyCardGames\bin\DailyCardGames.pdb
+C:\LocalDev\Kaarten\DailyCardGames\DailyCardGames\obj\Release\DailyCardGames.csprojAssemblyReference.cache
+C:\LocalDev\Kaarten\DailyCardGames\DailyCardGames\obj\Release\DailyCardGames.csproj.CoreCompileInputs.cache
+C:\LocalDev\Kaarten\DailyCardGames\DailyCardGames\obj\Release\DailyCardGames.dll
+C:\LocalDev\Kaarten\DailyCardGames\DailyCardGames\obj\Release\DailyCardGames.pdb

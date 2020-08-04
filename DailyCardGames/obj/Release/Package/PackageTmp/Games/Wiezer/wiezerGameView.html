@@ -5,46 +5,81 @@
             <div class="col-md-3">
                 <input class="btn btn-info input-block-level form-control" type="submit" value="Regels" ng-click="rules()">
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <input class="btn btn-primary form-control" type="submit" value="Wissel deler" ng-click="changeTurn()">
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <input class="btn btn-primary form-control" type="submit" value="Pas" ng-click="pass()">
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
+                <input class="btn btn-warning form-control" type="submit" value="Foutje" ng-click="error()">
+            </div>
+            <div class="col-md-2">
                 <input class="btn btn-danger input-block-level form-control" type="submit" value="Stop" ng-click="stopGame()">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <center><img src="/images/crown.gif" ng-show="player1.won" /></center>
+            </div>
+            <div class="col-md-3">
+                <center><img src="/images/crown.gif" ng-show="player2.won" /></center>
+            </div>
+            <div class="col-md-3">
+                <center><img src="/images/crown.gif" ng-show="player3.won" /></center>
+            </div>
+            <div class="col-md-3">
+                <center><img src="/images/crown.gif" ng-show="player4.won" /></center>
             </div>
         </div>
         <div class="row">
             <div class="col-md-3">
                 <div class="text-center">
                     <h2 ng-style="{'background': player1.turn}">{{player1.text}}</h2>
-                    <img src="/images/won.gif" ng-show="player1.won"  />
-                </div>
-                <div class="text-center">
-                    <h3 value-color ng-model="player1.total">{{player1.total}}</h3>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="text-center">
                     <h2 ng-style="{'background': player2.turn}">{{player2.text}}</h2>
                 </div>
-                <div class="text-center"><h3 value-color ng-model="player2.total">{{player2.total}}</h3></div>
-                <img src="/images/won.gif" ng-show="player2.won" class="float-lg-left"/>
             </div>
             <div class="col-md-3">
                 <div class="text-center">
                     <h2 ng-style="{'background': player3.turn}">{{player3.text}}</h2>
                 </div>
-                <div class="text-center"><h3 value-color ng-model="player3.total">{{player3.total}}</h3></div>
-                <img src="/images/won.gif" ng-show="player3.won" class="float-lg-left"  />
             </div>
             <div class="col-md-3">
                 <div class="text-center">
                     <h2 ng-style="{'background': player4.turn}">{{player4.text}}</h2>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="text-center"><h3 value-color ng-model="player1.total">{{player1.total}}</h3></div>
+            </div>
+            <div class="col-md-3">
+                <div class="text-center"><h3 value-color ng-model="player2.total">{{player2.total}}</h3></div>
+            </div>
+            <div class="col-md-3">
+                <div class="text-center"><h3 value-color ng-model="player3.total">{{player3.total}}</h3></div>
+            </div>
+            <div class="col-md-3">
                 <div class="text-center"><h3 value-color ng-model="player4.total">{{player4.total}}</h3></div>
-                <img src="/images/won.gif" ng-show="player4.won"  />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <center><img src="/images/won.gif" ng-show="player1.won" /></center>
+            </div>
+            <div class="col-md-3">
+                <center><img src="/images/won.gif" ng-show="player2.won" /></center>
+            </div>
+            <div class="col-md-3">
+                <center><img src="/images/won.gif" ng-show="player3.won" /></center>
+            </div>
+            <div class="col-md-3">
+                <center><img src="/images/won.gif" ng-show="player4.won" /></center>
             </div>
         </div>
     </div>

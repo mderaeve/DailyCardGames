@@ -136,6 +136,24 @@ angular.module('Games')
             insertScoreInDB();
         };
 
+        $scope.error = function ()
+        {
+            $scope.newScore1 = 1;
+            $scope.newScore2 = 1;
+            $scope.newScore3 = 1;
+            $scope.newScore4 = 1;
+            if ($scope.player1.turn == $rootScope.selectedPlayerColor) {
+                $scope.newScore1 = -3;
+            } else if ($scope.player2.turn == $rootScope.selectedPlayerColor) {
+                $scope.newScore2 = -3;
+            } else if ($scope.player3.turn == $rootScope.selectedPlayerColor) {
+                $scope.newScore3 = -3;
+            } else {
+                $scope.newScore4 = -3;
+            }
+            insertScore();
+        }
+
         $scope.insertScore = function ()
         {
             insertScoreInDB();
@@ -147,6 +165,10 @@ angular.module('Games')
 
         $scope.stopGame = function () {
             $rootScope.game.active = 0;
+            $rootScope.game.players[0].won = false;
+            $rootScope.game.players[1].won = false;
+            $rootScope.game.players[2].won = false;
+            $rootScope.game.players[3].won = false;
             indexedDBDataSvc.updateGame($rootScope.game).then(function (data) {
                 $rootScope.game = null;
                 //check if there are at least 4 players, else redirect to home
@@ -172,7 +194,11 @@ angular.module('Games')
             if ($scope.newScore1 > 0 || $scope.newScore2 > 0 || $scope.newScore3 > 0 || $scope.newScore4 > 0) {
                 changeTurn();
             }
+            insertScore();
+            
+        };
 
+        function insertScore() {
             var score = [$scope.newScore1, $scope.newScore2, $scope.newScore3, $scope.newScore4];
 
             $scope.scores.push(score);
@@ -183,19 +209,17 @@ angular.module('Games')
             $rootScope.game.players[3] = $scope.player4;
 
             $rootScope.game.scores = $scope.scores;
-            indexedDBDataSvc.updateGame($rootScope.game).then(function ()
-            {
+            indexedDBDataSvc.updateGame($rootScope.game).then(function () {
                 refreshScores();
                 resetScores();
             }, function (err) {
                 console.log(err); //$window.alert(err);
-                });
+            });
         };
 
         function checkScore (player) {
             var win = (player.total > $rootScope.game.maxScore - 1);
-            if (win == true)
-            {
+            if (win == true) {
                 player.wins++;
                 indexedDBDataSvc.updatePlayer(player).then(function () {
                 }, function (err) {
@@ -203,11 +227,15 @@ angular.module('Games')
                 });
                 ShowPlayerWon(player);
             }
+            else
+            {
+                player.won = false;
+            }
             return win;
         }
 
         function ShowPlayerWon(player) {
-            player.turn = "#FFD700";
+            //player.turn = "#FFD700";
             player.won = true;
         }
 
